@@ -100,10 +100,26 @@
             color: #333;
             font-family: 'Gabarito', sans-serif; /* Use Gabarito for the project text */
             font-weight: 400;
-            font-size: 1.1em;
+            font-size: 1.1em; /* This will apply to the link itself */
             text-transform: none; /* Disable all caps */
             transition: background-color 0.3s ease;
         }
+        
+        /* Style for the project title */
+        .project-title {
+            display: block;  /* Forces the title to be on its own line */
+            font-weight: 700;  /* Make the title bold */
+            font-size: 1.2em;  /* Slightly larger font for title */
+            margin-bottom: 5px;  /* Space between title and software */
+        }
+        
+        /* Style for the software used (second line) */
+        .project-description {
+            display: block;  /* Forces the software to be on its own line */
+            font-weight: 400;  /* Regular weight for software text */
+            font-size: 0.9em;  /* Smaller font size for software */
+            color: #666;  /* Lighter color for software text */
+}
 
         .project-card a:hover {
             background-color: #b2b2b2;
@@ -140,35 +156,59 @@
     <div class="projects">
         <div class="project-card">
             <img src="https://github.com/user-attachments/assets/d24cc2cb-ab6c-464f-a61e-416374b51333" alt="Propagation Solver">
-            <a href="propagation-solver.html">Propagation Solver - Blender, Fusion</a>
+            <a href="propagation-solver.html">
+                <span class="project-title">Propagation Solver</span>
+                <span class="project-description">Blender, Geometry Nodes, Fusion</span>
+            </a>
         </div>
         <div class="project-card">
             <img src="https://github.com/user-attachments/assets/4f28777e-956c-4208-9255-8e1a7de2dec6" alt="Medusa">
-            <a href="medusa.html">Medusa - Blender, Fusion</a>
+            <a href="medusa.html">
+                <span class="project-title">Medusa</span>
+                <span class="project-description">Blender, Fusion, After Effects</span>
+            </a>
         </div>
         <div class="project-card">
             <img src="https://github.com/user-attachments/assets/bf82fccc-2d01-4455-a8e4-65c077fe0634" alt="Index Shuffle Node">
-            <a href="index-shuffle-node.html">Index Shuffle Node - Blender</a>
+            <a href="index-shuffle-node.html">
+                <span class="project-title">Index Shuffle Node</span>
+                <span class="project-description">Blender, Geometry Nodes</span>
+            </a>
         </div>
         <div class="project-card">
             <img src="https://github.com/user-attachments/assets/ad5f2833-ecad-45c3-a1b5-d20e7a6702cb" alt="Camera Culler Node">
-            <a href="camera-culler-node.html">Camera Culler Node - Blender, Python</a>
+            <a href="camera-culler-node.html">
+                <span class="project-title">Camera Culler Node</span>
+                <span class="project-description">Blender, Geometry Nodes, Python</span>
+            </a>
         </div>
         <div class="project-card">
             <img src="https://github.com/user-attachments/assets/8fde737d-bb4b-40fc-9a36-59ad35984e08" alt="Quick Texturing">
-            <a href="quick-texturing.html">Quick Texturing - Blender, Python</a>
+            <a href="quick-texturing.html">
+                <span class="project-title">Quick Texturing</span>
+                <span class="project-description">Blender, Python</span>
+            </a>
         </div>
         <div class="project-card">
             <img src="https://github.com/user-attachments/assets/c0ae8dfa-5116-45b2-85b3-3a5e90f5f46d" alt="Cryptostraps">
-            <a href="cryptostraps.html">Cryptostraps - Blender, Python</a>
+            <a href="cryptostraps.html">
+                <span class="project-title">Cryptostraps</span>
+                <span class="project-description">Blender, Python</span>
+            </a>
         </div>
         <div class="project-card">
             <img src="https://github.com/user-attachments/assets/9d68b505-7c38-43c6-8664-994f85dd5068" alt="Silicons Teaser">
-            <a href="silicons-teaser.html">Silicons Teaser - Blender</a>
+            <a href="silicons-teaser.html">
+                <span class="project-title">Silicons Teaser</span>
+                <span class="project-description">Blender, Fusion</span>
+            </a>
         </div>
         <div class="project-card">
             <img src="https://github.com/user-attachments/assets/693cb3a4-d4cd-4ccd-8377-d427676427df" alt="Silicons Animations">
-            <a href="silicons-animations.html">Silicons Animations - Blender, AfterEffects, Python, JavaScript</a>
+            <a href="silicons-animations.html">
+                <span class="project-title">Silicons Animations</span>
+                <span class="project-description">Blender, Python, AfterEffects, JavaScript</span>
+            </a>
         </div>
     </div>
 </div>
