@@ -70,8 +70,8 @@
 
         /* Project card */
         .project-card {
-            background-color: #fff;
-            border-radius: 10px;
+            background-color: #cecece; /* Set background color */
+            border-radius: 5px; /* Less rounded corners */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 300px; /* Fixed width */
             overflow: hidden;
@@ -88,12 +88,7 @@
             width: 100%;
             height: 300px; /* Ensure square images */
             object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        /* Hover effect for images */
-        .project-card img:hover {
-            transform: scale(1.05);
+            transition: none; /* No hover effect */
         }
 
         /* Project title link styled as a button */
@@ -103,9 +98,10 @@
             padding: 15px;
             background-color: #cecece;
             color: #333;
-            font-weight: 700;
+            font-family: 'Gabarito', sans-serif; /* Use Gabarito for the project text */
+            font-weight: 400;
             font-size: 1.1em;
-            text-transform: uppercase;
+            text-transform: none; /* Disable all caps */
             transition: background-color 0.3s ease;
         }
 
