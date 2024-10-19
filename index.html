@@ -5,77 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jure Sulič - Portfolio 2024</title>
 
-    <!-- Google Fonts link for Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <!-- Google Fonts for Roboto and Lora -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:wght@400;700&display=swap">
 
     <style>
+        /* Reset some default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General body styling */
         body {
             font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            text-align: center;
         }
-        h1, h2 {
-            font-family: 'Roboto', sans-serif;
+
+        /* Container to center everything */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
+
+        /* Main header styling */
+        h1 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            font-size: 3em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Subheader styling */
+        h2 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            color: #555;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        /* Description paragraph */
+        p {
+            font-size: 1.2em;
+            color: #666;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        /* Table styling for the projects */
         table {
             width: 100%;
+            border-spacing: 20px;
+            margin-bottom: 40px;
         }
-        table, th, td {
-            border: none;
-        }
+
         td {
             text-align: center;
             vertical-align: top;
         }
+
+        /* Image styling */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover effect on images */
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Project link buttons */
         a {
             text-decoration: none;
-            color: #000;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
         }
+
+        /* Button hover effect */
         a:hover {
-            color: #007BFF;
+            background-color: #0056b3;
         }
+
+        /* Footer with back link */
+        footer {
+            margin-top: 50px;
+        }
+
     </style>
 </head>
 <body>
 
-<h1>Jure Sulič - Portfolio 2024</h1>
+<div class="container">
+    <h1>Jure Sulič - Portfolio 2024</h1>
+    <p>Experienced 3D Generalist and Technical Artist specializing in asset creation, optimization, and scripting with Blender and Houdini. Strong background in freelance work and teaching.</p>
 
-<p>Experienced 3D Generalist and Technical Artist specializing in asset creation, optimization, and scripting with Blender and Houdini. Strong background in freelance work and teaching.</p>
+    <h2>Projects</h2>
 
-<h2>Projects</h2>
+    <table>
+        <tr>
+            <td>
+                <img src="https://github.com/user-attachments/assets/d24cc2cb-ab6c-464f-a61e-416374b51333" alt="Propagation Solver">
+                <a href="propagation-solver.html">Propagation Solver - Blender, Fusion</a>
+            </td>
+            <td>
+                <img src="https://github.com/user-attachments/assets/4f28777e-956c-4208-9255-8e1a7de2dec6" alt="Medusa">
+                <a href="medusa.html">Medusa - Blender, Fusion</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="https://github.com/user-attachments/assets/bf82fccc-2d01-4455-a8e4-65c077fe0634" alt="Index Shuffle Node">
+                <a href="index-shuffle-node.html">Index Shuffle Node - Blender</a>
+            </td>
+            <td>
+                <img src="https://github.com/user-attachments/assets/ad5f2833-ecad-45c3-a1b5-d20e7a6702cb" alt="Camera Culler Node">
+                <a href="camera-culler-node.html">Camera Culler Node - Blender, Python</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="https://github.com/user-attachments/assets/8fde737d-bb4b-40fc-9a36-59ad35984e08" alt="Quick Texturing">
+                <a href="quick-texturing.html">Quick Texturing - Blender, Python</a>
+            </td>
+            <td>
+                <img src="https://github.com/user-attachments/assets/c0ae8dfa-5116-45b2-85b3-3a5e90f5f46d" alt="Cryptostraps">
+                <a href="cryptostraps.html">Cryptostraps - Blender, Python</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="https://github.com/user-attachments/assets/9d68b505-7c38-43c6-8664-994f85dd5068" alt="Silicons Teaser">
+                <a href="silicons-teaser.html">Silicons Teaser - Blender</a>
+            </td>
+            <td>
+                <img src="https://github.com/user-attachments/assets/693cb3a4-d4cd-4ccd-8377-d427676427df" alt="Silicons Animations">
+                <a href="silicons-animations.html">Silicons Animations - Blender, AfterEffects, Python, JavaScript</a>
+            </td>
+        </tr>
+    </table>
+</div>
 
-<table>
-    <tr>
-        <td><img src="https://github.com/user-attachments/assets/d24cc2cb-ab6c-464f-a61e-416374b51333" width="400" alt="Propagation Solver"></td>
-        <td><img src="https://github.com/user-attachments/assets/4f28777e-956c-4208-9255-8e1a7de2dec6" width="400" alt="Medusa"></td>
-    </tr>
-    <tr>
-        <td><a href="https://github.com/you-re/portfolio-2024/tree/main/Propagation%20Solver"><strong>Propagation Solver</strong></a> - Blender, Fusion</td>
-        <td><a href="https://github.com/you-re/portfolio-2024/tree/main/Medusa"><strong>Medusa</strong></a> - Blender, Fusion</td>
-    </tr>
-    <tr>
-        <td><img src="https://github.com/user-attachments/assets/bf82fccc-2d01-4455-a8e4-65c077fe0634" width="400" alt="Index Shuffle Node"></td>
-        <td><img src="https://github.com/user-attachments/assets/ad5f2833-ecad-45c3-a1b5-d20e7a6702cb" width="400" alt="Camera Culler Node"></td>
-    </tr>
-    <tr>
-        <td><a href="https://github.com/you-re/portfolio-2024/tree/main/Index%20Shuffle%20Node"><strong>Index Shuffle Node</strong></a> - Blender</td>
-        <td><a href="https://github.com/you-re/portfolio-2024/tree/main/Camera%20Culler"><strong>Camera Culler Node</strong></a> - Blender, Python</td>
-    </tr>
-    <tr>
-        <td><img src="https://github.com/user-attachments/assets/8fde737d-bb4b-40fc-9a36-59ad35984e08" width="400" alt="Quick Texturing"></td>
-        <td><img src="https://github.com/user-attachments/assets/c0ae8dfa-5116-45b2-85b3-3a5e90f5f46d" width="400" alt="Cryptostraps"></td>
-    </tr>
-    <tr>
-        <td><a href="https://github.com/you-re/portfolio-2024/tree/main/CFPS%20-%20Quick%20Texturing"><strong>Quick Texturing</strong></a> - Blender, Python</td>
-        <td><a href="https://github.com/you-re/portfolio-2024/tree/main/Cryptostraps"><strong>Cryptostraps</strong></a> - Blender, Python</td>
-    </tr>
-    <tr>
-        <td><img src="https://github.com/user-attachments/assets/9d68b505-7c38-43c6-8664-994f85dd5068" width="400" alt="Silicons Teaser"></td>
-        <td><img src="https://github.com/user-attachments/assets/693cb3a4-d4cd-4ccd-8377-d427676427df" width="400" alt="Silicons Animations"></td>
-    </tr>
-    <tr>
-        <td><a href="https://github.com/you-re/portfolio-2024/tree/main/Silicons%20Teaser"><strong>Silicons Teaser</strong></a> - Blender</td>
-        <td><a href="https://github.com/you-re/portfolio-2024/tree/main/Silicons%20Animations"><strong>Silicons Animations</strong></a> - Blender, AfterEffects, Python, JavaScript</td>
-    </tr>
-</table>
+<footer>
+    <p>&copy; 2024 Jure Sulič | <a href="index.html">Back to Portfolio</a></p>
+</footer>
 
 </body>
 </html>
