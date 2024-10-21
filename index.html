@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jure Sulič - Portfolio 2024</title>
-
-    <!-- Google Fonts for Gabarito and Lora -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;700&family=Lora:wght@400;700&display=swap">
+    
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <style>
         /* Reset some default browser styles */
@@ -15,190 +15,229 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         /* General body styling */
         body {
-            font-family: 'Lora', serif;
-            background-color: #f5f5f5;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #cecece;
             color: #333;
             line-height: 1.6;
             padding: 20px;
             text-align: center;
         }
-        
+
         /* Container to center everything */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0; /* Remove padding */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* Align to the left */
         }
-        
+
+        /* Header and paragraph box styling */
+        .content-box {
+            background-color: #fff;
+            border: 1px solid #333;
+            width: calc(100%); /* Full width minus padding */
+            margin: 0; /* No margin */
+            padding: 10px; /* Reduced padding for a tighter fit */
+            text-align: center; /* Center text */
+        }
+
         /* Main header styling */
         h1 {
-            font-family: 'Gabarito', sans-serif;
-            font-weight: 700;
-            font-size: 3em;
+            text-transform: uppercase;
+            font-weight: 100;
+            font-size: 2.5em;
             color: #333;
-            margin-bottom: 10px;
         }
-        
+
         /* Subheader styling */
         h2 {
-            font-family: 'Gabarito', sans-serif;
-            font-weight: 700;
-            color: #555;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 2.5em;
+            text-transform: uppercase;
+            font-weight: 100;
+            color: #333;
+            font-size: 2em;
         }
-        
+
         /* Description paragraph */
         p {
+            font-family: 'Old Standard TT', serif; /* Corrected */
+            font-weight: 100;
             font-size: 1.2em;
-            color: #666;
-            max-width: 800px;
-            margin: 20px auto;
-        }
-        
-        /* Projects grid using CSS Grid */
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Dynamic grid with responsive square boxes */
-            grid-gap: 0; /* No gap between grid items */
-            border: 1px solid black; /* Outer black border */
-        }
-        
-        /* Individual grid item style */
-        .projects > div {
-            background-color: #ffffff;
-            border: 1px solid black; /* Internal 1px lines between grid items */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end; /* Align content to bottom */
-            aspect-ratio: 1/1; /* Make sure the grid items are square */
-            position: relative;
-        }
-        
-        /* Images should fill the grid area */
-        .projects img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-        
-        /* Text content */
-        .projects a {
-            text-decoration: none;
             color: #333;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for text */
-            z-index: 1;
-            position: relative;
-            text-align: left; /* Align text to bottom-left */
+            padding-inline: 10%;
         }
         
-        .project-title {
-            font-family: 'Gabarito', sans-serif;
-            font-weight: 700;
-            font-size: 1.2em;
-        }
-        
-        .project-description {
-            font-family: 'Lora', serif;
-            font-size: 0.9em;
-            color: #666;
-        }
-        
-        /* Footer with back link */
         footer {
-            margin-top: 50px;
+            text-transform: uppercase;
+            font-weight: 200;
+            font-size: 1em;
+            color: #333;
         }
-        
-        /* Media Queries for responsiveness */
-        @media (max-width: 768px) {
-            .projects {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+        /* Grid item styling */
+        .grid-item {
+            background-color: #fff;
+            border: 1px solid #333;
+            margin: 0; /* Remove margin for touching containers */
+            padding: 0; /* Remove padding for touching containers */
+            width: calc(25%); /* 4 items per row */
+            text-align: center;
+            position: relative; /* For positioning of the description */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+        }
+
+        .grid-item a {
+            display: block; /* Make anchor fill the grid item */
+            height: 0; /* Initialize height for square box */
+            padding-bottom: 100%; /* Maintain square aspect ratio */
+            position: relative; /* For absolute positioning of the image */
+            overflow: hidden; /* Prevent overflow when zooming */
+        }
+
+        .grid-item img {
+            position: absolute; /* Position the image absolutely within the anchor */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            width: 100%; /* Image occupies 100% of the box */
+            height: auto; /* Maintain aspect ratio */
+            transform: translate(-50%, -50%); /* Center image */
+            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+        }
+
+        /* Zoom effect on hover */
+        .grid-item:hover img {
+            transform: translate(-50%, -50%) scale(1.12); /* Zoom in on hover */
+        }
+
+        .description {
+            font-weight: 400;
+            margin: 0; /* Remove margin */
+            color: #333;
+            padding: 10px; /* Padding for description */
+            background-color: #fff; /* Match background with the grid item */
+            border-top: 1px solid #333; /* Border above description */
+            text-align: center; /* Center text in the description box */
+        }
+
+        @media (max-width: 1200px) {
+            .grid-item {
+                width: calc(33.33%); /* 3 items per row */
             }
         }
 
+        @media (max-width: 800px) {
+            .grid-item {
+                width: calc(50%); /* 2 items per row */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid-item {
+                width: calc(100%); /* 1 item per row */
+            }
+        }
+
+        /* Footer box styling */      
+        footer {
+            background-color: #fff;
+            font-weight: 300;
+            font-size: 1em;
+            color: #333;
+            text-align: center;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #333;
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <div class="content-box">
+            <h1>Jure Sulič - Portfolio 2024</h1>
+        </div>
 
-<div class="container">
-    <h1>Jure Sulič - Portfolio 2024</h1>
-    <p>Experienced 3D Generalist and Technical Artist specializing in asset creation, optimization, and scripting with Blender and Houdini.</p>
+        <div class="content-box">
+            <p>Experienced 3D Generalist and Technical Artist specializing in asset creation, optimization, and scripting with Blender and Houdini. Strong background in freelance work and teaching.</p>
+        </div>
 
-    <h2>Projects</h2>
+        <div class="content-box">
+            <h2>Projects</h2>
+        </div>
+        
+        <div class="grid-item">
+            <a href="https://github.com/you-re/portfolio-2024/tree/main/Propagation%20Solver">
+                <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Propagation-Solver.png" alt="Propagation Solver">
+            </a>
+            <div class="description">
+                <strong>Propagation Solver</strong> - Blender, Fusion
+            </div>
+        </div>
+        <div class="grid-item">
+            <a href="https://github.com/you-re/portfolio-2024/tree/main/Medusa">
+                <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Medusa.png" alt="Medusa">
+            </a>
+            <div class="description">
+                <strong>Medusa</strong> - Blender, Fusion
+            </div>
+        </div>
+        <div class="grid-item">
+            <a href="https://github.com/you-re/portfolio-2024/tree/main/Index%20Shuffle%20Node">
+                <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Index-Shuffle-Node.png" alt="Index Shuffle Node">
+            </a>
+            <div class="description">
+                <strong>Index Shuffle Node</strong> - Blender
+            </div>
+        </div>
+        <div class="grid-item">
+            <a href="https://github.com/you-re/portfolio-2024/tree/main/Camera%20Culler">
+                <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Camera-Culler.png" alt="Camera Culler Node">
+            </a>
+            <div class="description">
+                <strong>Camera Culler Node</strong> - Blender, Python
+            </div>
+        </div>
+        <div class="grid-item">
+            <a href="https://github.com/you-re/portfolio-2024/tree/main/CFPS%20-%20Quick%20Texturing">
+                <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Quick-Texturing.png" alt="Quick Texturing">
+            </a>
+            <div class="description">
+                <strong>Quick Texturing</strong> - Blender, Python
+            </div>
+        </div>
+        <div class="grid-item">
+            <a href="https://github.com/you-re/portfolio-2024/tree/main/Cryptostraps">
+                <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Cryptostraps.png" alt="Cryptostraps">
+            </a>
+            <div class="description">
+                <strong>Cryptostraps</strong> - Blender, Python
+            </div>
+        </div>
+        <div class="grid-item">
+            <a href="https://github.com/you-re/portfolio-2024/tree/main/Silicons%20Teaser">
+                <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Silicons-Teaser.png" alt="Silicons Teaser">
+            </a>
+            <div class="description">
+                <strong>Silicons Teaser</strong> - Blender, Fusion
+            </div>
+        </div>
+        <div class="grid-item">
+            <a href="https://you-re.github.io/Portfolio2024/Silicons%20Animations">
+                <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Silicons-Animations.png" alt="Silicons Animations">
+            </a>
+            <div class="description">
+                <strong>Silicons Animations</strong> - Blender, Python, AfterEffects, JavaScript
+            </div>
+        </div>
 
-    <!-- Projects Grid -->
-    <div class="projects">
-        <div class="project-card">
-            <img src="https://github.com/user-attachments/assets/d24cc2cb-ab6c-464f-a61e-416374b51333" alt="Propagation Solver">
-            <a href="propagation-solver.html">
-                <span class="project-title">Propagation Solver</span>
-                <span class="project-description">Blender, Geometry Nodes, Fusion</span>
-            </a>
-        </div>
-        <div class="project-card">
-            <img src="https://github.com/user-attachments/assets/4f28777e-956c-4208-9255-8e1a7de2dec6" alt="Medusa">
-            <a href="medusa.html">
-                <span class="project-title">Medusa</span>
-                <span class="project-description">Blender, Fusion, After Effects</span>
-            </a>
-        </div>
-        <div class="project-card">
-            <img src="https://github.com/user-attachments/assets/bf82fccc-2d01-4455-a8e4-65c077fe0634" alt="Index Shuffle Node">
-            <a href="index-shuffle-node.html">
-                <span class="project-title">Index Shuffle Node</span>
-                <span class="project-description">Blender, Geometry Nodes</span>
-            </a>
-        </div>
-        <div class="project-card">
-            <img src="https://github.com/user-attachments/assets/ad5f2833-ecad-45c3-a1b5-d20e7a6702cb" alt="Camera Culler Node">
-            <a href="camera-culler-node.html">
-                <span class="project-title">Camera Culler Node</span>
-                <span class="project-description">Blender, Geometry Nodes, Python</span>
-            </a>
-        </div>
-        <div class="project-card">
-            <img src="https://github.com/user-attachments/assets/8fde737d-bb4b-40fc-9a36-59ad35984e08" alt="Quick Texturing">
-            <a href="quick-texturing.html">
-                <span class="project-title">Quick Texturing</span>
-                <span class="project-description">Blender, Python</span>
-            </a>
-        </div>
-        <div class="project-card">
-            <img src="https://github.com/user-attachments/assets/c0ae8dfa-5116-45b2-85b3-3a5e90f5f46d" alt="Cryptostraps">
-            <a href="cryptostraps.html">
-                <span class="project-title">Cryptostraps</span>
-                <span class="project-description">Blender, Python</span>
-            </a>
-        </div>
-        <div class="project-card">
-            <img src="https://github.com/user-attachments/assets/9d68b505-7c38-43c6-8664-994f85dd5068" alt="Silicons Teaser">
-            <a href="silicons-teaser.html">
-                <span class="project-title">Silicons Teaser</span>
-                <span class="project-description">Blender, Fusion</span>
-            </a>
-        </div>
-        <div class="project-card">
-            <img src="https://github.com/user-attachments/assets/693cb3a4-d4cd-4ccd-8377-d427676427df" alt="Silicons Animations">
-            <a href="silicons-animations.html">
-                <span class="project-title">Silicons Animations</span>
-                <span class="project-description">Blender, Python, AfterEffects, JavaScript</span>
-            </a>
+        <div class="content-box">
+            <footer>© 2024 <a href="https://www.linkedin.com/in/jure-suli%C4%8D-9b700a195/">Jure Sulič</a></footer>
         </div>
     </div>
-</div>
-
-<footer>
-    <p>&copy; 2024 Jure Sulič | <a href="index.html">Back to Portfolio</a></p>
-</footer>
-
 </body>
 </html>
