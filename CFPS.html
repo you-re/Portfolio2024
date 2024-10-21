@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFPS - Quick Texturing</title>
+    
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset some default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General body styling */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #cecece;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Container to center everything */
+        .container {
+            max-width: 1200px;
+            background-color: #fff;
+            border: 1px solid #333;
+            border-bottom: 0px;
+            margin: 0 auto;
+            padding: 0; /* Remove padding */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* Align to the left */
+        }
+
+        /* Header and paragraph box styling */
+        .content-box {
+            background-color: #fff;
+            border-bottom: 1px solid #333;
+            width: calc(100%); /* Full width minus padding */
+            margin: 0; /* No margin */
+            padding: 10px; /* Reduced padding for a tighter fit */
+            text-align: center; /* Center text */
+        }
+
+        .content-box iframe {
+            width: 80%;
+            height: 500px;
+            border: 20px;
+        }
+        /* Additional style for top border */
+        .content-box.has-top-border {
+            border-top: 1px solid #333; /* Add top border */
+        }
+
+        /* Additional style for grid items */
+        .grid-item {
+            background-color: #fff;
+            border-right: 1px solid #333; /* Default right border */
+            margin: 0; /* Remove margin for touching containers */
+            padding: 0; /* Remove padding for touching containers */
+            width: calc(25%); /* 4 items per row */
+            text-align: center;
+            position: relative; /* For positioning of the description */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+        }
+
+        .grid-item a {
+            display: block; /* Make anchor fill the grid item */
+            height: 0; /* Initialize height for square box */
+            padding-bottom: 100%; /* Maintain square aspect ratio */
+            position: relative; /* For absolute positioning of the image */
+            overflow: hidden; /* Prevent overflow when zooming */
+        }
+
+        .grid-item img {
+            position: absolute; /* Position the image absolutely within the anchor */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            width: 90%; /* Image occupies 100% of the box */
+            height: auto; /* Maintain aspect ratio */
+            transform: translate(-50%, -50%); /* Center image */
+            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+        }
+
+        .description {
+            font-weight: 300;
+            margin: 0; /* Remove margin */
+            color: #333;
+            padding: 2%; /* Padding for description */
+            background-color: #fff; /* Match background with the grid item */
+            border-top: 1px solid #333; /* Border above description */
+            text-align: center; /* Center text in the description box */
+        }
+
+        /* Main header styling */
+        h1 {
+            text-transform: uppercase;
+            font-weight: 150;
+            font-size: 2em;
+            color: #333;
+        }
+
+        /* Subheader styling */
+        h2 {
+            text-transform: uppercase;
+            font-weight: 200;
+            color: #333;
+            font-size: 1.5em;
+        }
+
+        /* Description paragraph */
+        p {
+            font-family: 'Old Standard TT', serif;
+            font-weight: 100;
+            font-size: 1em;
+            color: #333;
+            padding-inline: 10%;
+        }
+
+        /* Footer box styling */      
+        footer {
+            background-color: #fff;
+            font-weight: 300;
+            font-size: 0.8em;
+            color: #333;
+            text-align: center;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        @media (max-width: 1200px) {
+            .grid-item {
+                width: calc(25%); /* 3 items per row */
+            }
+        }
+
+        @media (max-width: 800px) {
+            .grid-item {
+                width: calc(33.33%); /* 2 items per row */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid-item {
+                width: calc(50%); /* 1 item per row */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-box">
+            <h1>CFPS - Quick Texturing</h1>
+        </div>
+
+        <div class="content-box">
+            <h2>Project Scope</h2>
+            <p>For the CFPS (Cyber First Person Shooter) project, I was tasked with developing a workflow to streamline the customization of 3D gun models using user-provided images. I created a Python script within Blender that reads an image from the user's drive, extracts colors with the extcolors library, and applies these colors to the gun's materials.</p>
+        </div>
+
+        <!-- Embedded YouTube video -->
+        <div class="content-box">
+            <iframe src="https://www.youtube.com/embed/XWIfp2VS3OE?autoplay=1&mute=1&loop=1" allowfullscreen></iframe>
+        </div>
+
+        <div class="grid-item">
+            <a>
+                <img src="https://github.com/user-attachments/assets/b4dccbe5-5b05-4a46-b1e8-a7d0ac81b61c" alt="Image 1">
+            </a>
+            <div class="description">
+                Image 1
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <a>
+                <img src="https://github.com/user-attachments/assets/1cf44141-ff1a-4ec4-9570-445777a0da08" alt="Image 2">
+            </a>
+            <div class="description">
+                Image 2
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h2>Tools Used</h2>
+            <p>Blender (Python scripting), Python (extcolors library), Substance Designer</p>
+        </div>
+        
+        <div class="content-box">
+            <footer>© 2024 <a href="https://www.linkedin.com/in/jure-suli%C4%8D-9b700a195/">Jure Sulič</a></footer>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const contentBoxes = document.querySelectorAll('.content-box');
+            const gridItems = document.querySelectorAll('.grid-item');
+    
+            // Add top border for content boxes
+            contentBoxes.forEach(contentBox => {
+                const previousElement = contentBox.previousElementSibling;
+                if (previousElement && previousElement.classList.contains('grid-item')) {
+                    contentBox.classList.add('has-top-border');
+                }
+            });
+            
+            // -----------------------------
+
+            // Function to check and set borders for grid items
+            function updateGridBorders() {
+                const container = document.querySelector('.container');
+
+                gridItems.forEach((gridItem, index) => {
+                    // Reset borders
+                    gridItem.style.borderRight = '1px solid #333'; // Default right border
+                    // gridItem.style.borderTop = '1px solid #333';   // Default top border
+
+                    // Get the width percentage of the grid item
+                    const widthPercent = getGridItemWidthInPercent(gridItem);
+
+                    // Get the count of previous grid items
+                    const previousGridItemsCount = Array.from(gridItems).slice(0, index).filter(item => item.offsetParent !== null).length;
+
+                    // Check conditions based on width percentage
+                    if (widthPercent === 100) {
+                        gridItem.style.borderRight = '1px solid #fff'; // No borders
+                    } else if (widthPercent === 50) {
+                        if ((previousGridItemsCount + 1) % 2 === 0) {
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
+                        }
+                    } else if (widthPercent < 50 && widthPercent > 25 ) { // Check for less than 50%
+                        if ((previousGridItemsCount + 1) % 3 === 0) {
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
+                        }
+                    } else if (widthPercent < 30) { // Check for less than 50%
+                        if ((previousGridItemsCount + 1) % 4 === 0) {
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
+                        }
+                    } else {
+                        gridItem.style.borderRight = '1px solid #333';
+                    }
+                });
+            }
+
+            // Function to get the width of a grid item in percentage
+            function getGridItemWidthInPercent(gridItem) {
+                const container = document.querySelector('.container');
+                const gridItemStyle = window.getComputedStyle(gridItem);
+                const gridItemWidth = parseFloat(gridItemStyle.width);
+                const containerWidth = container.clientWidth;
+                const widthPercent = (gridItemWidth / containerWidth) * 100;
+                return widthPercent;
+            }
+
+            // Initial check
+            updateGridBorders();
+
+            // Update on window resize
+            window.addEventListener('resize', updateGridBorders);
+        });
+    </script>
+</body>
+</html>
