@@ -29,6 +29,9 @@
         /* Container to center everything */
         .container {
             max-width: 1200px;
+            background-color: #fff;
+            border: 1px solid #333;
+            border-bottom: 0px;
             margin: 0 auto;
             padding: 0; /* Remove padding */
             display: flex;
@@ -39,55 +42,34 @@
         /* Header and paragraph box styling */
         .content-box {
             background-color: #fff;
-            border: 1px solid #333;
+            border-bottom: 1px solid #333;
             width: calc(100%); /* Full width minus padding */
             margin: 0; /* No margin */
             padding: 10px; /* Reduced padding for a tighter fit */
             text-align: center; /* Center text */
         }
 
-        /* Main header styling */
-        h1 {
-            text-transform: uppercase;
-            font-weight: 100;
-            font-size: 2.5em;
-            color: #333;
+        .content-box iframe {
+            width: 80%;
+            height: 500px;
+            border: 20px;
+        }
+        /* Additional style for top border */
+        .content-box.has-top-border {
+            border-top: 1px solid #333; /* Add top border */
         }
 
-        /* Subheader styling */
-        h2 {
-            text-transform: uppercase;
-            font-weight: 100;
-            color: #333;
-            font-size: 2em;
-        }
-
-        /* Description paragraph */
-        p {
-            font-family: 'Old Standard TT', serif; /* Corrected */
-            font-weight: 100;
-            font-size: 1.2em;
-            color: #333;
-            padding-inline: 10%;
-        }
-        
-        footer {
-            text-transform: uppercase;
-            font-weight: 200;
-            font-size: 1em;
-            color: #333;
-        }
-
-        /* Grid item styling */
+        /* Additional style for grid items */
         .grid-item {
             background-color: #fff;
-            border: 1px solid #333;
+            border-right: 1px solid #333; /* Default right border */
+            border-bottom: 1px solid #333; /* Default right border */
             margin: 0; /* Remove margin for touching containers */
             padding: 0; /* Remove padding for touching containers */
             width: calc(25%); /* 4 items per row */
             text-align: center;
             position: relative; /* For positioning of the description */
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+            transition: transform 0.5s ease; /* Smooth transition */
         }
 
         .grid-item a {
@@ -102,7 +84,7 @@
             position: absolute; /* Position the image absolutely within the anchor */
             top: 50%; /* Center vertically */
             left: 50%; /* Center horizontally */
-            width: 100%; /* Image occupies 100% of the box */
+            width: 90%; /* Image occupies 100% of the box */
             height: auto; /* Maintain aspect ratio */
             transform: translate(-50%, -50%); /* Center image */
             transition: transform 0.3s ease; /* Smooth transition for zoom effect */
@@ -114,13 +96,59 @@
         }
 
         .description {
-            font-weight: 400;
+            font-family: 'Montserrat', serif;
+            font-weight: 300;
             margin: 0; /* Remove margin */
             color: #333;
-            padding: 10px; /* Padding for description */
+            padding: 2%; /* Padding for description */
             background-color: #fff; /* Match background with the grid item */
             border-top: 1px solid #333; /* Border above description */
             text-align: center; /* Center text in the description box */
+            font-size: 1em;
+        }
+
+        .description normal {
+            font-size: 0.8em;
+            text-transform: uppercase;
+        }
+
+        /* Main header styling */
+        h1 {
+            text-transform: uppercase;
+            font-weight: 150;
+            font-size: 2em;
+            color: #333;
+        }
+
+        /* Subheader styling */
+        h2 {
+            text-transform: uppercase;
+            font-weight: 200;
+            color: #333;
+            font-size: 1.5em;
+        }
+
+        /* Description paragraph */
+        p {
+            font-family: 'Old Standard TT', serif;
+            font-weight: 100;
+            font-size: 1em;
+            color: #333;
+            padding-inline: 10%;
+        }
+
+        /* Footer box styling */      
+        footer {
+            background-color: #fff;
+            font-weight: 300;
+            font-size: 0.8em;
+            color: #333;
+            text-align: center;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #333;
         }
 
         @media (max-width: 1200px) {
@@ -139,20 +167,6 @@
             .grid-item {
                 width: calc(100%); /* 1 item per row */
             }
-        }
-
-        /* Footer box styling */      
-        footer {
-            background-color: #fff;
-            font-weight: 300;
-            font-size: 1em;
-            color: #333;
-            text-align: center;
-        }
-
-        footer a {
-            text-decoration: none;
-            color: #333;
         }
     </style>
 </head>
@@ -175,7 +189,7 @@
                 <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Propagation-Solver.png" alt="Propagation Solver">
             </a>
             <div class="description">
-                <strong>Propagation Solver</strong> - Blender, Fusion
+                Propagation Solver</br><normal> Blender, Fusion</normal>
             </div>
         </div>
         <div class="grid-item">
@@ -183,7 +197,7 @@
                 <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Medusa.png" alt="Medusa">
             </a>
             <div class="description">
-                <strong>Medusa</strong> - Blender, Fusion
+                Medusa</br><normal> Blender, Fusion</normal>
             </div>
         </div>
         <div class="grid-item">
@@ -191,7 +205,7 @@
                 <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Index-Shuffle-Node.png" alt="Index Shuffle Node">
             </a>
             <div class="description">
-                <strong>Index Shuffle Node</strong> - Blender
+                Index Shuffle Node</br><normal>Blender (Geometry Nodes)</normal>
             </div>
         </div>
         <div class="grid-item">
@@ -199,7 +213,7 @@
                 <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Camera-Culler.png" alt="Camera Culler Node">
             </a>
             <div class="description">
-                <strong>Camera Culler Node</strong> - Blender, Python
+                Camera Culler Node</br><normal>Blender, Python</normal>
             </div>
         </div>
         <div class="grid-item">
@@ -207,7 +221,7 @@
                 <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Quick-Texturing.png" alt="Quick Texturing">
             </a>
             <div class="description">
-                <strong>Quick Texturing</strong> - Blender, Python
+                Quick Texturing</br><normal>Blender, Python</normal>
             </div>
         </div>
         <div class="grid-item">
@@ -215,7 +229,7 @@
                 <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Cryptostraps.png" alt="Cryptostraps">
             </a>
             <div class="description">
-                <strong>Cryptostraps</strong> - Blender, Python
+                Cryptostraps</br><normal>Blender, Python</normal>
             </div>
         </div>
         <div class="grid-item">
@@ -223,7 +237,7 @@
                 <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Silicons-Teaser.png" alt="Silicons Teaser">
             </a>
             <div class="description">
-                <strong>Silicons Teaser</strong> - Blender, Fusion
+                Silicons Teaser</br><normal>Blender, Fusion</normal>
             </div>
         </div>
         <div class="grid-item">
@@ -231,7 +245,7 @@
                 <img src="https://raw.githubusercontent.com/you-re/Portfolio2024/refs/heads/main/Assets/Thumbnail_Silicons-Animations.png" alt="Silicons Animations">
             </a>
             <div class="description">
-                <strong>Silicons Animations</strong> - Blender, Python, AfterEffects, JavaScript
+                Silicons Animations</br><normal>Blender, Python, AfterEffects, JavaScript</normal>
             </div>
         </div>
 
@@ -239,5 +253,115 @@
             <footer>© 2024 <a href="https://www.linkedin.com/in/jure-suli%C4%8D-9b700a195/">Jure Sulič</a></footer>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const contentBoxes = document.querySelectorAll('.content-box');
+            const gridItems = document.querySelectorAll('.grid-item');
+    
+            // Add top border for content boxes
+            contentBoxes.forEach(contentBox => {
+                const previousElement = contentBox.previousElementSibling;
+                if (previousElement && previousElement.classList.contains('grid-item')) {
+                    contentBox.classList.add('has-top-border');
+                }
+            });
+            
+            // -----------------------------
+
+            // Function to check and set borders for grid items
+            function updateGridBorders() {
+                const container = document.querySelector('.container');
+                
+                // -------------------------
+
+                
+                gridItems.forEach((gridItem, index) => {
+                    // Reset borders
+                    gridItem.style.borderBottom = '1px solid #333';   // Default top border
+
+                    // Get the width percentage of the grid item
+                    const widthPercent = getGridItemWidthInPercent(gridItem);
+
+                    const itemsPerRow = Math.round(100 / widthPercent);
+
+                    const numBoxes = Math.round(gridItems.length / itemsPerRow) * itemsPerRow;
+
+                    const boxIndex = numBoxes - (index + 1);
+                                        
+                    // Check conditions based on width percentage
+                    if (widthPercent === 100) {
+                        if (boxIndex < 1) {
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
+                    } else if (widthPercent === 50) {
+                        if (boxIndex < 2) {
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
+                    } else if (widthPercent < 50 && widthPercent > 25 ) { // Check for less than 50%
+                        if (boxIndex < 3) {
+                            gridItem.style.borderBottom = 'none';; // Remove right border for non-last in group of 3
+                        }
+                    } else if (widthPercent < 30) { // Check for less than 50%
+                        if (boxIndex < 4) {
+                            gridItem.style.borderBottom = 'none'; // Remove right border for non-last in group of 3
+                        }
+                    } else {
+                        gridItem.style.borderBottom = '1px solid #333';
+                    }
+                });
+                
+
+                // -------------------------
+                
+                gridItems.forEach((gridItem, index) => {
+                    // Reset borders
+                    gridItem.style.borderRight = '1px solid #333'; // Default right border
+                    // gridItem.style.borderTop = '1px solid #333';   // Default top border
+
+                    // Get the width percentage of the grid item
+                    const widthPercent = getGridItemWidthInPercent(gridItem);
+
+                    // Get the count of previous grid items
+                    const previousGridItemsCount = Array.from(gridItems).slice(0, index).filter(item => item.offsetParent !== null).length;
+                    
+                    // Check conditions based on width percentage
+                    if (widthPercent === 100) {
+                        gridItem.style.borderRight = '1px solid #fff'; // No borders
+                    } else if (widthPercent === 50) {
+                        if ((previousGridItemsCount + 1) % 2 === 0) {
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
+                        }
+                    } else if (widthPercent < 50 && widthPercent > 25 ) { // Check for less than 50%
+                        if ((previousGridItemsCount + 1) % 3 === 0) {
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
+                        }
+                    } else if (widthPercent < 30) { // Check for less than 50%
+                        if ((previousGridItemsCount + 1) % 4 === 0) {
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
+                        }
+                    } else {
+                        gridItem.style.borderRight = '1px solid #333';
+                    }
+                });
+            }
+
+            // Function to get the width of a grid item in percentage
+            function getGridItemWidthInPercent(gridItem) {
+                const container = document.querySelector('.container');
+                const gridItemStyle = window.getComputedStyle(gridItem);
+                const gridItemWidth = parseFloat(gridItemStyle.width);
+                const containerWidth = container.clientWidth;
+                const widthPercent = (gridItemWidth / containerWidth) * 100;
+                return widthPercent;
+            }
+
+            // Initial check
+            updateGridBorders();
+
+            // Update on window resize
+            window.addEventListener('resize', updateGridBorders);
+        });
+    </script>
 </body>
 </html>
