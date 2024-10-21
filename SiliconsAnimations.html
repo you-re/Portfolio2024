@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Texturing</title>
+    <title>Silicons Animations</title>
     
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -149,44 +149,49 @@
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>CFPS - Quick Texturing</h1>
+            <h1>Silicons Animations</h1>
         </div>
 
         <div class="content-box">
-            <h2>Project Scope</h2>
-            <p>For the CFPS (Cyber First Person Shooter) project, I was tasked with developing a workflow to streamline the customization of 3D gun models using user-provided images. I created a Python script within Blender that reads an image from the user's drive, extracts colors with the extcolors library, and applies these colors to the gun's materials.</p>
+            <h2>Task Description</h2>
+            <p>The client needed an efficient method to create thousands of NFT animations from a set of 100+ assets. My responsibilities included character animation, clothing simulations, automating the rendering and optimizing the workflow.</p>
         </div>
 
-        <!-- Embedded YouTube video -->
         <div class="content-box">
-            <iframe src="https://www.youtube.com/embed/XWIfp2VS3OE?autoplay=1&mute=1&loop=1" allowfullscreen></iframe>
+            <iframe autoplay loop muted src="https://github.com/user-attachments/assets/d8a16680-c308-48f1-8d20-a2e752f09f11" alt="Walk Cycle Animation"></iframe>
         </div>
 
-        <div class="grid-item">
-            <a>
-                <img src="https://github.com/user-attachments/assets/b4dccbe5-5b05-4a46-b1e8-a7d0ac81b61c" alt="Image 1">
-            </a>
-            <div class="description">
-                Image 1
-            </div>
+        <div class="content-box">
+            <h2>Thought Process</h2>
+            <p>
+                Initially, I considered rendering each combination of assets separately, but I quickly realized this would lead to extremely long render times. Instead, I chose to render each asset as a separate layer and then composite them in After Effects.
+            </p>
         </div>
 
-        <div class="grid-item">
-            <a>
-                <img src="https://github.com/user-attachments/assets/1cf44141-ff1a-4ec4-9570-445777a0da08" alt="Image 2">
-            </a>
-            <div class="description">
-                Image 2
-            </div>
+        <div class="content-box">
+            <iframe autoplay loop muted src="https://github.com/user-attachments/assets/c7b7180f-1604-43c2-82d3-74b278747077" alt="3D assets video loop"></iframe>
+        </div>
+
+        <div class="content-box">
+            <h2>Optimizations</h2>
+            <p>This approach avoided redundant rendering of the same assets multiple times, reducing the overall render time by reusing the same renders across combinations. It also allowed for fast fixes in case any of the assets needed that.</br>
+            After optimizing and simulating garments, I batch imported everything into Blender, ensuring materials and animations were correct. I used a Python script to automate individual asset rendering.
+            </p>
+        </div>
+
+        <div class="content-box">
+            <iframe autoplay loop muted src="https://github.com/user-attachments/assets/d73d5342-b77b-4557-b915-4bafd8ba30c5" alt="Video of the Compositing Process"></iframe>
         </div>
 
         <div class="content-box">
             <h2>Tools Used</h2>
             <p>
-                <strong>- Blender: </strong> Developed the workflow for applying custom textures to 3D gun models.</br>
-                <strong>- Substance Painter: </strong> Enhanced texture creation and painting for 3D models.</br>
-                <strong>- Python: </strong> Scripted the automation of texture application and material adjustments.</br>
-                <strong>- extcolors Library: </strong> Extracted colors from user-provided images to customize gun materials.</br>
+                <strong>- Blender: </strong> Used primarily for character animation and batch asset rendering with Python scripts.</br>
+                <strong>- Marvelous Designer: </strong> Simulated and designed realistic clothing for characters.</br>
+                <strong>- Houdini: </strong> Managed looping simulations for seamless animations, particularly with clothing and dynamics.</br>
+                <strong>- Python: </strong> Automated the rendering process, including asset imports, materials, and animation setups.</br>
+                <strong>- Adobe After Effects: </strong> Composited asset layers and created final NFT animations by managing combinations.</br>
+                <strong>- JavaScript/Adobe ExtendScript: </strong> Automated the compositing process in After Effects, ensuring efficient handling of multiple asset layers and variations.
             </p>
         </div>
         

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Texturing</title>
+    <title>Index Shuffle Node</title>
     
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -69,6 +69,8 @@
             text-align: center;
             position: relative; /* For positioning of the description */
             transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+            align-self: center;
+            justify-self: center;
         }
 
         .grid-item a {
@@ -87,6 +89,15 @@
             height: auto; /* Maintain aspect ratio */
             transform: translate(-50%, -50%); /* Center image */
             transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+        }
+
+        .grid-item video {
+            position: absolute; /* Position the image absolutely within the anchor */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            width: 90%; /* Image occupies 100% of the box */
+            height: auto; /* Maintain aspect ratio */
+            transform: translate(-50%, -50%); /* Center image */
         }
 
         .description {
@@ -115,14 +126,16 @@
             font-size: 1.5em;
         }
 
-        /* Description paragraph */
         p {
             font-family: 'Old Standard TT', serif;
             font-weight: 100;
             font-size: 1em;
             color: #333;
             padding-inline: 10%;
-            text-align: left;
+        }
+
+        p #justify{
+            text-align: justify;
         }
 
         /* Footer box styling */      
@@ -141,7 +154,7 @@
 
         @media (max-width: 5000px) {
             .grid-item {
-                width: calc(50%); /* 3 items per row */
+                width: calc(50%); /* 4 items per row */
             }
         }
     </style>
@@ -149,45 +162,45 @@
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>CFPS - Quick Texturing</h1>
+            <h1>Index Shuffle Node</h1>
         </div>
 
         <div class="content-box">
-            <h2>Project Scope</h2>
-            <p>For the CFPS (Cyber First Person Shooter) project, I was tasked with developing a workflow to streamline the customization of 3D gun models using user-provided images. I created a Python script within Blender that reads an image from the user's drive, extracts colors with the extcolors library, and applies these colors to the gun's materials.</p>
+            <h2>Problem: Predictable Point Distribution</h2>
+            <p id="justify">In Blender, the Distribute Points on Faces and Distribute Points in Volume nodes generate points in a predictable order—starting from the first face or voxel to the last. This creates uniform patterns, which aren't ideal when projects require random yet evenly distributed points.</p>
         </div>
 
-        <!-- Embedded YouTube video -->
         <div class="content-box">
-            <iframe src="https://www.youtube.com/embed/XWIfp2VS3OE?autoplay=1&mute=1&loop=1" allowfullscreen></iframe>
+            <h2>Solution: Index Shuffle Node</h2>
+            <p id="justify">To overcome this, I developed the Index Shuffle Node, which randomizes point indices by randomly splitting points into two groups and rejoining them. This method allows for a fast, intuitive way to achieve more randomized distributions, ideal for creating natural layouts.</p>
         </div>
-
+        
         <div class="grid-item">
             <a>
-                <img src="https://github.com/user-attachments/assets/b4dccbe5-5b05-4a46-b1e8-a7d0ac81b61c" alt="Image 1">
+                <video loop muted autoplay controls src="https://github.com/user-attachments/assets/2b478542-a433-43ba-a847-c8a54b1942af" alt="Shuffled Points Video"></video>
             </a>
             <div class="description">
-                Image 1
+                Shuffled Points
             </div>
         </div>
 
         <div class="grid-item">
             <a>
-                <img src="https://github.com/user-attachments/assets/1cf44141-ff1a-4ec4-9570-445777a0da08" alt="Image 2">
+                <video loop muted autoplay controls src="https://github.com/user-attachments/assets/d4b30ae5-6006-4e2a-8483-ab04ea15fd70" alt="Unshuffled Points Video"></video>
             </a>
             <div class="description">
-                Image 2
+                Unshuffled Points
             </div>
+        </div>
+
+        <div class="content-box">
+            <h2>Customization and Performance</h2>
+            <p id="justify">The node allows users to specify the number of shuffle repetitions for greater randomness. However, more repetitions increase processing time, so users can balance randomness and performance based on their project needs.</p>
         </div>
 
         <div class="content-box">
             <h2>Tools Used</h2>
-            <p>
-                <strong>- Blender: </strong> Developed the workflow for applying custom textures to 3D gun models.</br>
-                <strong>- Substance Painter: </strong> Enhanced texture creation and painting for 3D models.</br>
-                <strong>- Python: </strong> Scripted the automation of texture application and material adjustments.</br>
-                <strong>- extcolors Library: </strong> Extracted colors from user-provided images to customize gun materials.</br>
-            </p>
+            <p>Blender (Geometry Nodes)</p>
         </div>
         
         <div class="content-box">
@@ -209,7 +222,7 @@
             });
             
             // -----------------------------
-            /*
+
             // Function to check and set borders for grid items
             function updateGridBorders() {
                 const container = document.querySelector('.container');
@@ -240,31 +253,6 @@
                         if ((previousGridItemsCount + 1) % 4 === 0) {
                             gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
                         }
-                    } else {
-                        gridItem.style.borderRight = '1px solid #333';
-                    }
-                });
-            }
-            */
-
-            // Function to check and set borders for grid items
-            function updateGridBorders() {
-                const container = document.querySelector('.container');
-
-                gridItems.forEach((gridItem, index) => {
-                    // Reset borders
-                    gridItem.style.borderRight = '1px solid #333'; // Default right border
-                    // gridItem.style.borderTop = '1px solid #333';   // Default top border
-
-                    // Get the width percentage of the grid item
-                    const widthPercent = getGridItemWidthInPercent(gridItem);
-
-                    // Get the count of previous grid items
-                    const previousGridItemsCount = Array.from(gridItems).slice(0, index).filter(item => item.offsetParent !== null).length;
-
-                    // Check conditions based on width percentage
-                    if (index % 2 === 1){
-                        gridItem.style.borderRight = '1px solid #fff';
                     } else {
                         gridItem.style.borderRight = '1px solid #333';
                     }

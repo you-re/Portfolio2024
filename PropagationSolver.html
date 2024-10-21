@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Texturing</title>
+    <title>Propagation Solver</title>
     
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -149,44 +149,39 @@
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>CFPS - Quick Texturing</h1>
+            <h1>Propagation Solver</h1>
         </div>
 
         <div class="content-box">
-            <h2>Project Scope</h2>
-            <p>For the CFPS (Cyber First Person Shooter) project, I was tasked with developing a workflow to streamline the customization of 3D gun models using user-provided images. I created a Python script within Blender that reads an image from the user's drive, extracts colors with the extcolors library, and applies these colors to the gun's materials.</p>
+            <h2>Task Description</h2>
+            <p>The Propagation Solver was a personal project aimed at testing the capabilities of Blender's new Geometry Nodes workflow for creating custom simulation solvers. The goal was to simulate a growth or propagation effect by manipulating point attributes, which I later used to instance foliage geometry. I explored the feasibility of using Geometry Nodes for such simulations, but after testing, I realized that alternative workflows would yield better performance in future projects.</p>
         </div>
 
-        <!-- Embedded YouTube video -->
         <div class="content-box">
-            <iframe src="https://www.youtube.com/embed/XWIfp2VS3OE?autoplay=1&mute=1&loop=1" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/ZwkmGAm5ChI?autoplay=1&mute=1&loop=1" alt="Propagation Solver Render"></iframe>
         </div>
 
-        <div class="grid-item">
-            <a>
-                <img src="https://github.com/user-attachments/assets/b4dccbe5-5b05-4a46-b1e8-a7d0ac81b61c" alt="Image 1">
-            </a>
-            <div class="description">
-                Image 1
-            </div>
-        </div>
+        <div class="content-box">
+            <h2>Thought Process</h2>
+            <p>My initial approach involved using Geometry Nodes to check attributes of multiple neighboring points to simulate propagation. However, Blender’s current system for this operation proved too slow for practical use. To overcome this, I adopted a faster method by blurring the points' active attributes, simulating the effect of propagation in a more efficient manner. This blurring technique provided the necessary performance boost while maintaining the desired growth effect.
+            </br></br>
+            Once the points were processed, I used them to instance foliage geometry, creating a dynamic simulation of plant growth. After rendering the animation, I composited the final sequence in DaVinci Fusion to ensure the highest quality output and fine-tune visual effects.
 
-        <div class="grid-item">
-            <a>
-                <img src="https://github.com/user-attachments/assets/1cf44141-ff1a-4ec4-9570-445777a0da08" alt="Image 2">
-            </a>
-            <div class="description">
-                Image 2
-            </div>
+            </p>
+        </div>
+        
+        <div class="content-box">
+            <h2>Optimizations</h2>
+            <p>To enhance performance further, I integrated a custom camera culler node that I had previously developed. This node automatically culled off-screen geometry, reducing both viewport and render time significantly. Despite achieving my goals with this setup, I concluded that future projects would benefit more from switching to Houdini, as it offers faster simulation times, more control, and a more versatile workflow—especially for making adjustments during development.</br>
+            </p>
         </div>
 
         <div class="content-box">
             <h2>Tools Used</h2>
             <p>
-                <strong>- Blender: </strong> Developed the workflow for applying custom textures to 3D gun models.</br>
-                <strong>- Substance Painter: </strong> Enhanced texture creation and painting for 3D models.</br>
-                <strong>- Python: </strong> Scripted the automation of texture application and material adjustments.</br>
-                <strong>- extcolors Library: </strong> Extracted colors from user-provided images to customize gun materials.</br>
+                - Blender: Used primarily for building the propagation solver using Geometry Nodes and instancing foliage.</br>
+                - Custom Camera Culler: Integrated to optimize performance by reducing out-of-view geometry load.</br>
+                - DaVinci Fusion: Composited the final rendered animation for post-processing and visual refinement.</br>
             </p>
         </div>
         

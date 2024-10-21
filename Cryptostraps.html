@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Texturing</title>
+    <title>Cryptostraps</title>
     
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -149,44 +149,51 @@
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>CFPS - Quick Texturing</h1>
+            <h1>Cryptostraps</h1>
         </div>
 
         <div class="content-box">
-            <h2>Project Scope</h2>
-            <p>For the CFPS (Cyber First Person Shooter) project, I was tasked with developing a workflow to streamline the customization of 3D gun models using user-provided images. I created a Python script within Blender that reads an image from the user's drive, extracts colors with the extcolors library, and applies these colors to the gun's materials.</p>
+            <h2>Task Description</h2>
+            <p>The client required a visually striking collection of modular 3D guns aimed at attracting a younger audience, particularly fans of multiplayer first-person shooters (FPS). My responsibilities included modeling and texturing five base guns and over 30 unique attachments, creating modular animations, and optimizing the entire rendering pipeline. The assets needed to be flexible for different configurations while maintaining a "cool" aesthetic that would resonate with gamers.</p>
         </div>
 
-        <!-- Embedded YouTube video -->
         <div class="content-box">
-            <iframe src="https://www.youtube.com/embed/XWIfp2VS3OE?autoplay=1&mute=1&loop=1" allowfullscreen></iframe>
+            <iframe loop muted autoplay controls src="https://github.com/user-attachments/assets/a0644ce9-d4ea-452f-b918-6c7af6d31f57" alt="Animation Loop"></iframe>
         </div>
 
-        <div class="grid-item">
-            <a>
-                <img src="https://github.com/user-attachments/assets/b4dccbe5-5b05-4a46-b1e8-a7d0ac81b61c" alt="Image 1">
-            </a>
-            <div class="description">
-                Image 1
-            </div>
+        <div class="content-box">
+            <h2>Thought Process</h2>
+            <p>Due to the tight two-month timeline, my priority was efficiency. All attachments needed to be interchangeable across the base gun models. To streamline asset management, I used Blender for all stages of the workflow, eliminating time-consuming import/export steps. After discussing rendering options with the client, we chose Blender’s Eevee engine for real-time rendering, significantly cutting down on render times without sacrificing visual quality.
+            </br></br>
+            I created procedural materials instead of traditional textures, allowing me to avoid UV unwrapping and quickly make any necessary changes. For modular animations, I segmented the attachments by their position on the gun, ensuring animations would seamlessly adjust to different configurations.</p>
         </div>
 
-        <div class="grid-item">
-            <a>
-                <img src="https://github.com/user-attachments/assets/1cf44141-ff1a-4ec4-9570-445777a0da08" alt="Image 2">
-            </a>
-            <div class="description">
-                Image 2
-            </div>
+        <div class="content-box">
+            <iframe loop muted autoplay controls src="https://github.com/user-attachments/assets/bc3cc87c-d842-4e05-b6a3-a328ac082b88" alt="Different materials on the Uzi"></iframe>
+        </div>
+
+        <div class="content-box">
+            <h2>Challenges</h2>
+            <p>The biggest challenge was time management, as the project involved delivering over 100 detailed assets in less than two months. Creating interchangeable attachments for various base gun models required careful planning to ensure they worked across all combinations. Additionally, the rendering process had to be optimized for speed without losing visual fidelity, as the final output was a video animation, not real-time assets. Another hurdle was maintaining clean and organized files to enable batch rendering with a technical artist's automated workflow script.</p>
+        </div>
+        
+        <div class="content-box">
+            <h2>Optimizations</h2>
+            <p>To meet the project’s deadlines, I focused on several optimizations:</br>
+                <strong>- Procedural Materials: </strong> By using procedural materials, I saved time on UV unwrapping and ensured flexibility for last-minute changes.</br>
+                <strong>- Real-Time Rendering in Eevee: </strong> We reduced rendering time by 20x while still matching ray-traced quality.</br>
+                <strong>- Modular Animations: </strong> Segmenting the attachments by position allowed me to create reusable, looping animations, reducing animation production time by 50%.</br>
+                <strong>- Batch Rendering: </strong> I coordinated with a technical artist to set up an automated batch rendering process, keeping files clean and organized for maximum efficiency.</br>
+            </p>
         </div>
 
         <div class="content-box">
             <h2>Tools Used</h2>
             <p>
-                <strong>- Blender: </strong> Developed the workflow for applying custom textures to 3D gun models.</br>
-                <strong>- Substance Painter: </strong> Enhanced texture creation and painting for 3D models.</br>
-                <strong>- Python: </strong> Scripted the automation of texture application and material adjustments.</br>
-                <strong>- extcolors Library: </strong> Extracted colors from user-provided images to customize gun materials.</br>
+                <strong>- Blender: </strong> 3D modeling, texturing, animations.</br>
+                <strong>- Eevee: </strong> Real-time rendering, significantly reducing render times.</br>
+                <strong>- Python: </strong> Rendering process automation, ensuring quick and accurate outputs across multiple assets.</br>
+                <strong>- PureRef: </strong> Extensive real-world reference images to ensure the guns and attachments looked realistic.</br>
             </p>
         </div>
         
