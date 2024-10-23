@@ -48,9 +48,15 @@
             padding: 10px; /* Reduced padding for a tighter fit */
             text-align: center; /* Center text */
         }
+        
+        .content-box img {
+            width: 100%;
+            height: 500px;
+            border: 20px;
+        }
 
         .content-box iframe {
-            width: 80%;
+            width: 100%;
             height: 500px;
             border: 20px;
         }
@@ -59,34 +65,30 @@
             border-top: 1px solid #333; /* Add top border */
         }
 
-        /* Additional style for grid items */
         .grid-item {
             background-color: #fff;
             border-right: 1px solid #333; /* Default right border */
+            border-bottom: 1px solid #333; /* Default bottom border */
             margin: 0; /* Remove margin for touching containers */
             padding: 0; /* Remove padding for touching containers */
             width: calc(25%); /* 4 items per row */
             text-align: center;
             position: relative; /* For positioning of the description */
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+            transition: transform 0.5s ease; /* Smooth transition */
         }
 
         .grid-item a {
             display: block; /* Make anchor fill the grid item */
-            height: 0; /* Initialize height for square box */
-            padding-bottom: 100%; /* Maintain square aspect ratio */
             position: relative; /* For absolute positioning of the image */
             overflow: hidden; /* Prevent overflow when zooming */
         }
 
         .grid-item img {
-            position: absolute; /* Position the image absolutely within the anchor */
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            width: 90%; /* Image occupies 100% of the box */
+            width: 100%; /* Image occupies 100% of the box */
             height: auto; /* Maintain aspect ratio */
-            transform: translate(-50%, -50%); /* Center image */
-            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+            object-fit: cover; /* Cover the entire box while maintaining aspect ratio */
+            display: block; /* Remove any extra space below the image */
+            padding: 10px;
         }
 
         .description {
@@ -98,6 +100,7 @@
             border-top: 1px solid #333; /* Border above description */
             text-align: center; /* Center text in the description box */
         }
+
 
         /* Main header styling */
         h1 {
@@ -122,6 +125,7 @@
             font-size: 1em;
             color: #333;
             padding-inline: 10%;
+            text-align: left;
         }
 
         /* Footer box styling */      
@@ -140,7 +144,13 @@
 
         @media (max-width: 5000px) {
             .grid-item {
-                width: calc(50%); /* 3 items per row */
+                width: calc(50%); /* 2 items per row */
+            }
+        }
+
+        @media (max-width: 800px) {
+            .grid-item {
+                width: calc(100%); /* 1 item per row */
             }
         }
     </style>
@@ -148,40 +158,90 @@
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>Medusa</h1>
+            <h1>Realistic Pendant Rendering</h1>
         </div>
 
         <div class="content-box">
-            <h2>Project Scope</h2>
-            <p>For the CFPS (Cyber First Person Shooter) project, I was tasked with developing a workflow to streamline the customization of 3D gun models using user-provided images. I created a Python script within Blender that reads an image from the user's drive, extracts colors with the extcolors library, and applies these colors to the gun's materials.</p>
+            <h2>Task Description</h2>
+            <p>The Realistic Pendant Rendering project involved creating a detailed 3D replica of a unique, handmade pendant that was housed in a museum. Due to the pendant's value and the inability to access the physical object, we relied on x-ray scans, material analysis, and extensive reference photography and videos. The primary goal was to produce a photorealistic representation of the pendant, including intricate textures and materials of the gemstones, while presenting the object in an engaging manner.</p>
         </div>
 
-        <!-- Embedded YouTube video -->
+        <div class="content-box">       
+            <h2>Thought Process</h2>
+                <p>Initially, we focused on gathering all available data about the pendant, including its construction methods and the arrangement of gemstones. The modeling was executed in Blender, followed by sculpting in ZBrush to accurately capture the intricate details from the references. After texturing the model in Substance Painter, we transferred it to Houdini for a digital cut, allowing us to visualize the internal structure and gemstone placement. The liquid filling simulation mirrored the craftsmanship involved in placing the gemstones within the gold pendant.</br>
+
+                The final step involved bringing the high-definition model back into Blender for realistic lighting and material creation. Special attention was given to the materials, ensuring they reflected the pendant’s unique characteristics.
+                </p>
+        </div>
+        
         <div class="content-box">
-            <iframe src="https://www.youtube.com/embed/XWIfp2VS3OE?autoplay=1&mute=1&loop=1" allowfullscreen></iframe>
+            <h2>Challenges</h2>
+                <p>One of the main challenges was creating realistic opal materials, which exhibited complex internal scattering properties. We employed a technique using volumes and procedural 3D textures to achieve a lifelike appearance. This required careful adjustments to simulate how light interacts with the opal, ensuring it looked authentic in the final render.</p>
+        </div>
+
+        <div class="content-box">
+        <h2>Tools Used</h2>
+            <p>
+                <strong>- Blender:</strong> Used for initial modeling, lighting, and final adjustments to the 3D pendant.</br>
+                <strong>- ZBrush:</strong> Sculpted the model to achieve high levels of detail based on reference materials.</br>
+                <strong>- Substance Painter:</strong> Textured the pendant, applying colors and high-frequency details to the gemstones.</br>
+                <strong>- Houdini:</strong> Executed the digital cutting and liquid filling simulations to visualize gemstone placement.</br>
+                <strong>- Blackmagic Fusion:</strong> Composited the final render for enhanced visual quality and presentation.</br>
+            </p>
         </div>
 
         <div class="grid-item">
-            <a>
-                <img src="https://github.com/user-attachments/assets/b4dccbe5-5b05-4a46-b1e8-a7d0ac81b61c" alt="Image 1">
-            </a>
+            <img src="Assets/Medusa/Medusa_0405.jpg" alt="Image 1">
             <div class="description">
                 Image 1
             </div>
         </div>
 
         <div class="grid-item">
-            <a>
-                <img src="https://github.com/user-attachments/assets/1cf44141-ff1a-4ec4-9570-445777a0da08" alt="Image 2">
-            </a>
+            <img src="Assets/Medusa/Medusa_1145.jpg" alt="Image 2">
             <div class="description">
                 Image 2
             </div>
         </div>
 
+        <div class="grid-item">
+            <img src="Assets/Medusa/Medusa_1301.jpg" alt="Image 3">
+            <div class="description">
+                Image 3
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa/Medusa_2344.jpg" alt="Image 4">
+            <div class="description">
+                Image 4
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa/Medusa_2700.jpg" alt="Image 5">
+            <div class="description">
+                Image 5
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa/Medusa_2910.jpg" alt="Image 6">
+            <div class="description">
+                Image 6
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa/Medusa_3250.jpg" alt="Image 7">
+            <div class="description">
+                Image 7
+            </div>
+        </div>
+        
         <div class="content-box">
-            <h2>Tools Used</h2>
-            <p>Blender (Python scripting), Python (extcolors library), Substance Designer</p>
+            <iframe src="https://www.youtube.com/embed/4jvNPwH-dek?&mute=1" allowfullscreen></iframe>
+            Medusa final edit
         </div>
         
         <div class="content-box">
@@ -201,70 +261,51 @@
                     contentBox.classList.add('has-top-border');
                 }
             });
+
+            // Function to check and set borders for grid items
+            function updateGridBorders() {
+                const container = document.querySelector('.container');
+                
+                // -------------------------
+
+                
+                gridItems.forEach((gridItem, index) => {
+                    // Reset borders
+                    gridItem.style.borderBottom = '1px solid #333';   // Default bottom border
+
+                    gridItem.style.borderRight = '1px solid #333'; // Default right border
+
+                    // Get the width percentage of the grid item
+                    const widthPercent = getGridItemWidthInPercent(gridItem);
+
+                    const itemsPerRow = Math.round(100 / widthPercent);
+
+                    const numBoxes = Math.round(gridItems.length / itemsPerRow) * itemsPerRow;
+
+                    const boxIndex = numBoxes - (index + 1);
+                                        
+                    // Fix bottom borders
+                    if (widthPercent < 100) {
+                        if (boxIndex < 2) {
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
+                    } else {
+                        if (boxIndex < 1) {
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
+                    }
+
+                    // Fix right borders
+                    if (widthPercent < 100) {
+                        if (index % 2 === 1) {
+                            gridItem.style.borderRight = 'none'; // Remove right border for odd previous items
+                        }
+                    } else {
+                        gridItem.style.borderRight = 'none'; // Remove right border for odd previous items
+                    }
+                });
+            }
             
-            // -----------------------------
-            /*
-            // Function to check and set borders for grid items
-            function updateGridBorders() {
-                const container = document.querySelector('.container');
-
-                gridItems.forEach((gridItem, index) => {
-                    // Reset borders
-                    gridItem.style.borderRight = '1px solid #333'; // Default right border
-                    // gridItem.style.borderTop = '1px solid #333';   // Default top border
-
-                    // Get the width percentage of the grid item
-                    const widthPercent = getGridItemWidthInPercent(gridItem);
-
-                    // Get the count of previous grid items
-                    const previousGridItemsCount = Array.from(gridItems).slice(0, index).filter(item => item.offsetParent !== null).length;
-
-                    // Check conditions based on width percentage
-                    if (widthPercent === 100) {
-                        gridItem.style.borderRight = '1px solid #fff'; // No borders
-                    } else if (widthPercent === 50) {
-                        if ((previousGridItemsCount + 1) % 2 === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
-                        }
-                    } else if (widthPercent < 50 && widthPercent > 25 ) { // Check for less than 50%
-                        if ((previousGridItemsCount + 1) % 3 === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
-                        }
-                    } else if (widthPercent < 30) { // Check for less than 50%
-                        if ((previousGridItemsCount + 1) % 4 === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
-                        }
-                    } else {
-                        gridItem.style.borderRight = '1px solid #333';
-                    }
-                });
-            }
-            */
-
-            // Function to check and set borders for grid items
-            function updateGridBorders() {
-                const container = document.querySelector('.container');
-
-                gridItems.forEach((gridItem, index) => {
-                    // Reset borders
-                    gridItem.style.borderRight = '1px solid #333'; // Default right border
-                    // gridItem.style.borderTop = '1px solid #333';   // Default top border
-
-                    // Get the width percentage of the grid item
-                    const widthPercent = getGridItemWidthInPercent(gridItem);
-
-                    // Get the count of previous grid items
-                    const previousGridItemsCount = Array.from(gridItems).slice(0, index).filter(item => item.offsetParent !== null).length;
-
-                    // Check conditions based on width percentage
-                    if (index % 2 === 1){
-                        gridItem.style.borderRight = '1px solid #fff';
-                    } else {
-                        gridItem.style.borderRight = '1px solid #333';
-                    }
-                });
-            }
-
             // Function to get the width of a grid item in percentage
             function getGridItemWidthInPercent(gridItem) {
                 const container = document.querySelector('.container');
