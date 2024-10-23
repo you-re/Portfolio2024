@@ -92,17 +92,16 @@
         }
 
         /* Zoom effect on hover */
-        .grid-item:hover img {
-            filter: blur(5px);
-            transform: translate(-50%, -50%) scale(1.2); /* Zoom in on hover */
-        }
+        .grid-item a:hover img {
+        filter: blur(5px);
+        transform: translate(-50%, -50%) scale(1.2); /* Zoom in on hover */
+    }
 
-        .grid-item:hover .text-overlay {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-100%); /* Bring it to its final position */
-        }
-
-        /* Text overlay */
+    .grid-item a:hover .text-overlay {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-100%); /* Bring it to its final position */
+    }
+            /* Text overlay */
         .text-overlay {
             font-family: 'Montserrat', serif;
             font-weight: 400;
@@ -266,7 +265,7 @@
             </div>
         </div>
         <div class="grid-item">
-            <a href="CFPS.html">
+            <a href="QuickTexturing.html">
                 <img src="Assets/Thumbnail_Quick-Texturing.png" alt="Quick Texturing">
                 <div class="text-overlay">
                     View Project
