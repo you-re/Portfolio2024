@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medusa</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -31,7 +32,8 @@
             max-width: 1000px;
             background-color: #fff;
             border: 1px solid #333;
-            border-bottom: 0px;
+            border-right: 0;
+            border-bottom: 0;
             margin: 0 auto;
             padding: 0; /* Remove padding */
             display: flex;
@@ -43,6 +45,7 @@
         .content-box {
             background-color: #fff;
             border-bottom: 1px solid #333;
+            border-right: 1px solid #333;
             width: calc(100%); /* Full width minus padding */
             margin: 0; /* No margin */
             padding: 10px; /* Reduced padding for a tighter fit */
@@ -221,7 +224,7 @@
         <div class="grid-item">
             <video allowfullscreen controls autoplay muted src="Assets/Medusa/Medusa-Opals-Rot.mp4" allowfullscreen></video>
             <div class="description">
-                Eearly version of the opal shader
+                Early version of the opal shader
             </div>
         </div>
         
@@ -334,27 +337,7 @@
                     const numBoxes = Math.round(gridItems.length / itemsPerRow) * itemsPerRow;
 
                     const boxIndex = numBoxes - (index + 1);
-                                        
-                    // Fix right borders
-                    if (widthPercent < 34) { // 3 items per row
-                        if (((index + 1) % 3) === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
-                        }
-                    } else if (widthPercent < 90) { // 2 items per row
-                        if (((index + 1) % 2) === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
-                        }
-                    } else {
-                        if (((index + 1) % 1) === 0) { // 1 item per row
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
-                        }
-                    }
 
-                    // Get the next element
-                    const nextElement = gridItem.nextElementSibling;
-
-                    const nextElemetCheck = checkNextElements(gridItem, 3)
-                    
                     // Fix bottom borders
                     if (widthPercent < 34) {
                         if (boxIndex < 3) { // 3 items per row
@@ -371,24 +354,7 @@
                     }
                 });
             }
-
-            // Recursive function to check the next x elements
-            function checkNextElements(element, count, checked = 0) {
-                if (checked >= count) return true; // Return true if we have checked the specified number of elements
-
-                const nextElement = element.nextElementSibling; // Get the next sibling
-                if (nextElement) {
-                    if (!nextElement.classList.contains('grid-item')) {
-                        console.log(`Next element is not a grid-item:`, nextElement);
-                        return false; // Return false if the next element is not a grid-item
-                    }
-                    // Recursive call to check the next sibling
-                    return checkNextElements(nextElement, count, checked + 1);
-                }
-
-                return true; // Return true if there are no more elements to check
-            }
-
+            
             // Function to get the width of a grid item in percentage
             function getGridItemWidthInPercent(gridItem) {
                 const container = document.querySelector('.container');
@@ -403,7 +369,9 @@
             updateGridBorders();
 
             // Update on window resize
-            window.addEventListener('resize', updateGridBorders);
+            window.addEventListener('resize', function() {
+                updateGridBorders();
+            });
         });
     </script>
 </body>
