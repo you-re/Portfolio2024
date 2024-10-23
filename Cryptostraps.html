@@ -214,68 +214,78 @@
                     contentBox.classList.add('has-top-border');
                 }
             });
-            
-            // -----------------------------
-            /*
+
             // Function to check and set borders for grid items
             function updateGridBorders() {
                 const container = document.querySelector('.container');
-
+                
                 gridItems.forEach((gridItem, index) => {
                     // Reset borders
+                    gridItem.style.borderBottom = '1px solid #333';   // Default bottom border
+
                     gridItem.style.borderRight = '1px solid #333'; // Default right border
-                    // gridItem.style.borderTop = '1px solid #333';   // Default top border
 
                     // Get the width percentage of the grid item
                     const widthPercent = getGridItemWidthInPercent(gridItem);
 
-                    // Get the count of previous grid items
-                    const previousGridItemsCount = Array.from(gridItems).slice(0, index).filter(item => item.offsetParent !== null).length;
+                    const itemsPerRow = Math.round(100 / widthPercent);
 
-                    // Check conditions based on width percentage
-                    if (widthPercent === 100) {
-                        gridItem.style.borderRight = '1px solid #fff'; // No borders
-                    } else if (widthPercent === 50) {
-                        if ((previousGridItemsCount + 1) % 2 === 0) {
+                    const numBoxes = Math.round(gridItems.length / itemsPerRow) * itemsPerRow;
+
+                    const boxIndex = numBoxes - (index + 1);
+                                        
+                    // Fix right borders
+                    if (widthPercent < 34) { // 3 items per row
+                        if (((index + 1) % 3) === 0) {
                             gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
                         }
-                    } else if (widthPercent < 50 && widthPercent > 25 ) { // Check for less than 50%
-                        if ((previousGridItemsCount + 1) % 3 === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
-                        }
-                    } else if (widthPercent < 30) { // Check for less than 50%
-                        if ((previousGridItemsCount + 1) % 4 === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
+                    } else if (widthPercent < 90) { // 2 items per row
+                        if (((index + 1) % 2) === 0) {
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
                         }
                     } else {
-                        gridItem.style.borderRight = '1px solid #333';
+                        if (((index + 1) % 1) === 0) { // 1 item per row
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
+                        }
+                    }
+
+                    // Get the next element
+                    const nextElement = gridItem.nextElementSibling;
+
+                    const nextElemetCheck = checkNextElements(gridItem, 3)
+                    
+                    // Fix bottom borders
+                    if (widthPercent < 34) {
+                        if (boxIndex < 3) { // 3 items per row
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
+                    } else if (widthPercent < 90) {
+                        if (boxIndex < 2) { // 2 items per row
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
+                    } else {
+                        if (boxIndex < 1) { // 1 item per row
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
                     }
                 });
             }
-            */
 
-            // Function to check and set borders for grid items
-            function updateGridBorders() {
-                const container = document.querySelector('.container');
+            // Recursive function to check the next x elements
+            function checkNextElements(element, count, checked = 0) {
+                if (checked >= count) return true; // Return true if we have checked the specified number of elements
 
-                gridItems.forEach((gridItem, index) => {
-                    // Reset borders
-                    gridItem.style.borderRight = '1px solid #333'; // Default right border
-                    // gridItem.style.borderTop = '1px solid #333';   // Default top border
-
-                    // Get the width percentage of the grid item
-                    const widthPercent = getGridItemWidthInPercent(gridItem);
-
-                    // Get the count of previous grid items
-                    const previousGridItemsCount = Array.from(gridItems).slice(0, index).filter(item => item.offsetParent !== null).length;
-
-                    // Check conditions based on width percentage
-                    if (index % 2 === 1){
-                        gridItem.style.borderRight = '1px solid #fff';
-                    } else {
-                        gridItem.style.borderRight = '1px solid #333';
+                const nextElement = element.nextElementSibling; // Get the next sibling
+                if (nextElement) {
+                    if (!nextElement.classList.contains('grid-item')) {
+                        console.log(`Next element is not a grid-item:`, nextElement);
+                        return false; // Return false if the next element is not a grid-item
                     }
-                });
+                    // Recursive call to check the next sibling
+                    return checkNextElements(nextElement, count, checked + 1);
+                }
+
+                return true; // Return true if there are no more elements to check
             }
 
             // Function to get the width of a grid item in percentage
@@ -287,6 +297,20 @@
                 const widthPercent = (gridItemWidth / containerWidth) * 100;
                 return widthPercent;
             }
+
+            // Function to adjust video container
+            function adjustVideoContainer(container) {
+                const containerHeight = container.offsetHeight;
+
+                if (containerHeight < 500) {
+                    container.style.paddingTop = '100%'; // Keep 100% padding for 16:9 aspect ratio
+                } else {
+                    container.style.paddingTop = '500px'; // Set to 500px if height exceeds
+                }
+            }
+            
+            const videoContainer = document.querySelector('.video-container');
+            adjustVideoContainer(videoContainer);
 
             // Initial check
             updateGridBorders();

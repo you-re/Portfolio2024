@@ -48,56 +48,64 @@
             padding: 10px; /* Reduced padding for a tighter fit */
             text-align: center; /* Center text */
         }
-
-        .content-box iframe {
-            width: 80%;
+        
+        .content-box img {
+            width: 100%;
             height: 500px;
             border: 20px;
         }
+
+        .content-box iframe {
+            width: 100%;
+            height: 500px;
+            border: 20px;
+        }
+
+        .content-box iframe {
+            width: 100%; /* Full width */
+            height: 500px; /* Fixed height for desktop; adjust as needed */
+            border: none; /* Remove the default border */
+            /* Optional: To prevent black borders on mobile, consider adding these styles */
+            background: #000; /* Set background to black to match video */
+            display: block; /* Ensures there's no extra space */
+        }
+        
         /* Additional style for top border */
         .content-box.has-top-border {
             border-top: 1px solid #333; /* Add top border */
         }
 
-        /* Additional style for grid items */
         .grid-item {
             background-color: #fff;
             border-right: 1px solid #333; /* Default right border */
+            border-bottom: 1px solid #333; /* Default bottom border */
             margin: 0; /* Remove margin for touching containers */
             padding: 0; /* Remove padding for touching containers */
             width: calc(25%); /* 4 items per row */
             text-align: center;
             position: relative; /* For positioning of the description */
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
-            align-self: center;
-            justify-self: center;
+            transition: transform 0.5s ease; /* Smooth transition */
         }
 
         .grid-item a {
             display: block; /* Make anchor fill the grid item */
-            height: 0; /* Initialize height for square box */
-            padding-bottom: 100%; /* Maintain square aspect ratio */
             position: relative; /* For absolute positioning of the image */
             overflow: hidden; /* Prevent overflow when zooming */
         }
-
-        .grid-item img {
-            position: absolute; /* Position the image absolutely within the anchor */
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            width: 90%; /* Image occupies 100% of the box */
+        .grid-item video {
+            width: 100%; /* Image occupies 100% of the box */
             height: auto; /* Maintain aspect ratio */
-            transform: translate(-50%, -50%); /* Center image */
-            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+            object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
+            display: block; /* Remove any extra space below the image */
+            padding: 10px;
         }
 
-        .grid-item video {
-            position: absolute; /* Position the image absolutely within the anchor */
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            width: 90%; /* Image occupies 100% of the box */
+        .grid-item img {
+            width: 100%; /* Image occupies 100% of the box */
             height: auto; /* Maintain aspect ratio */
-            transform: translate(-50%, -50%); /* Center image */
+            object-fit: cover; /* Cover the entire box while maintaining aspect ratio */
+            display: block; /* Remove any extra space below the image */
+            padding: 10px;
         }
 
         .description {
@@ -108,6 +116,22 @@
             background-color: #fff; /* Match background with the grid item */
             border-top: 1px solid #333; /* Border above description */
             text-align: center; /* Center text in the description box */
+        }
+
+        .video-container {
+            position: relative; /* Positioning context for the iframe */
+            padding-top: 56.25%; /* Aspect ratio for 16:9 (height/width) */
+            height: 0; /* Zero height, but padding-top creates height */
+            overflow: hidden; /* Hides overflow */
+        }
+
+        .video-container iframe {
+            position: absolute; /* Positioning within container */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            border: none; /* Remove any border */
         }
 
         /* Main header styling */
@@ -126,16 +150,14 @@
             font-size: 1.5em;
         }
 
+        /* Description paragraph */
         p {
             font-family: 'Old Standard TT', serif;
             font-weight: 100;
             font-size: 1em;
             color: #333;
             padding-inline: 10%;
-        }
-
-        p #justify{
-            text-align: justify;
+            text-align: left;
         }
 
         /* Footer box styling */      
@@ -154,7 +176,13 @@
 
         @media (max-width: 5000px) {
             .grid-item {
-                width: calc(50%); /* 4 items per row */
+                width: calc(50%); /* 2 items per row */
+            }
+        }
+
+        @media (max-width: 800px) {
+            .grid-item {
+                width: calc(100%); /* 1 item per row */
             }
         }
     </style>
@@ -200,7 +228,7 @@
 
         <div class="content-box">
             <h2>Tools Used</h2>
-            <p>Blender (Geometry Nodes)</p>
+            <p><strong>- Blender</strong> (Geometry Nodes)</p>
         </div>
         
         <div class="content-box">
@@ -220,43 +248,78 @@
                     contentBox.classList.add('has-top-border');
                 }
             });
-            
-            // -----------------------------
 
             // Function to check and set borders for grid items
             function updateGridBorders() {
                 const container = document.querySelector('.container');
-
+                
                 gridItems.forEach((gridItem, index) => {
                     // Reset borders
+                    gridItem.style.borderBottom = '1px solid #333';   // Default bottom border
+
                     gridItem.style.borderRight = '1px solid #333'; // Default right border
-                    // gridItem.style.borderTop = '1px solid #333';   // Default top border
 
                     // Get the width percentage of the grid item
                     const widthPercent = getGridItemWidthInPercent(gridItem);
 
-                    // Get the count of previous grid items
-                    const previousGridItemsCount = Array.from(gridItems).slice(0, index).filter(item => item.offsetParent !== null).length;
+                    const itemsPerRow = Math.round(100 / widthPercent);
 
-                    // Check conditions based on width percentage
-                    if (widthPercent === 100) {
-                        gridItem.style.borderRight = '1px solid #fff'; // No borders
-                    } else if (widthPercent === 50) {
-                        if ((previousGridItemsCount + 1) % 2 === 0) {
+                    const numBoxes = Math.round(gridItems.length / itemsPerRow) * itemsPerRow;
+
+                    const boxIndex = numBoxes - (index + 1);
+                                        
+                    // Fix right borders
+                    if (widthPercent < 34) { // 3 items per row
+                        if (((index + 1) % 3) === 0) {
                             gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
                         }
-                    } else if (widthPercent < 50 && widthPercent > 25 ) { // Check for less than 50%
-                        if ((previousGridItemsCount + 1) % 3 === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
-                        }
-                    } else if (widthPercent < 30) { // Check for less than 50%
-                        if ((previousGridItemsCount + 1) % 4 === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
+                    } else if (widthPercent < 90) { // 2 items per row
+                        if (((index + 1) % 2) === 0) {
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
                         }
                     } else {
-                        gridItem.style.borderRight = '1px solid #333';
+                        if (((index + 1) % 1) === 0) { // 1 item per row
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
+                        }
+                    }
+
+                    // Get the next element
+                    const nextElement = gridItem.nextElementSibling;
+
+                    const nextElemetCheck = checkNextElements(gridItem, 3)
+                    
+                    // Fix bottom borders
+                    if (widthPercent < 34) {
+                        if (boxIndex < 3) { // 3 items per row
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
+                    } else if (widthPercent < 90) {
+                        if (boxIndex < 2) { // 2 items per row
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
+                    } else {
+                        if (boxIndex < 1) { // 1 item per row
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
                     }
                 });
+            }
+            
+            // Recursive function to check the next x elements
+            function checkNextElements(element, count, checked = 0) {
+                if (checked >= count) return true; // Return true if we have checked the specified number of elements
+
+                const nextElement = element.nextElementSibling; // Get the next sibling
+                if (nextElement) {
+                    if (!nextElement.classList.contains('grid-item')) {
+                        console.log(`Next element is not a grid-item:`, nextElement);
+                        return false; // Return false if the next element is not a grid-item
+                    }
+                    // Recursive call to check the next sibling
+                    return checkNextElements(nextElement, count, checked + 1);
+                }
+
+                return true; // Return true if there are no more elements to check
             }
 
             // Function to get the width of a grid item in percentage

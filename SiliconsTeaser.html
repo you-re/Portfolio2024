@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camera Culler Node</title>
+    <title>Medusa</title>
     
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -60,16 +60,6 @@
             height: 500px;
             border: 20px;
         }
-
-        .content-box iframe {
-            width: 100%; /* Full width */
-            height: 500px; /* Fixed height for desktop; adjust as needed */
-            border: none; /* Remove the default border */
-            /* Optional: To prevent black borders on mobile, consider adding these styles */
-            background: #000; /* Set background to black to match video */
-            display: block; /* Ensures there's no extra space */
-        }
-        
         /* Additional style for top border */
         .content-box.has-top-border {
             border-top: 1px solid #333; /* Add top border */
@@ -95,7 +85,7 @@
         .grid-item video {
             width: 100%; /* Image occupies 100% of the box */
             height: auto; /* Maintain aspect ratio */
-            object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
+            object-fit: cover; /* Cover the entire box while maintaining aspect ratio */
             display: block; /* Remove any extra space below the image */
             padding: 10px;
         }
@@ -118,21 +108,6 @@
             text-align: center; /* Center text in the description box */
         }
 
-        .video-container {
-            position: relative; /* Positioning context for the iframe */
-            padding-top: 56.25%; /* Aspect ratio for 16:9 (height/width) */
-            height: 0; /* Zero height, but padding-top creates height */
-            overflow: hidden; /* Hides overflow */
-        }
-
-        .video-container iframe {
-            position: absolute; /* Positioning within container */
-            top: 0;
-            left: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            border: none; /* Remove any border */
-        }
 
         /* Main header styling */
         h1 {
@@ -190,74 +165,109 @@
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>Camera Culler Node for Blender</h1>
+            <h1>Realistic Pendant Rendering</h1>
         </div>
 
         <div class="content-box">
-            <h2>Overview</h2>
-            <p>The Camera Culler is a custom tool developed for Blender to significantly improve rendering efficiency through optimized camera culling. It enables faster rendering by selectively processing only the objects within the camera’s view, reducing computation time and memory usage.</p>
+            <h2>Task Description</h2>
+            <p>The Realistic Pendant Rendering project involved creating a detailed 3D replica of a unique, handmade pendant that was housed in a museum. Due to the pendant's value and the inability to access the physical object, we relied on x-ray scans, material analysis, and extensive reference photography and videos. The primary goal was to produce a photorealistic representation of the pendant, including intricate textures and materials of the gemstones, while presenting the object in an engaging manner.</p>
         </div>
 
+        <div class="content-box">       
+            <h2>Thought Process</h2>
+                <p>Initially, we focused on gathering all available data about the pendant, including its construction methods and the arrangement of gemstones. The modeling was executed in Blender, followed by sculpting in ZBrush to accurately capture the intricate details from the references. After texturing the model in Substance Painter, we transferred it to Houdini for a digital cut, allowing us to visualize the internal structure and gemstone placement. The liquid filling simulation mirrored the craftsmanship involved in placing the gemstones within the gold pendant.</br>
+
+                The final step involved bringing the high-definition model back into Blender for realistic lighting and material creation. Special attention was given to the materials, ensuring they reflected the pendant’s unique characteristics.
+                </p>
+        </div>
+        
         <div class="content-box">
-            <h2>How it works</h2>
-            <p>The initial proof of concept used ray casting to determine whether a point was visible to the camera. However, this was later optimized for greater efficiency. In the final version, point positions are directly projected onto the camera’s screen space, which leads to significant performance improvements. This method not only streamlines culling but also generates free screen space UV coordinates, enabling further enhancements like image-based point culling.
-            </p>
+            <h2>Challenges</h2>
+                <p>One of the main challenges was creating realistic opal materials, which exhibited complex internal scattering properties. We employed a technique using volumes and procedural 3D textures to achieve a lifelike appearance. This required careful adjustments to simulate how light interacts with the opal, ensuring it looked authentic in the final render.</p>
         </div>
 
-        <div class="content-box">
-            <h2>The toolset includes:</h2>
-            <p>
-                <strong>- Frustum culling:</strong> Basic culling of objects outside the camera’s view.</br>
-                <strong>- Image-based culling:</strong> Uses image luminosity to cull points based on visibility.</br>
-                <strong>- Occlusion detection:</strong> Detects occlusion from terrain or other objects in the scene.</br>
-                <strong>- Automated setup script:</strong> Automatically pulls camera data (lens length, sensor size, clipping distance, render resolution) and dynamically adjusts parameters, eliminating manual configuration.
-            </p>
-        </div>
-
-        <div class="content-box">
-            <h2>Key Features</h2>
-            <p>
-                - Up to 50% faster render times compared to rendering without the Camera Culler.
-                - Efficient memory usage and reduced computational load.
-                - Screen space UV coordinates that enable advanced culling techniques, such as image-based point culling.
-            </p>
-        </div>
-        <div class="content-box">
-            <h2>Earlier Versions and usecases</h2>
-        </div>
         <div class="grid-item">
-            <a>
-                <video loop muted autoplay controls src="https://github.com/user-attachments/assets/f5919d59-1cda-444a-97e9-b9588e76801f" alt="Shuffled Points Video"></video>
-            </a>
+            <video allowfullscreen controls autoplay muted src="Assets/Medusa/Medusa-Opal-Mat.mp4" allowfullscreen></video>
             <div class="description">
-                Culling in space
+                Opal shader
             </div>
         </div>
 
         <div class="grid-item">
-            <a>
-                <video loop muted autoplay controls src="https://github.com/user-attachments/assets/6c34f10b-116c-47be-9a30-0b3aea72bff1" alt="Unshuffled Points Video"></video>
-            </a>
+            <video allowfullscreen controls autoplay muted src="Assets/Medusa/Medusa-Opals-Rot.mp4" allowfullscreen></video>
             <div class="description">
-                Grass culling
+                Eearly version of the opal shader
+            </div>
+        </div>
+        
+        <div class="content-box">
+            <h2>Gallery</h2>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa/Medusa_0405.jpg" alt="Image 1">
+            <div class="description">
+                Image 1
             </div>
         </div>
 
+        <div class="grid-item">
+            <img src="Assets/Medusa/Medusa_1145.jpg" alt="Image 2">
+            <div class="description">
+                Image 2
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa/Medusa_1301.jpg" alt="Image 3">
+            <div class="description">
+                Image 3
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa/Medusa_2344.jpg" alt="Image 4">
+            <div class="description">
+                Image 4
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa/Medusa_2700.jpg" alt="Image 5">
+            <div class="description">
+                Image 5
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa/Medusa_2910.jpg" alt="Image 6">
+            <div class="description">
+                Image 6
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa/Medusa_3250.jpg" alt="Image 7">
+            <div class="description">
+                Image 7
+            </div>
+        </div>
+        
         <div class="content-box">
-            <h2>Outcome</h2>
-            <p>This tool delivers improved rendering speeds and offers greater control over scene optimization, making it ideal for complex 3D environments. It maintains high visual fidelity while reducing the resources needed for rendering.
-            </p>
+            <iframe src="https://www.youtube.com/embed/4jvNPwH-dek?&mute=1" allowfullscreen></iframe>
+            Medusa final edit
         </div>
 
         <div class="content-box">
-            <h2>Skills & Technologies</h2>
-            <p>
-                <strong>- Blender:</strong> Developed and integrated the Camera Culler Node for rendering optimization.</br>
-                <strong>- Python:</strong> Automated camera parameter adjustments and culling setup.</br>
-                <strong>- Geometry Nodes:</strong> Used for both initial ray-casting and final screen space projection setup.</br>
-                <strong>- Custom Culling Algorithms:</strong> Implemented frustum, image-based, and occlusion culling techniques.</br>
-            </p>
-        </div>
+            <h2>Tools Used</h2>
+                <p>
+                    <strong>- Blender:</strong> Used for initial modeling, lighting, and final adjustments to the 3D pendant.</br>
+                    <strong>- ZBrush:</strong> Sculpted the model to achieve high levels of detail based on reference materials.</br>
+                    <strong>- Substance Painter:</strong> Textured the pendant, applying colors and high-frequency details to the gemstones.</br>
+                    <strong>- Houdini:</strong> Executed the digital cutting and liquid filling simulations to visualize gemstone placement.</br>
+                    <strong>- Blackmagic Fusion:</strong> Composited the final render for enhanced visual quality and presentation.</br>
+                </p>
+            </div>
         
         <div class="content-box">
             <footer>© 2024 <a href="https://www.linkedin.com/in/jure-suli%C4%8D-9b700a195/">Jure Sulič</a></footer>
@@ -281,6 +291,9 @@
             function updateGridBorders() {
                 const container = document.querySelector('.container');
                 
+                // -------------------------
+
+                
                 gridItems.forEach((gridItem, index) => {
                     // Reset borders
                     gridItem.style.borderBottom = '1px solid #333';   // Default bottom border
@@ -296,60 +309,28 @@
 
                     const boxIndex = numBoxes - (index + 1);
                                         
-                    // Fix right borders
-                    if (widthPercent < 34) { // 3 items per row
-                        if (((index + 1) % 3) === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
-                        }
-                    } else if (widthPercent < 90) { // 2 items per row
-                        if (((index + 1) % 2) === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
+                    // Fix bottom borders
+                    if (widthPercent < 100) {
+                        if (boxIndex < 2) {
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
                         }
                     } else {
-                        if (((index + 1) % 1) === 0) { // 1 item per row
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
+                        if (boxIndex < 1) {
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
                         }
                     }
 
-                    // Get the next element
-                    const nextElement = gridItem.nextElementSibling;
-
-                    const nextElemetCheck = checkNextElements(gridItem, 3)
-                    
-                    // Fix bottom borders
-                    if (widthPercent < 34) {
-                        if (boxIndex < 3) { // 3 items per row
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
-                        }
-                    } else if (widthPercent < 90) {
-                        if (boxIndex < 2) { // 2 items per row
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                    // Fix right borders
+                    if (widthPercent < 100) {
+                        if (index % 2 === 1) {
+                            gridItem.style.borderRight = 'none'; // Remove right border for odd previous items
                         }
                     } else {
-                        if (boxIndex < 1) { // 1 item per row
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
-                        }
+                        gridItem.style.borderRight = 'none'; // Remove right border for odd previous items
                     }
                 });
             }
-
-            // Recursive function to check the next x elements
-            function checkNextElements(element, count, checked = 0) {
-                if (checked >= count) return true; // Return true if we have checked the specified number of elements
-
-                const nextElement = element.nextElementSibling; // Get the next sibling
-                if (nextElement) {
-                    if (!nextElement.classList.contains('grid-item')) {
-                        console.log(`Next element is not a grid-item:`, nextElement);
-                        return false; // Return false if the next element is not a grid-item
-                    }
-                    // Recursive call to check the next sibling
-                    return checkNextElements(nextElement, count, checked + 1);
-                }
-
-                return true; // Return true if there are no more elements to check
-            }
-
+            
             // Function to get the width of a grid item in percentage
             function getGridItemWidthInPercent(gridItem) {
                 const container = document.querySelector('.container');

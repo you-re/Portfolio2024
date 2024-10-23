@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jure Sulič - Portfolio 2024</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -351,7 +352,7 @@
                         if (((index + 1) % 3) === 0) {
                             gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
                         }
-                    } else if (widthPercent < 100) { // 2 items per row
+                    } else if (widthPercent < 90) { // 2 items per row
                         if (((index + 1) % 2) === 0) {
                             gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
                         }
@@ -366,7 +367,7 @@
                         if (boxIndex < 3) { // 3 items per row
                             gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
                         }
-                    } else if (widthPercent < 100) {
+                    } else if (widthPercent < 90) {
                         if (boxIndex < 2) { // 2 items per row
                             gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
                         }

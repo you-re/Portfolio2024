@@ -60,6 +60,16 @@
             height: 500px;
             border: 20px;
         }
+
+        .content-box iframe {
+            width: 100%; /* Full width */
+            height: 500px; /* Fixed height for desktop; adjust as needed */
+            border: none; /* Remove the default border */
+            /* Optional: To prevent black borders on mobile, consider adding these styles */
+            background: #000; /* Set background to black to match video */
+            display: block; /* Ensures there's no extra space */
+        }
+        
         /* Additional style for top border */
         .content-box.has-top-border {
             border-top: 1px solid #333; /* Add top border */
@@ -82,6 +92,13 @@
             position: relative; /* For absolute positioning of the image */
             overflow: hidden; /* Prevent overflow when zooming */
         }
+        .grid-item video {
+            width: 100%; /* Image occupies 100% of the box */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
+            display: block; /* Remove any extra space below the image */
+            padding: 10px;
+        }
 
         .grid-item img {
             width: 100%; /* Image occupies 100% of the box */
@@ -101,6 +118,21 @@
             text-align: center; /* Center text in the description box */
         }
 
+        .video-container {
+            position: relative; /* Positioning context for the iframe */
+            padding-top: 56.25%; /* Aspect ratio for 16:9 (height/width) */
+            height: 0; /* Zero height, but padding-top creates height */
+            overflow: hidden; /* Hides overflow */
+        }
+
+        .video-container iframe {
+            position: absolute; /* Positioning within container */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            border: none; /* Remove any border */
+        }
 
         /* Main header styling */
         h1 {
@@ -179,15 +211,22 @@
                 <p>One of the main challenges was creating realistic opal materials, which exhibited complex internal scattering properties. We employed a technique using volumes and procedural 3D textures to achieve a lifelike appearance. This required careful adjustments to simulate how light interacts with the opal, ensuring it looked authentic in the final render.</p>
         </div>
 
+        <div class="grid-item">
+            <video allowfullscreen controls autoplay muted src="Assets/Medusa/Medusa-Opal-Mat.mp4" allowfullscreen></video>
+            <div class="description">
+                Opal shader
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen controls autoplay muted src="Assets/Medusa/Medusa-Opals-Rot.mp4" allowfullscreen></video>
+            <div class="description">
+                Eearly version of the opal shader
+            </div>
+        </div>
+        
         <div class="content-box">
-        <h2>Tools Used</h2>
-            <p>
-                <strong>- Blender:</strong> Used for initial modeling, lighting, and final adjustments to the 3D pendant.</br>
-                <strong>- ZBrush:</strong> Sculpted the model to achieve high levels of detail based on reference materials.</br>
-                <strong>- Substance Painter:</strong> Textured the pendant, applying colors and high-frequency details to the gemstones.</br>
-                <strong>- Houdini:</strong> Executed the digital cutting and liquid filling simulations to visualize gemstone placement.</br>
-                <strong>- Blackmagic Fusion:</strong> Composited the final render for enhanced visual quality and presentation.</br>
-            </p>
+            <h2>Gallery</h2>
         </div>
 
         <div class="grid-item">
@@ -238,11 +277,26 @@
                 Image 7
             </div>
         </div>
-        
+
         <div class="content-box">
-            <iframe src="https://www.youtube.com/embed/4jvNPwH-dek?&mute=1" allowfullscreen></iframe>
-            Medusa final edit
+            <h2>Final edit</h2>
         </div>
+        <div class="content-box">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/4jvNPwH-dek?&mute=1" alt="Propagation Solver Render"></iframe>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h2>Tools Used</h2>
+                <p>
+                    <strong>- Blender:</strong> Used for initial modeling, lighting, and final adjustments to the 3D pendant.</br>
+                    <strong>- ZBrush:</strong> Sculpted the model to achieve high levels of detail based on reference materials.</br>
+                    <strong>- Substance Painter:</strong> Textured the pendant, applying colors and high-frequency details to the gemstones.</br>
+                    <strong>- Houdini:</strong> Executed the digital cutting and liquid filling simulations to visualize gemstone placement.</br>
+                    <strong>- Blackmagic Fusion:</strong> Composited the final render for enhanced visual quality and presentation.</br>
+                </p>
+            </div>
         
         <div class="content-box">
             <footer>© 2024 <a href="https://www.linkedin.com/in/jure-suli%C4%8D-9b700a195/">Jure Sulič</a></footer>
@@ -266,9 +320,6 @@
             function updateGridBorders() {
                 const container = document.querySelector('.container');
                 
-                // -------------------------
-
-                
                 gridItems.forEach((gridItem, index) => {
                     // Reset borders
                     gridItem.style.borderBottom = '1px solid #333';   // Default bottom border
@@ -284,28 +335,60 @@
 
                     const boxIndex = numBoxes - (index + 1);
                                         
-                    // Fix bottom borders
-                    if (widthPercent < 100) {
-                        if (boxIndex < 2) {
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                    // Fix right borders
+                    if (widthPercent < 34) { // 3 items per row
+                        if (((index + 1) % 3) === 0) {
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
+                        }
+                    } else if (widthPercent < 90) { // 2 items per row
+                        if (((index + 1) % 2) === 0) {
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
                         }
                     } else {
-                        if (boxIndex < 1) {
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        if (((index + 1) % 1) === 0) { // 1 item per row
+                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
                         }
                     }
 
-                    // Fix right borders
-                    if (widthPercent < 100) {
-                        if (index % 2 === 1) {
-                            gridItem.style.borderRight = 'none'; // Remove right border for odd previous items
+                    // Get the next element
+                    const nextElement = gridItem.nextElementSibling;
+
+                    const nextElemetCheck = checkNextElements(gridItem, 3)
+                    
+                    // Fix bottom borders
+                    if (widthPercent < 34) {
+                        if (boxIndex < 3) { // 3 items per row
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
+                    } else if (widthPercent < 90) {
+                        if (boxIndex < 2) { // 2 items per row
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
                         }
                     } else {
-                        gridItem.style.borderRight = 'none'; // Remove right border for odd previous items
+                        if (boxIndex < 1) { // 1 item per row
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
                     }
                 });
             }
-            
+
+            // Recursive function to check the next x elements
+            function checkNextElements(element, count, checked = 0) {
+                if (checked >= count) return true; // Return true if we have checked the specified number of elements
+
+                const nextElement = element.nextElementSibling; // Get the next sibling
+                if (nextElement) {
+                    if (!nextElement.classList.contains('grid-item')) {
+                        console.log(`Next element is not a grid-item:`, nextElement);
+                        return false; // Return false if the next element is not a grid-item
+                    }
+                    // Recursive call to check the next sibling
+                    return checkNextElements(nextElement, count, checked + 1);
+                }
+
+                return true; // Return true if there are no more elements to check
+            }
+
             // Function to get the width of a grid item in percentage
             function getGridItemWidthInPercent(gridItem) {
                 const container = document.querySelector('.container');
