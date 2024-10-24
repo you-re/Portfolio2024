@@ -161,13 +161,20 @@
             text-align: left;
         }
 
+        /* Footer box styling */
+        footer {
+            font-weight: 400;
+            font-size: 0.8em;
+            color: #333;
+            padding: 10px;
+        }
+
         /* Footer content styling */
         .footer-content {
             display: flex;
             justify-content: space-between; /* Space between text and icons */
             align-items: center; /* Vertically center content */
         }
-
 
         /* Social icons container */
         .social-icons {
@@ -192,6 +199,11 @@
         footer a {
             text-decoration: none;
             color: #333;
+            transition: transform 0.3s ease;
+        }
+
+        footer a:hover {
+            transform: scale(1.15); /* Zoom in on hover */
         }
 
         @media (max-width: 5000px) {
@@ -242,17 +254,18 @@
         
         <div class="content-box">
             <h2>Tools Used</h2>
-                <p>
-                    <strong>- Blender:</strong> Rigged, animated, and rendered the character, set up lighting, and handled the final compositing.</br>
-                    <strong>- Marvelous Designer:</strong> Simulated realistic clothing behavior on the animated character.</br>
-                    <strong>- 3D Asset Stores:</strong> Kitbashed environment elements for quick scene assembly.</br>
-                </p>
-            </div>
+            <p>
+                <strong>- Blender:</strong> Rigged, animated, and rendered the character, set up lighting, and handled the final compositing.</br>
+                <strong>- Marvelous Designer:</strong> Simulated realistic clothing behavior on the animated character.</br>
+                <strong>- 3D Asset Stores:</strong> Kitbashed environment elements for quick scene assembly.</br>
+            </p>
+        </div>
         
         <div class="content-box">
             <footer>
                 <div class="footer-content">
                     <a href="https://you-re.github.io/Portfolio2024/">© 2024 Jure Sulič</a>
+                    <a href="mailto:j.sulic@gmail.com">j.sulic@gmail.com</a>
                     <div class="social-icons">
                         <a href="https://www.linkedin.com/in/juresulic" target="_blank" class="social-link">
                             <i class="fab fa-linkedin"></i>
@@ -262,9 +275,6 @@
                         </a>
                         <a href="https://www.instagram.com/you_re_cgi" target="_blank" class="social-link">
                             <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="j.sulic@gmail.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
                         </a>
                     </div>
                 </div>

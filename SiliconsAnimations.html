@@ -8,7 +8,10 @@
     
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
+    
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
         /* Reset some default browser styles */
         * {
@@ -31,8 +34,8 @@
         .container {
             max-width: 1000px;
             background-color: #fff;
-            border: 1px solid #333;
-            border-bottom: 0px;
+            border-top: 1px solid #333;
+            border-left: 1px solid #333;
             margin: 0 auto;
             padding: 0; /* Remove padding */
             display: flex;
@@ -44,6 +47,7 @@
         .content-box {
             background-color: #fff;
             border-bottom: 1px solid #333;
+            border-right: 1px solid #333;
             width: calc(100%); /* Full width minus padding */
             margin: 0; /* No margin */
             padding: 10px; /* Reduced padding for a tighter fit */
@@ -64,6 +68,7 @@
         .grid-item {
             background-color: #fff;
             border-right: 1px solid #333; /* Default right border */
+            border-bottom: 1px solid #333; /* Default right border */
             margin: 0; /* Remove margin for touching containers */
             padding: 0; /* Remove padding for touching containers */
             width: calc(25%); /* 4 items per row */
@@ -126,18 +131,49 @@
             text-align: left;
         }
 
-        /* Footer box styling */      
+        /* Footer box styling */
         footer {
-            background-color: #fff;
-            font-weight: 300;
+            font-weight: 400;
             font-size: 0.8em;
             color: #333;
-            text-align: center;
+            padding: 10px;
+        }
+
+        /* Footer content styling */
+        .footer-content {
+            display: flex;
+            justify-content: space-between; /* Space between text and icons */
+            align-items: center; /* Vertically center content */
+        }
+
+        /* Social icons container */
+        .social-icons {
+            display: flex; /* Align icons horizontally */
+            gap: 15px; /* Space between icons */
+        }
+
+        /* Style for social links */
+        .social-link {
+            color: #333;
+            font-size: 1.5em;
+            transition: color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        /* Hover effect for social icons */
+        .social-link:hover {
+            color: #0073e6; /* Accent color on hover */
+            transform: scale(1.2); /* Zoom in on hover */
         }
 
         footer a {
             text-decoration: none;
             color: #333;
+            transition: transform 0.3s ease;
+        }
+
+        footer a:hover {
+            transform: scale(1.15); /* Zoom in on hover */
         }
 
         @media (max-width: 5000px) {
@@ -197,102 +233,24 @@
         </div>
         
         <div class="content-box">
-            <footer>© 2024 <a href="https://www.linkedin.com/in/jure-suli%C4%8D-9b700a195/">Jure Sulič</a></footer>
+            <footer>
+                <div class="footer-content">
+                    <a href="https://you-re.github.io/Portfolio2024/">© 2024 Jure Sulič</a>
+                    <a href="mailto:j.sulic@gmail.com">j.sulic@gmail.com</a>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/juresulic" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/you-re" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/you_re_cgi" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const contentBoxes = document.querySelectorAll('.content-box');
-            const gridItems = document.querySelectorAll('.grid-item');
-    
-            // Add top border for content boxes
-            contentBoxes.forEach(contentBox => {
-                const previousElement = contentBox.previousElementSibling;
-                if (previousElement && previousElement.classList.contains('grid-item')) {
-                    contentBox.classList.add('has-top-border');
-                }
-            });
-            
-            // -----------------------------
-            /*
-            // Function to check and set borders for grid items
-            function updateGridBorders() {
-                const container = document.querySelector('.container');
-
-                gridItems.forEach((gridItem, index) => {
-                    // Reset borders
-                    gridItem.style.borderRight = '1px solid #333'; // Default right border
-                    // gridItem.style.borderTop = '1px solid #333';   // Default top border
-
-                    // Get the width percentage of the grid item
-                    const widthPercent = getGridItemWidthInPercent(gridItem);
-
-                    // Get the count of previous grid items
-                    const previousGridItemsCount = Array.from(gridItems).slice(0, index).filter(item => item.offsetParent !== null).length;
-
-                    // Check conditions based on width percentage
-                    if (widthPercent === 100) {
-                        gridItem.style.borderRight = '1px solid #fff'; // No borders
-                    } else if (widthPercent === 50) {
-                        if ((previousGridItemsCount + 1) % 2 === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for odd previous items
-                        }
-                    } else if (widthPercent < 50 && widthPercent > 25 ) { // Check for less than 50%
-                        if ((previousGridItemsCount + 1) % 3 === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
-                        }
-                    } else if (widthPercent < 30) { // Check for less than 50%
-                        if ((previousGridItemsCount + 1) % 4 === 0) {
-                            gridItem.style.borderRight = '1px solid #fff'; // Remove right border for non-last in group of 3
-                        }
-                    } else {
-                        gridItem.style.borderRight = '1px solid #333';
-                    }
-                });
-            }
-            */
-
-            // Function to check and set borders for grid items
-            function updateGridBorders() {
-                const container = document.querySelector('.container');
-
-                gridItems.forEach((gridItem, index) => {
-                    // Reset borders
-                    gridItem.style.borderRight = '1px solid #333'; // Default right border
-                    // gridItem.style.borderTop = '1px solid #333';   // Default top border
-
-                    // Get the width percentage of the grid item
-                    const widthPercent = getGridItemWidthInPercent(gridItem);
-
-                    // Get the count of previous grid items
-                    const previousGridItemsCount = Array.from(gridItems).slice(0, index).filter(item => item.offsetParent !== null).length;
-
-                    // Check conditions based on width percentage
-                    if (index % 2 === 1){
-                        gridItem.style.borderRight = '1px solid #fff';
-                    } else {
-                        gridItem.style.borderRight = '1px solid #333';
-                    }
-                });
-            }
-
-            // Function to get the width of a grid item in percentage
-            function getGridItemWidthInPercent(gridItem) {
-                const container = document.querySelector('.container');
-                const gridItemStyle = window.getComputedStyle(gridItem);
-                const gridItemWidth = parseFloat(gridItemStyle.width);
-                const containerWidth = container.clientWidth;
-                const widthPercent = (gridItemWidth / containerWidth) * 100;
-                return widthPercent;
-            }
-
-            // Initial check
-            updateGridBorders();
-
-            // Update on window resize
-            window.addEventListener('resize', updateGridBorders);
-        });
-    </script>
 </body>
 </html>
