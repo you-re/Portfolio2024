@@ -60,10 +60,6 @@
             height: 500px;
             border: 20px;
         }
-        /* Additional style for top border */
-        .content-box.has-top-border {
-            border-top: 1px solid #333; /* Add top border */
-        }
 
         /* Additional style for grid items */
         .grid-item {
@@ -172,7 +168,6 @@
 
         /* Footer box styling */
         footer {
-            background-color: #fff;
             font-weight: 400;
             font-size: 0.8em;
             color: #333;
@@ -185,7 +180,6 @@
             justify-content: space-between; /* Space between text and icons */
             align-items: center; /* Vertically center content */
         }
-
 
         /* Social icons container */
         .social-icons {
@@ -233,13 +227,11 @@
         .grid-item:nth-child(3n) {
             border-right: none;
         }
-
         @media (max-width: 900px) {
             .grid-item:nth-child(2n) {
                 border-right: none;
             }
         }
-
         /* Ensure content wraps well on smaller screens */
         @media (max-width: 600px) {
             .footer-content {
@@ -371,42 +363,115 @@
         </div>
 
         <div class="content-box">
-        <footer>
-            <div class="footer-content">
-                <a href="https://you-re.github.io/Portfolio2024/">© 2024 Jure Sulič</a>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/juresulic" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/you-re" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.instagram.com/you_re_cgi" target="_blank" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="j.sulic@gmail.com" class="social-link">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+            <footer>
+                <div class="footer-content">
+                    <a href="https://you-re.github.io/Portfolio2024/">© 2024 Jure Sulič</a>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/juresulic" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/you-re" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/you_re_cgi" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="j.sulic@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </footer>
-    </div>
-
-        
+            </footer>
+        </div>
     </div>
 
     <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const gridItems = document.querySelectorAll('.grid-item');
+
+            // Function to check and set borders for grid items
+            function updateGridBorders() {
+                
+                gridItems.forEach((gridItem, index) => {
+                    // Reset borders
+                    gridItem.style.borderBottom = '1px solid #333';   // Default bottom border
+
+                    gridItem.style.borderRight = '1px solid #333'; // Default right border
+
+                    // Get the width percentage of the grid item
+                    const widthPercent = getGridItemWidthInPercent(gridItem);
+
+                    const itemsPerRow = Math.round(100 / widthPercent);
+
+                    const numBoxes = Math.round(gridItems.length / itemsPerRow) * itemsPerRow;
+
+                    const boxIndex = numBoxes - (index + 1);
+
+                    const nextItem = gridItem.nextElementSibling.classList.contains('grid-item');
+
+                    // Fix bottom borders
+                    if (widthPercent < 34) {
+                        // 3 items per row
+                        if (!nextItem) {
+                        gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
+                    } else if (widthPercent < 90) { 
+                        // 2 items per row
+                        if (!nextItem) {
+                        // gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
+                    } else { // 1 item per row
+                        if (!nextItem) {
+                        gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        }
+                    }
+                });
+            }
+
+            const container = document.querySelector('.container');
+            
+            // Function to get the width of a grid item in percentage
+            function getGridItemWidthInPercent(gridItem) {
+                const container = document.querySelector('.container');
+                const gridItemStyle = window.getComputedStyle(gridItem);
+                const gridItemWidth = parseFloat(gridItemStyle.width);
+                const containerWidth = container.clientWidth;
+                const widthPercent = (gridItemWidth / containerWidth) * 100;
+                return widthPercent;
+            }
+
+            // Initial check
+            updateGridBorders();
+
+            // Update on window resize
+            window.addEventListener('resize', function() {
+                updateGridBorders();
+            });
+        });
+
+        
+        /*
         document.addEventListener("DOMContentLoaded", function() {
             const contentBoxes = document.querySelectorAll('.content-box');
             const gridItems = document.querySelectorAll('.grid-item');
-    
-            // Add top border for content boxes
-            contentBoxes.forEach(contentBox => {
-                const previousElement = contentBox.previousElementSibling;
-                if (previousElement && previousElement.classList.contains('grid-item')) {
-                    contentBox.classList.add('has-top-border');
+
+            // Recursive function to check the next x elements
+            function checkNextElements(element, count, checked = 0) {
+                if (checked >= count) return true; // Return true if we have checked the specified number of elements
+
+                const nextElement = element.nextElementSibling; // Get the next sibling
+                if (nextElement) {
+                    if (!nextElement.classList.contains('grid-item')) {
+                        console.log(`Next element is not a grid-item:`, nextElement);
+                        return false; // Return false if the next element is not a grid-item
+                    }
+                    // Recursive call to check the next sibling
+                    return checkNextElements(nextElement, count, checked + 1);
                 }
-            });
+
+                return true; // Return true if there are no more elements to check
+            }
 
             // Function to check and set borders for grid items
             function updateGridBorders() {
@@ -462,6 +527,7 @@
                 updateGridBorders();
             });
         });
+        */
     </script>
 </body>
 </html>

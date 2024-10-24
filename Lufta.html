@@ -8,6 +8,9 @@
     
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
         /* Reset some default browser styles */
@@ -71,11 +74,6 @@
             /* Optional: To prevent black borders on mobile, consider adding these styles */
             background: #000; /* Set background to black to match video */
             display: block; /* Ensures there's no extra space */
-        }
-        
-        /* Additional style for top border */
-        .content-box.has-top-border {
-            border-top: 1px solid #333; /* Add top border */
         }
 
         .grid-item {
@@ -163,13 +161,32 @@
             text-align: left;
         }
 
-        /* Footer box styling */      
-        footer {
-            background-color: #fff;
-            font-weight: 300;
-            font-size: 0.8em;
+        /* Footer content styling */
+        .footer-content {
+            display: flex;
+            justify-content: space-between; /* Space between text and icons */
+            align-items: center; /* Vertically center content */
+        }
+
+
+        /* Social icons container */
+        .social-icons {
+            display: flex; /* Align icons horizontally */
+            gap: 15px; /* Space between icons */
+        }
+
+        /* Style for social links */
+        .social-link {
             color: #333;
-            text-align: center;
+            font-size: 1.5em;
+            transition: color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        /* Hover effect for social icons */
+        .social-link:hover {
+            color: #0073e6; /* Accent color on hover */
+            transform: scale(1.2); /* Zoom in on hover */
         }
 
         footer a {
@@ -298,117 +315,26 @@
             </div>
         
         <div class="content-box">
-            <footer>© 2024 <a href="https://www.linkedin.com/in/jure-suli%C4%8D-9b700a195/">Jure Sulič</a></footer>
+            <footer>
+                <div class="footer-content">
+                    <a href="https://you-re.github.io/Portfolio2024/">© 2024 Jure Sulič</a>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/juresulic" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/you-re" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/you_re_cgi" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="j.sulic@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const contentBoxes = document.querySelectorAll('.content-box');
-            const gridItems = document.querySelectorAll('.grid-item');
-    
-            // Add top border for content boxes
-            contentBoxes.forEach(contentBox => {
-                const previousElement = contentBox.previousElementSibling;
-                if (previousElement && previousElement.classList.contains('grid-item')) {
-                    contentBox.classList.add('has-top-border');
-                }
-            });
-
-            // Function to check and set borders for grid items
-            function updateGridBorders() {
-                const container = document.querySelector('.container');
-                
-                gridItems.forEach((gridItem, index) => {
-                    // Reset borders
-                    gridItem.style.borderBottom = '1px solid #333';   // Default bottom border
-
-                    gridItem.style.borderRight = '1px solid #333'; // Default right border
-
-                    // Get the width percentage of the grid item
-                    const widthPercent = getGridItemWidthInPercent(gridItem);
-
-                    const itemsPerRow = Math.round(100 / widthPercent);
-
-                    const numBoxes = Math.round(gridItems.length / itemsPerRow) * itemsPerRow;
-
-                    const boxIndex = numBoxes - (index + 1);
-
-                    const nextElement = checkNextElements(gridItem, itemsPerRow);
-                    const prevElement = checkPrevElements(gridItem, itemsPerRow);
-
-                    const indexRemainder = index % numBoxes;
-                    
-                    // Fix bottom borders
-                    if (itemsPerRow === 3) {
-                        if (boxIndex < 3) { // 3 items per row
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
-                        }
-                    } else if (itemsPerRow === 2) {
-                        if (boxIndex < 2) { // 2 items per row
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
-                        }
-                    } else if (itemsPerRow === 1) {
-                        if (boxIndex < 1) { // 1 item per row
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
-                        }
-                    }
-                });
-            }
-            
-            // Function to get the width of a grid item in percentage
-            function getGridItemWidthInPercent(gridItem) {
-                const container = document.querySelector('.container');
-                const gridItemStyle = window.getComputedStyle(gridItem);
-                const gridItemWidth = parseFloat(gridItemStyle.width);
-                const containerWidth = container.clientWidth;
-                const widthPercent = (gridItemWidth / containerWidth) * 100;
-                return widthPercent;
-            }
-
-            // Recursive function to check the next x elements
-            function checkNextElements(element, count, checked = 0) {
-                if (checked >= count) return true; // Return true if we have checked the specified number of elements
-
-                const nextElement = element.nextElementSibling; // Get the next sibling
-                if (nextElement) {
-                    if (!nextElement.classList.contains('grid-item')) {
-                        console.log(`Next element is not a grid-item:`, nextElement);
-                        return false; // Return false if the next element is not a grid-item
-                    }
-                    // Recursive call to check the next sibling
-                    return checkNextElements(nextElement, count, checked + 1);
-                }
-
-                return true; // Return true if there are no more elements to check
-            }
-
-            // Recursive function to check the next x elements
-            function checkPrevElements(element, count, checked = 0) {
-                if (checked >= count) return true; // Return true if we have checked the specified number of elements
-
-                const prevElement = element.previousElementSibling; // Get the next sibling
-                if (prevElement) {
-                    if (!prevElement.classList.contains('grid-item')) {
-                        console.log(`Prev element is not a grid-item:`, prevElement);
-                        return false; // Return false if the next element is not a grid-item
-                    }
-                    // Recursive call to check the next sibling
-                    return checkPrevElements(prevElement, count, checked + 1);
-                }
-
-                return true; // Return true if there are no more elements to check
-            }
-
-
-            // Initial check
-            updateGridBorders();
-
-            // Update on window resize
-            window.addEventListener('resize', function() {
-                updateGridBorders();
-            });
-        });
-    </script>
 </body>
 </html>
