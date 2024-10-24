@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medusa</title>
+    <title>Silicons Teaser</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     
     <!-- Link to Google Fonts -->
@@ -210,114 +210,42 @@
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>Realistic Pendant Rendering</h1>
+            <h1>Silicons Teaser</h1>
         </div>
 
         <div class="content-box">
             <h2>Task Description</h2>
-            <p>The Realistic Pendant Rendering project involved creating a detailed 3D replica of a unique, handmade pendant that was housed in a museum. Due to the pendant's value and the inability to access the physical object, we relied on x-ray scans, material analysis, and extensive reference photography and videos. The primary goal was to produce a photorealistic representation of the pendant, including intricate textures and materials of the gemstones, while presenting the object in an engaging manner.</p>
+            <p>The client wanted a teaser animation for their upcoming NFT collection, featuring a character model and various 3D clothing items. My goal was to create a digital photoshoot scene where the character would pose and showcase the high-quality 3D assets. Given the tight deadline, I opted for a fast and efficient workflow using Blender and kitbashing elements from 3D online asset stores to assemble the scene.</p>
         </div>
 
         <div class="content-box">       
             <h2>Thought Process</h2>
-                <p>Initially, we focused on gathering all available data about the pendant, including its construction methods and the arrangement of gemstones. The modeling was executed in Blender, followed by sculpting in ZBrush to accurately capture the intricate details from the references. After texturing the model in Substance Painter, we transferred it to Houdini for a digital cut, allowing us to visualize the internal structure and gemstone placement. The liquid filling simulation mirrored the craftsmanship involved in placing the gemstones within the gold pendant.</br>
+                <p>I began by rigging and animating the character in Blender, ensuring the poses highlighted the unique design of the character and its clothing. After setting up the animation, I exported it to Marvelous Designer, where I simulated the character’s clothing to achieve realistic draping and movement. Once the simulation was complete, I brought everything back into Blender to refine the scene.</br></br>
 
-                The final step involved bringing the high-definition model back into Blender for realistic lighting and material creation. Special attention was given to the materials, ensuring they reflected the pendant’s unique characteristics.
+                I added subtle imperfections to the clothing and materials, including cloth strands, surface displacement, and realistic wear, to enhance authenticity. Next, I set up lighting and began the rendering process, focusing on creating dynamic camera transitions. To simulate camera flashes, I used Blender's F-Curve modifiers, which allowed me to time the flashes and transitions efficiently.
                 </p>
         </div>
         
         <div class="content-box">
             <h2>Challenges</h2>
-                <p>One of the main challenges was creating realistic opal materials, which exhibited complex internal scattering properties. We employed a technique using volumes and procedural 3D textures to achieve a lifelike appearance. This required careful adjustments to simulate how light interacts with the opal, ensuring it looked authentic in the final render.</p>
-        </div>
-
-        <div class="grid-item">
-            <video allowfullscreen controls autoplay muted src="Assets/Medusa/Medusa-Opal-Mat.mp4" allowfullscreen></video>
-            <div class="description">
-                Opal shader
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <video allowfullscreen controls autoplay muted src="Assets/Medusa/Medusa-Opals-Rot.mp4" allowfullscreen></video>
-            <div class="description">
-                Early version of the opal shader
-            </div>
-        </div>
-        
-        <div class="content-box">
-            <h2>Gallery</h2>
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa_0405.jpg" alt="Image 1">
-            <div class="description">
-                Image 1
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa_1145.jpg" alt="Image 2">
-            <div class="description">
-                Image 2
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa_1301.jpg" alt="Image 3">
-            <div class="description">
-                Image 3
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa_2344.jpg" alt="Image 4">
-            <div class="description">
-                Image 4
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa_2700.jpg" alt="Image 5">
-            <div class="description">
-                Image 5
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa_2910.jpg" alt="Image 6">
-            <div class="description">
-                Image 6
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa_3250.jpg" alt="Image 7">
-            <div class="description">
-                Image 7
-            </div>
-        </div>
-
-        <div class="grid-item">
+                <p>A major challenge was achieving a high level of detail within a tight deadline. The use of kitbashing and procedural tools in Blender helped speed up the process while maintaining visual quality. Simulating realistic clothing movements and integrating the camera flash effects presented additional complexity, but these were handled using Blender’s built-in tools and Marvelous Designer for accurate cloth behavior.</p>
         </div>
 
         <div class="content-box">
-            <h2>Final edit</h2>
+            <h2>Final video</h2>
         </div>
         <div class="content-box">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/4jvNPwH-dek?&mute=1" alt="Propagation Solver Render"></iframe>
+                <iframe src="https://www.youtube.com/embed/EPR-x39AGyI?autoplay=1&mute=1&loop=1" alt="Silicons Teaser Video"></iframe>
             </div>
         </div>
         
         <div class="content-box">
             <h2>Tools Used</h2>
                 <p>
-                    <strong>- Blender:</strong> Used for initial modeling, lighting, and final adjustments to the 3D pendant.</br>
-                    <strong>- ZBrush:</strong> Sculpted the model to achieve high levels of detail based on reference materials.</br>
-                    <strong>- Substance Painter:</strong> Textured the pendant, applying colors and high-frequency details to the gemstones.</br>
-                    <strong>- Houdini:</strong> Executed the digital cutting and liquid filling simulations to visualize gemstone placement.</br>
-                    <strong>- Blackmagic Fusion:</strong> Composited the final render for enhanced visual quality and presentation.</br>
+                    <strong>- Blender:</strong> Rigged, animated, and rendered the character, set up lighting, and handled the final compositing.</br>
+                    <strong>- Marvelous Designer:</strong> Simulated realistic clothing behavior on the animated character.</br>
+                    <strong>- 3D Asset Stores:</strong> Kitbashed environment elements for quick scene assembly.</br>
                 </p>
             </div>
         

@@ -194,6 +194,25 @@
             color: #333;
         }
 
+        /* Add styles for image zoom on hover */
+        .zoom-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%; /* Adjust width based on your layout */
+            height: 500px; /* Fixed height for container */
+        }
+
+        .zoom-image {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+            transform-origin: center center;
+        }
+
+        .zoom-container:hover .zoom-image {
+            transform: scale(2); /* Adjust zoom level */
+        }
+
         @media (max-width: 5000px) {
             .grid-item {
                 width: calc(50%); /* 2 items per row */
@@ -219,17 +238,11 @@
         </div>
 
         <div class="grid-item">
-            <img src="Assets/Lufta/Lufta-07.png" alt="Image 7">
-            <div class="description">
-                Image 1
-            </div>
+            <img src="Assets/Lufta/Lufta-07.png" alt="Image 1">
         </div>
 
         <div class="grid-item">
-            <img src="Assets/Lufta/Lufta-08.png" alt="Image 8">
-            <div class="description">
-                Image 2
-            </div>
+            <img src="Assets/Lufta/Lufta-08.png" alt="Image 2">
         </div>
 
         <div class="content-box">       
@@ -241,17 +254,11 @@
         </div>
 
         <div class="grid-item">
-            <img src="Assets/Lufta/Lufta-09.png" alt="Image 9">
-            <div class="description">
-                Image 1
-            </div>
+            <img src="Assets/Lufta/Lufta-09.png" alt="Image 2">
         </div>
 
         <div class="grid-item">
-            <img src="Assets/Lufta/Lufta-10.png" alt="Image 10">
-            <div class="description">
-                Image 2
-            </div>
+            <img src="Assets/Lufta/Lufta-10.png" alt="Image 3">
         </div>
         
         <div class="content-box">
@@ -260,49 +267,31 @@
         </div>
 
         <div class="content-box">
-            <h2>Renders</h2>
+            <h2>Gallery</h2>
         </div>
 
         <div class="grid-item">
-            <img src="Assets/Lufta/Lufta-01.png" alt="Image 1">
-            <div class="description">
-                Image 1
-            </div>
+            <img src="Assets/Lufta/Lufta-01.png" alt="Image 4">
         </div>
 
         <div class="grid-item">
-            <img src="Assets/Lufta/Lufta-02.png" alt="Image 2">
-            <div class="description">
-                Image 2
-            </div>
+            <img src="Assets/Lufta/Lufta-02.png" alt="Image 5">
         </div>
 
         <div class="grid-item">
-            <img src="Assets/Lufta/Lufta-03.png" alt="Image 3">
-            <div class="description">
-                Image 3
-            </div>
+            <img src="Assets/Lufta/Lufta-03.png" alt="Image 6">
         </div>
 
         <div class="grid-item">
-            <img src="Assets/Lufta/Lufta-04.png" alt="Image 4">
-            <div class="description">
-                Image 4
-            </div>
+            <img src="Assets/Lufta/Lufta-04.png" alt="Image 7">
         </div>
 
         <div class="grid-item">
-            <img src="Assets/Lufta/Lufta-05.png" alt="Image 5">
-            <div class="description">
-                Image 5
-            </div>
+            <img src="Assets/Lufta/Lufta-05.png" alt="Image 8">
         </div>
 
         <div class="grid-item">
-            <img src="Assets/Lufta/Lufta-06.png" alt="Image 6">
-            <div class="description">
-                Image 6
-            </div>
+            <img src="Assets/Lufta/Lufta-06.png" alt="Image 9">
         </div>
 
         <div class="content-box">
