@@ -236,6 +236,7 @@
         </div>
 
         <div class="content-box">
+            <h2>Final output</h2>
             <iframe autoplay loop muted src="Assets/Silicons-Animations/Walk-Cycle.mp4" alt="Walk Cycle Animation"></iframe>
         </div>
 
@@ -269,21 +270,13 @@
 
         <div class="content-box">
             <p>
-                To further streamline the workflow, I parameterized all the essential elements of the Houdini setup. This meant that for every new clothing simulation, I only needed to adjust a few parameters, such as the transition from the neutral pose to the simulation pose and the length of one simulation loop. The rest of the process—blending, looping, and exporting—was handled automatically by the system I built.
-            </p>
-        </div>
-
-        <div class="content-box">
-            <p>
+                To further streamline the workflow, I parameterized all the essential elements of the Houdini setup. This meant that for every new clothing simulation, I only needed to adjust a few parameters, such as the transition from the neutral pose to the simulation pose and the length of one simulation loop. The rest of the process—blending, looping, and exporting—was handled automatically by the system I built.</br></br>
                 In addition, I wrote custom Python scripts within Houdini to automate file handling. These scripts allowed me to recursively search user-defined folders for simulation files in Alembic (.abc) format, loop the animations, and export them with new, loop-ready filenames. This automation reduced what would have been a highly repetitive and time-consuming task into a process that could be completed with just a few clicks.
             </p>
         </div>
-
+        
         <div class="content-box">
-            <iframe autoplay loop muted src="Assets/Silicons-Animations/Silicons-AE-Comp.mp4" alt="Video of the Compositing Process"></iframe>
-        </div>
-
-        <div class="content-box">
+            <h2>Assets</h2>
             <iframe autoplay loop muted src="Assets/Silicons-Animations/Silicons-Assets.mp4" alt="3D assets video loop"></iframe>
         </div>
 
@@ -292,6 +285,11 @@
             <p>This approach avoided redundant rendering of the same assets multiple times, reducing the overall render time by reusing the same renders across combinations. It also allowed for fast fixes in case any of the assets needed that.</br>
             After optimizing and simulating garments, I batch imported everything into Blender, ensuring materials and animations were correct. I used a Python script to automate individual asset rendering.
             </p>
+        </div>
+
+        <div class="content-box">
+            <h2>Compositing Automation</h2>
+            <iframe autoplay loop muted src="Assets/Silicons-Animations/Silicons-AE-Comp.mp4" alt="Video of the Compositing Process"></iframe>
         </div>
 
         <div class="content-box">
