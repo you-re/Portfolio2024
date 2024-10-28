@@ -34,8 +34,9 @@
         .container {
             max-width: 1000px;
             background-color: #fff;
-            border-top: 1px solid #333;
-            border-left: 1px solid #333;
+            border: 1px solid #333;
+            border-right: 0;
+            border-bottom: 0;
             margin: 0 auto;
             padding: 0; /* Remove padding */
             display: flex;
@@ -53,46 +54,59 @@
             padding: 10px; /* Reduced padding for a tighter fit */
             text-align: center; /* Center text */
         }
-
-        .content-box iframe {
-            width: 80%;
+        
+        .content-box img {
+            width: 100%;
             height: 500px;
             border: 20px;
         }
-        /* Additional style for top border */
-        .content-box.has-top-border {
-            border-top: 1px solid #333; /* Add top border */
+
+        .content-box iframe {
+            width: 100%;
+            height: 500px;
+            border: 20px;
         }
 
-        /* Additional style for grid items */
+        .content-box iframe {
+            width: 100%; /* Full width */
+            height: 500px; /* Fixed height for desktop; adjust as needed */
+            border: none; /* Remove the default border */
+            /* Optional: To prevent black borders on mobile, consider adding these styles */
+            background: #000; /* Set background to black to match video */
+            display: block; /* Ensures there's no extra space */
+        }
+
         .grid-item {
             background-color: #fff;
             border-right: 1px solid #333; /* Default right border */
-            border-bottom: 1px solid #333; /* Default right border */
+            border-bottom: 1px solid #333; /* Default bottom border */
             margin: 0; /* Remove margin for touching containers */
             padding: 0; /* Remove padding for touching containers */
             width: calc(25%); /* 4 items per row */
             text-align: center;
             position: relative; /* For positioning of the description */
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+            transition: transform 0.5s ease; /* Smooth transition */
         }
 
         .grid-item a {
             display: block; /* Make anchor fill the grid item */
-            height: 0; /* Initialize height for square box */
-            padding-bottom: 100%; /* Maintain square aspect ratio */
             position: relative; /* For absolute positioning of the image */
             overflow: hidden; /* Prevent overflow when zooming */
         }
+        .grid-item video {
+            width: 100%; /* Image occupies 100% of the box */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
+            display: block; /* Remove any extra space below the image */
+            padding: 10px;
+        }
 
         .grid-item img {
-            position: absolute; /* Position the image absolutely within the anchor */
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            width: 90%; /* Image occupies 100% of the box */
+            width: 100%; /* Image occupies 100% of the box */
             height: auto; /* Maintain aspect ratio */
-            transform: translate(-50%, -50%); /* Center image */
-            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+            object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
+            display: block; /* Remove any extra space below the image */
+            padding: 10px;
         }
 
         .description {
@@ -103,6 +117,22 @@
             background-color: #fff; /* Match background with the grid item */
             border-top: 1px solid #333; /* Border above description */
             text-align: center; /* Center text in the description box */
+        }
+
+        .video-container {
+            position: relative; /* Positioning context for the iframe */
+            padding-top: 56.25%; /* Aspect ratio for 16:9 (height/width) */
+            height: 0; /* Zero height, but padding-top creates height */
+            overflow: hidden; /* Hides overflow */
+        }
+
+        .video-container iframe {
+            position: absolute; /* Positioning within container */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            border: none; /* Remove any border */
         }
 
         /* Main header styling */
@@ -176,9 +206,20 @@
             transform: scale(1.15); /* Zoom in on hover */
         }
 
+        footer a {
+            text-decoration: none;
+            color: #333;
+        }
+
         @media (max-width: 5000px) {
             .grid-item {
-                width: calc(50%); /* 3 items per row */
+                width: calc(50%); /* 2 items per row */
+            }
+        }
+
+        @media (max-width: 800px) {
+            .grid-item {
+                width: calc(100%); /* 1 item per row */
             }
         }
     </style>
@@ -191,22 +232,69 @@
 
         <div class="content-box">
             <h2>Task Description</h2>
-            <p>The client needed an efficient method to create thousands of NFT animations from a set of 100+ assets. My responsibilities included character animation, clothing simulations, automating the rendering and optimizing the workflow.</p>
+            <p>The client required an efficient method to generate thousands of unique NFT animations from a set of over 100 assets. My role involved character animation, clothing simulations, automating the rendering process, and optimizing the workflow for rapid asset creation and processing.</p>
         </div>
 
         <div class="content-box">
-            <iframe autoplay loop muted src="Assets/SiliconsAnimations/Walk_Cycle.mp4" alt="Walk Cycle Animation"></iframe>
+            <iframe autoplay loop muted src="Assets/Silicons-Animations/Walk-Cycle.mp4" alt="Walk Cycle Animation"></iframe>
         </div>
 
         <div class="content-box">
             <h2>Thought Process</h2>
             <p>
-                Initially, I considered rendering each combination of assets separately, but I quickly realized this would lead to extremely long render times. Instead, I chose to render each asset as a separate layer and then composite them in After Effects.
+                Initially, I considered rendering every combination of assets individually, but this approach would have resulted in extremely long render times. Instead, I devised a more efficient solution by rendering each asset as a separate layer and later compositing them in Adobe After Effects. This approach not only avoided redundant rendering of repeated assets across different combinations but also allowed for quick fixes if individual assets needed adjustments, significantly speeding up the entire production pipeline.
             </p>
         </div>
 
         <div class="content-box">
-            <iframe autoplay loop muted src="Assets/SiliconsAnimations/Silicons_Assets.mp4" alt="3D assets video loop"></iframe>
+            <h2>Houdini Workflow and Automation</h2>
+            <p>
+                A key challenge was ensuring the clothing simulations were seamlessly looped for the animations. Using Houdini, I created a setup that automatically blended the start and end of the clothing simulations, ensuring a smooth, continuous loop. The process started in Marvelous Designer, where I simulated the garments running through two full character animation loops. I then imported the simulations into Houdini, where I utilized the Blend Node to transition the animation seamlessly. By blending the beginning of the second loop with the end of the first, I was able to create a perfect loop.
+            </p>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen controls autoplay muted src="Assets/Silicons-Animations/Cargo-Shorts-Loop.mp4" allowfullscreen></video>
+            <div class="description">
+                Original
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen controls autoplay muted src="Assets/Silicons-Animations/Cargo-Shorts-Loop-Blend.mp4" allowfullscreen></video>
+            <div class="description">
+                Loop blend
+            </div>
+        </div>
+
+        <div class="content-box">
+            <p>
+                To further streamline the workflow, I parameterized all the essential elements of the Houdini setup. This meant that for every new clothing simulation, I only needed to adjust a few parameters, such as the transition from the neutral pose to the simulation pose and the length of one simulation loop. The rest of the process—blending, looping, and exporting—was handled automatically by the system I built.
+            </p>
+        </div>
+
+        <div class="content-box">
+            <p>
+                In addition, I wrote custom Python scripts within Houdini to automate file handling. These scripts allowed me to recursively search user-defined folders for simulation files in Alembic (.abc) format, loop the animations, and export them with new, loop-ready filenames. This automation reduced what would have been a highly repetitive and time-consuming task into a process that could be completed with just a few clicks.
+            </p>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen controls autoplay muted src="Assets/Silicons-Animations/Cargo-Shorts-Loop.mp4" allowfullscreen></video>
+            <div class="description">
+                Original
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Silicons-Animations/Houdini-Python.png"></img>
+            <div class="description">
+                Python code
+            </div>
+        </div>
+
+        <div class="content-box">
+            <iframe autoplay loop muted src="Assets/Silicons-Animations/Silicons-Assets.mp4" alt="3D assets video loop"></iframe>
         </div>
 
         <div class="content-box">
@@ -217,7 +305,7 @@
         </div>
 
         <div class="content-box">
-            <iframe autoplay loop muted src="Assets/SiliconsAnimations/Silicons_AE_Comp.mp4" alt="Video of the Compositing Process"></iframe>
+            <iframe autoplay loop muted src="Assets/Silicons-Animations/Silicons-AE-Comp.mp4" alt="Video of the Compositing Process"></iframe>
         </div>
 
         <div class="content-box">
@@ -251,6 +339,7 @@
                 </div>
             </footer>
         </div>
+
     </div>
 </body>
 </html>
