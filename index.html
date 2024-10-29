@@ -365,6 +365,21 @@
         </div>
 
         <div class="grid-item">
+            <a href="Cryptostraps-Guns.html">
+                <img src="Assets/Thumbnail-Cryptostraps-Guns.png" alt="Cryptostraps Guns">
+                <div class="text-overlay">
+                    View Project
+                </div>
+            </a>
+            <div class="description">
+                Cryptostraps Guns</br><normal>Blender, SubstancePainter</normal>
+            </div>
+        </div>
+
+        <div class="grid-item">
+        </div>
+
+        <div class="grid-item">
         </div>
 
         <div class="content-box">
@@ -415,19 +430,17 @@
                     const nextItem = gridItem.nextElementSibling.classList.contains('grid-item');
 
                     // Fix bottom borders
-                    if (widthPercent < 34) {
-                        // 3 items per row
-                        if (!nextItem) {
-                        gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                    if (widthPercent < 34) { // 3 items per row
+                        if (boxIndex === 1) {
+                            gridItem.style.borderRight = 'none'; // Remove right border for odd previous items
                         }
-                    } else if (widthPercent < 90) { 
-                        // 2 items per row
-                        if (!nextItem) {
-                        // gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                    } else if (widthPercent < 90) { // 2 items per row
+                        if (boxIndex < 2) {
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
                         }
                     } else { // 1 item per row
-                        if (!nextItem) {
-                        gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
+                        if (boxIndex < 2) {
+                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
                         }
                     }
                 });
