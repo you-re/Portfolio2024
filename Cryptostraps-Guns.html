@@ -152,7 +152,7 @@
             gap: 15px; /* Space between icons */
         }
 
-        /* Style for social links */
+        /* Default styling for all social links */
         .social-link {
             color: #333;
             font-size: 1.5em;
@@ -160,10 +160,22 @@
             text-decoration: none;
         }
 
-        /* Hover effect for social icons */
+        /* Hover effect with unique colors for each social icon */
         .social-link:hover {
-            color: #0073e6; /* Accent color on hover */
-            transform: scale(1.2); /* Zoom in on hover */
+            transform: scale(1.2);
+        }
+
+        /* Specific hover colors */
+        .social-link[href*="linkedin.com"]:hover {
+            color: #0077b5; /* LinkedIn blue */
+        }
+
+        .social-link[href*="github.com"]:hover {
+            color: #3d75c2; /* GitHub blue */
+        }
+
+        .social-link[href*="instagram.com"]:hover {
+            color: #E1306C; /* Instagram pink */
         }
 
         footer a {
