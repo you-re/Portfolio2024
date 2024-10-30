@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medusa</title>
+    <title>Camera Culler</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     
     <!-- Link to Google Fonts -->
@@ -35,8 +35,8 @@
             max-width: 1000px;
             background-color: #fff;
             border: 1px solid #333;
-            border-right: 0;
             border-bottom: 0;
+            border-right: 0;
             margin: 0 auto;
             padding: 0; /* Remove padding */
             display: flex;
@@ -95,7 +95,7 @@
         }
         .grid-item video {
             width: 100%; /* Image occupies 100% of the box */
-            height: auto; /* Maintain aspect ratio */
+            height: 30vh; /* Maintain aspect ratio */
             object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
             display: block; /* Remove any extra space below the image */
             padding: 10px;
@@ -218,11 +218,6 @@
             transform: scale(1.15); /* Zoom in on hover */
         }
 
-        footer a {
-            text-decoration: none;
-            color: #333;
-        }
-
         @media (max-width: 5000px) {
             .grid-item {
                 width: calc(50%); /* 2 items per row */
@@ -235,101 +230,80 @@
             }
         }
     </style>
+    
 </head>
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>Realistic Pendant Rendering</h1>
+            <h1>Camera Culler Node for Blender</h1>
         </div>
 
         <div class="content-box">
-            <h2>Task Description</h2>
-            <p>The Realistic Pendant Rendering project involved creating a detailed 3D replica of a unique, handmade pendant that was housed in a museum. Due to the pendant's value and the inability to access the physical object, we relied on x-ray scans, material analysis, and extensive reference photography and videos. The primary goal was to produce a photorealistic representation of the pendant, including intricate textures and materials of the gemstones, while presenting the object in an engaging manner.</p>
+            <h2>Overview</h2>
+            <p>The Camera Culler is a custom tool developed for Blender to significantly improve rendering efficiency through optimized camera culling. It enables faster rendering by selectively processing only the objects within the camera’s view, reducing computation time and memory usage.</p>
         </div>
 
-        <div class="content-box">       
-            <h2>Thought Process</h2>
-                <p>Initially, we focused on gathering all available data about the pendant, including its construction methods and the arrangement of gemstones. The modeling was executed in Blender, followed by sculpting in ZBrush to accurately capture the intricate details from the references. After texturing the model in Substance Painter, we transferred it to Houdini for a digital cut, allowing us to visualize the internal structure and gemstone placement. The liquid filling simulation mirrored the craftsmanship involved in placing the gemstones within the gold pendant.</br>
-
-                The final step involved bringing the high-definition model back into Blender for realistic lighting and material creation. Special attention was given to the materials, ensuring they reflected the pendant’s unique characteristics.
-                </p>
+        <div class="content-box">
+            <h2>How it works</h2>
+            <p>The initial proof of concept used ray casting to determine whether a point was visible to the camera. However, this was later optimized for greater efficiency. In the final version, point positions are directly projected onto the camera’s screen space, which leads to significant performance improvements. This method not only streamlines culling but also generates free screen space UV coordinates, enabling further enhancements like image-based point culling.
+            </p>
         </div>
 
+        <div class="content-box">
+            <h2>The toolset includes:</h2>
+            <p>
+                <strong>- Frustum culling:</strong> Basic culling of objects outside the camera’s view.</br>
+                <strong>- Image-based culling:</strong> Uses image luminosity to cull points based on visibility.</br>
+                <strong>- Occlusion detection:</strong> Detects occlusion from terrain or other objects in the scene.</br>
+                <strong>- Automated setup script:</strong> Automatically pulls camera data (lens length, sensor size, clipping distance, render resolution) and dynamically adjusts parameters, eliminating manual configuration.
+            </p>
+        </div>
+
+        <div class="content-box">
+            <h2>Key Features</h2>
+            <p>
+                - Up to 50% faster render times compared to rendering without the Camera Culler.
+                - Efficient memory usage and reduced computational load.
+                - Screen space UV coordinates that enable advanced culling techniques, such as image-based point culling.
+            </p>
+        </div>
+        <div class="content-box">
+            <h2>Earlier Versions and usecases</h2>
+        </div>
         <div class="grid-item">
-            <video allowfullscreen controls autoplay muted src="Assets/Medusa/Medusa-Opal-Mat.mp4" allowfullscreen></video>
+            <a>
+                <video loop muted autoplay controls src="Assets/Culler-v01.mp4" alt="Shuffled Points Video"></video>
+            </a>
             <div class="description">
-                Opal shader
+                Culling in space
             </div>
         </div>
 
         <div class="grid-item">
-            <video allowfullscreen controls autoplay muted src="Assets/Medusa/Medusa-Opals-Rot.mp4" allowfullscreen></video>
+            <a>
+                <video loop muted autoplay controls src="Assets/Culler-v02.mp4" alt="Unshuffled Points Video"></video>
+            </a>
             <div class="description">
-                Early version of the opal shader
+                Grass culling
             </div>
         </div>
-        
-        
-        <div class="content-box">
-            <h2>Challenges</h2>
-                <p>One of the main challenges was creating realistic opal materials, which exhibited complex internal scattering properties. We employed a technique using volumes and procedural 3D textures to achieve a lifelike appearance. This required careful adjustments to simulate how light interacts with the opal, ensuring it looked authentic in the final render.</p>
-        </div>
 
         <div class="content-box">
-            <h2>Gallery</h2>
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa-0405.jpg" alt="Image 1">
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa-1145.jpg" alt="Image 2">
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa-1301.jpg" alt="Image 3">
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa-2344.jpg" alt="Image 4">
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa-2700.jpg" alt="Image 5">
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa-2910.jpg" alt="Image 6">
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa/Medusa-3250.jpg" alt="Image 7">
-        </div>
-
-        <div class="grid-item">
+            <h2>Outcome</h2>
+            <p>This tool delivers improved rendering speeds and offers greater control over scene optimization, making it ideal for complex 3D environments. It maintains high visual fidelity while reducing the resources needed for rendering.
+            </p>
         </div>
 
         <div class="content-box">
-            <h2>Final edit</h2>
-        </div>
-        <div class="content-box">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/4jvNPwH-dek?&mute=1" alt="Propagation Solver Render"></iframe>
-            </div>
+            <h2>Skills & Technologies</h2>
+            <p>
+                <strong>- Blender:</strong> Developed and integrated the Camera Culler Node for rendering optimization.</br>
+                <strong>- Python:</strong> Automated camera parameter adjustments and culling setup.</br>
+                <strong>- Geometry Nodes:</strong> Used for both initial ray-casting and final screen space projection setup.</br>
+                <strong>- Custom Culling Algorithms:</strong> Implemented frustum, image-based, and occlusion culling techniques.</br>
+            </p>
         </div>
         
-        <div class="content-box">
-            <h2>Tools Used</h2>
-                <p>
-                    <strong>- Blender:</strong> Used for initial modeling, lighting, and final adjustments to the 3D pendant.</br>
-                    <strong>- ZBrush:</strong> Sculpted the model to achieve high levels of detail based on reference materials.</br>
-                    <strong>- Substance Painter:</strong> Textured the pendant, applying colors and high-frequency details to the gemstones.</br>
-                    <strong>- Houdini:</strong> Executed the digital cutting and liquid filling simulations to visualize gemstone placement.</br>
-                    <strong>- Blackmagic Fusion:</strong> Composited the final render for enhanced visual quality and presentation.</br>
-                </p>
-            </div>
-    
         <div class="content-box">
             <footer>
                 <div class="footer-content">

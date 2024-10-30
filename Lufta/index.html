@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cryptostraps</title>
+    <title>Lufta</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
+    
     <!-- Link to Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -34,8 +34,9 @@
         .container {
             max-width: 1000px;
             background-color: #fff;
-            border-top: 1px solid #333;
-            border-left: 1px solid #333;
+            border: 1px solid #333;
+            border-right: 0;
+            border-bottom: 0;
             margin: 0 auto;
             padding: 0; /* Remove padding */
             display: flex;
@@ -53,46 +54,59 @@
             padding: 10px; /* Reduced padding for a tighter fit */
             text-align: center; /* Center text */
         }
-
-        .content-box iframe {
-            width: 80%;
+        
+        .content-box img {
+            width: 100%;
             height: 500px;
             border: 20px;
         }
-        /* Additional style for top border */
-        .content-box.has-top-border {
-            border-top: 1px solid #333; /* Add top border */
+
+        .content-box iframe {
+            width: 100%;
+            height: 500px;
+            border: 20px;
         }
 
-        /* Additional style for grid items */
+        .content-box iframe {
+            width: 100%; /* Full width */
+            height: 500px; /* Fixed height for desktop; adjust as needed */
+            border: none; /* Remove the default border */
+            /* Optional: To prevent black borders on mobile, consider adding these styles */
+            background: #000; /* Set background to black to match video */
+            display: block; /* Ensures there's no extra space */
+        }
+
         .grid-item {
             background-color: #fff;
-            border-bottom: 1px solid #333;
-            border-right: 1px solid #333;
+            border-right: 1px solid #333; /* Default right border */
+            border-bottom: 1px solid #333; /* Default bottom border */
             margin: 0; /* Remove margin for touching containers */
             padding: 0; /* Remove padding for touching containers */
             width: calc(25%); /* 4 items per row */
             text-align: center;
             position: relative; /* For positioning of the description */
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+            transition: transform 0.5s ease; /* Smooth transition */
         }
 
         .grid-item a {
             display: block; /* Make anchor fill the grid item */
-            height: 0; /* Initialize height for square box */
-            padding-bottom: 100%; /* Maintain square aspect ratio */
             position: relative; /* For absolute positioning of the image */
             overflow: hidden; /* Prevent overflow when zooming */
         }
+        .grid-item video {
+            width: 100%; /* Image occupies 100% of the box */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
+            display: block; /* Remove any extra space below the image */
+            padding: 10px;
+        }
 
         .grid-item img {
-            position: absolute; /* Position the image absolutely within the anchor */
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            width: 90%; /* Image occupies 100% of the box */
+            width: 100%; /* Image occupies 100% of the box */
             height: auto; /* Maintain aspect ratio */
-            transform: translate(-50%, -50%); /* Center image */
-            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+            object-fit: cover; /* Cover the entire box while maintaining aspect ratio */
+            display: block; /* Remove any extra space below the image */
+            padding: 10px;
         }
 
         .description {
@@ -103,6 +117,22 @@
             background-color: #fff; /* Match background with the grid item */
             border-top: 1px solid #333; /* Border above description */
             text-align: center; /* Center text in the description box */
+        }
+
+        .video-container {
+            position: relative; /* Positioning context for the iframe */
+            padding-top: 56.25%; /* Aspect ratio for 16:9 (height/width) */
+            height: 0; /* Zero height, but padding-top creates height */
+            overflow: hidden; /* Hides overflow */
+        }
+
+        .video-container iframe {
+            position: absolute; /* Positioning within container */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            border: none; /* Remove any border */
         }
 
         /* Main header styling */
@@ -187,22 +217,35 @@
         footer a:hover {
             transform: scale(1.15); /* Zoom in on hover */
         }
+        
+        /* Add styles for image zoom on hover */
+        .zoom-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%; /* Adjust width based on your layout */
+            height: 500px; /* Fixed height for container */
+        }
+
+        .zoom-image {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+            transform-origin: center center;
+        }
+
+        .zoom-container:hover .zoom-image {
+            transform: scale(2); /* Adjust zoom level */
+        }
 
         @media (max-width: 5000px) {
             .grid-item {
-                width: calc(50%); /* 3 items per row */
+                width: calc(50%); /* 2 items per row */
             }
         }
 
-        /* Ensure content wraps well on smaller screens */
-        @media (max-width: 600px) {
-            .footer-content {
-                flex-direction: column; /* Stack text and icons vertically on small screens */
-                align-items: center; /* Center items */
-                text-align: center; /* Center text for smaller screens */
-            }
-            .social-icons {
-                margin-top: 5px; /* Add some space between text and icons */
+        @media (max-width: 800px) {
+            .grid-item {
+                width: calc(100%); /* 1 item per row */
             }
         }
     </style>
@@ -210,53 +253,79 @@
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>Cryptostraps</h1>
+            <h1>Lufta Inflatable Furniture</h1>
         </div>
 
         <div class="content-box">
             <h2>Task Description</h2>
-            <p>The client required a visually striking collection of modular 3D guns aimed at attracting a younger audience, particularly fans of multiplayer first-person shooters (FPS). My responsibilities included modeling and texturing five base guns and over 30 unique attachments, creating modular animations, and optimizing the entire rendering pipeline. The assets needed to be flexible for different configurations while maintaining a "cool" aesthetic that would resonate with gamers.</p>
+            <p>Lufta, a start-up specializing in inflatable furniture made from upcycled truck tarpaulin, needed a realistic rendering of their proof-of-concept three-legged stool. The stool was designed to appeal to outdoor enthusiasts and sports lovers, and the goal was to create a photorealistic representation that would attract this target audience. I received CAD files of the stool, which required optimization for offline rendering. My task involved preparing the model, texturing, and lighting to make the product visually appealing while staying true to the physical prototype.</p>
         </div>
 
-        <div class="content-box">
-            <iframe loop muted autoplay controls src="Assets/Cryptostraps/Cryptostraps-Animations.mp4" alt="Animation Loop"></iframe>
+        <div class="grid-item">
+            <img src="Assets/Lufta-07.png" alt="Image 1">
         </div>
 
-        <div class="content-box">
+        <div class="grid-item">
+            <img src="Assets/Lufta-08.png" alt="Image 2">
+        </div>
+
+        <div class="content-box">       
             <h2>Thought Process</h2>
-            <p>Due to the tight two-month timeline, my priority was efficiency. All attachments needed to be interchangeable across the base gun models. To streamline asset management, I used Blender for all stages of the workflow, eliminating time-consuming import/export steps. After discussing rendering options with the client, we chose Blender’s Eevee engine for real-time rendering, significantly cutting down on render times without sacrificing visual quality.
-            </br></br>
-            I created procedural materials instead of traditional textures, allowing me to avoid UV unwrapping and quickly make any necessary changes. For modular animations, I segmented the attachments by their position on the gun, ensuring animations would seamlessly adjust to different configurations.</p>
+                <p>I began by importing the CAD files into Blender, where I optimized and cleaned up the meshes to make them suitable for detailed rendering. After UV unwrapping the model, I proceeded to texturing in Substance Painter, adding realistic details such as weathering and subtle material variations to closely match the reference of the physical prototype.</br></br>
+
+                Once the textures were completed, I brought the model back into Blender for lighting and posing. I set up a virtual photo studio environment to capture the stool in a professional, yet natural, setting. My aim was to achieve the most realistic appearance possible while minimizing lens effects, creating the impression of a product photo taken with a high-end camera.
+                </p>
         </div>
 
-        <div class="content-box">
-            <iframe loop muted autoplay controls src="Assets/Cryptostraps/Uzi-Materials.mp4" alt="Different materials on the Uzi"></iframe>
+        <div class="grid-item">
+            <img src="Assets/Lufta-09.png" alt="Image 2">
         </div>
 
-        <div class="content-box">
-            <h2>Challenges</h2>
-            <p>The biggest challenge was time management, as the project involved delivering over 100 detailed assets in less than two months. Creating interchangeable attachments for various base gun models required careful planning to ensure they worked across all combinations. Additionally, the rendering process had to be optimized for speed without losing visual fidelity, as the final output was a video animation, not real-time assets. Another hurdle was maintaining clean and organized files to enable batch rendering with a technical artist's automated workflow script.</p>
+        <div class="grid-item">
+            <img src="Assets/Lufta-10.png" alt="Image 3">
         </div>
         
         <div class="content-box">
-            <h2>Optimizations</h2>
-            <p>To meet the project’s deadlines, I focused on several optimizations:</br>
-                <strong>- Procedural Materials: </strong> By using procedural materials, I saved time on UV unwrapping and ensured flexibility for last-minute changes.</br>
-                <strong>- Real-Time Rendering in Eevee: </strong> We reduced rendering time by 20x while still matching ray-traced quality.</br>
-                <strong>- Modular Animations: </strong> Segmenting the attachments by position allowed me to create reusable, looping animations, reducing animation production time by 50%.</br>
-                <strong>- Batch Rendering: </strong> I coordinated with a technical artist to set up an automated batch rendering process, keeping files clean and organized for maximum efficiency.</br>
-            </p>
+            <h2>Challenges</h2>
+                <p>One of the key challenges was showcasing the internal filaments that maintain the stool’s shape. To achieve this, I utilized Blender’s new Geometry Nodes system to generate procedural geometry, accurately representing the internal support structure in a clear and appealing manner. This added layer of detail helped highlight the stool’s innovative design.</p>
+        </div>
+
+        <div class="content-box">
+            <h2>Gallery</h2>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Lufta-01.png" alt="Image 4">
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Lufta-02.png" alt="Image 5">
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Lufta-03.png" alt="Image 6">
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Lufta-04.png" alt="Image 7">
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Lufta-05.png" alt="Image 8">
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Lufta-06.png" alt="Image 9">
         </div>
 
         <div class="content-box">
             <h2>Tools Used</h2>
-            <p>
-                <strong>- Blender: </strong> 3D modeling, texturing, animations.</br>
-                <strong>- Eevee: </strong> Real-time rendering, significantly reducing render times.</br>
-                <strong>- Python: </strong> Rendering process automation, ensuring quick and accurate outputs across multiple assets.</br>
-                <strong>- PureRef: </strong> Extensive real-world reference images to ensure the guns and attachments looked realistic.</br>
-            </p>
-        </div>
+                <p>
+                    <strong>- Blender:</strong> Optimized the CAD model, prepared the UVs, created internal filaments with Geometry Nodes, and set up realistic lighting for rendering.</br>
+                    <strong>- Substance Painter:</strong> Textured the chair, adding weathering effects and realistic material details.</br>
+                    <strong>- Geometry Nodes:</strong> Used to procedurally generate the internal filaments for structural representation.</br>
+                </p>
+            </div>
         
         <div class="content-box">
             <footer>
@@ -277,7 +346,7 @@
                 </div>
             </footer>
         </div>
-
+        
     </div>
 </body>
 </html>

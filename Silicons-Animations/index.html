@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Shuffle Node</title>
+    <title>Silicons Animations</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
+    
     <!-- Link to Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    
     <style>
         /* Reset some default browser styles */
         * {
@@ -35,8 +35,8 @@
             max-width: 1000px;
             background-color: #fff;
             border: 1px solid #333;
-            border-bottom: 0;
             border-right: 0;
+            border-bottom: 0;
             margin: 0 auto;
             padding: 0; /* Remove padding */
             display: flex;
@@ -104,7 +104,7 @@
         .grid-item img {
             width: 100%; /* Image occupies 100% of the box */
             height: auto; /* Maintain aspect ratio */
-            object-fit: cover; /* Cover the entire box while maintaining aspect ratio */
+            object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
             display: block; /* Remove any extra space below the image */
             padding: 10px;
         }
@@ -218,6 +218,11 @@
             transform: scale(1.15); /* Zoom in on hover */
         }
 
+        footer a {
+            text-decoration: none;
+            color: #333;
+        }
+
         @media (max-width: 5000px) {
             .grid-item {
                 width: calc(50%); /* 2 items per row */
@@ -234,45 +239,82 @@
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>Index Shuffle Node</h1>
+            <h1>Silicons Animations</h1>
         </div>
 
         <div class="content-box">
-            <h2>Problem: Predictable Point Distribution</h2>
-            <p id="justify">In Blender, the Distribute Points on Faces and Distribute Points in Volume nodes generate points in a predictable order—starting from the first face or voxel to the last. This creates uniform patterns, which aren't ideal when projects require random yet evenly distributed points.</p>
+            <h2>Task Description</h2>
+            <p>The client required an efficient method to generate thousands of unique NFT animations from a set of over 100 assets. My role involved character animation, clothing simulations, automating the rendering process, and optimizing the workflow for rapid asset creation and processing.</p>
         </div>
 
         <div class="content-box">
-            <h2>Solution: Index Shuffle Node</h2>
-            <p id="justify">To overcome this, I developed the Index Shuffle Node, which randomizes point indices by randomly splitting points into two groups and rejoining them. This method allows for a fast, intuitive way to achieve more randomized distributions, ideal for creating natural layouts.</p>
+            <h2>Final output</h2>
+            <iframe autoplay loop muted src="Assets/Walk-Cycle.mp4" alt="Walk Cycle Animation"></iframe>
+        </div>
+
+        <div class="content-box">
+            <h2>Thought Process</h2>
+            <p>
+                Initially, I considered rendering every combination of assets individually, but this approach would have resulted in extremely long render times. Instead, I devised a more efficient solution by rendering each asset as a separate layer and later compositing them in Adobe After Effects. This approach not only avoided redundant rendering of repeated assets across different combinations but also allowed for quick fixes if individual assets needed adjustments, significantly speeding up the entire production pipeline.
+            </p>
+        </div>
+
+        <div class="content-box">
+            <h2>Houdini Workflow and Automation</h2>
+            <p>
+                A key challenge was ensuring the clothing simulations were seamlessly looped for the animations. Using Houdini, I created a setup that automatically blended the start and end of the clothing simulations, ensuring a smooth, continuous loop. The process started in Marvelous Designer, where I simulated the garments running through two full character animation loops. I then imported the simulations into Houdini, where I utilized the Blend Node to transition the animation seamlessly. By blending the beginning of the second loop with the end of the first, I was able to create a perfect loop.
+            </p>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen controls autoplay muted src="Assets/Assets-Loop-Houdini.mp4" allowfullscreen></video>
+            <div class="description">
+                Original loop
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen controls autoplay muted src="Assets/Assets-Loop-Blend-Houdini.mp4" allowfullscreen></video>
+            <div class="description">
+                Loop blend
+            </div>
+        </div>
+
+        <div class="content-box">
+            <p>
+                To further streamline the workflow, I parameterized all the essential elements of the Houdini setup. This meant that for every new clothing simulation, I only needed to adjust a few parameters, such as the transition from the neutral pose to the simulation pose and the length of one simulation loop. The rest of the process—blending, looping, and exporting—was handled automatically by the system I built.</br></br>
+
+                In addition, I wrote custom Python scripts within Houdini to automate file handling. These scripts allowed me to recursively search user-defined folders for simulation files in Alembic (.abc) format, loop the animations, and export them with new, loop-ready filenames. This automation reduced what would have been a highly repetitive and time-consuming task into a process that could be completed with just a few clicks.
+            </p>
         </div>
         
-        <div class="grid-item">
-            <a>
-                <video loop muted autoplay controls src="Assets/Index-Shuffle/Shuffled-Points.mp4" alt="Shuffled Points Video"></video>
-            </a>
-            <div class="description">
-                Shuffled Points
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <a>
-                <video loop muted autoplay controls src="Assets/Index-Shuffle/Unshuffled-Points.mp4" alt="Unshuffled Points Video"></video>
-            </a>
-            <div class="description">
-                Unshuffled Points
-            </div>
+        <div class="content-box">
+            <h2>Assets</h2>
+            <iframe autoplay loop muted src="Assets/Silicons-Assets.mp4" alt="3D assets video loop"></iframe>
         </div>
 
         <div class="content-box">
-            <h2>Customization and Performance</h2>
-            <p id="justify">The node allows users to specify the number of shuffle repetitions for greater randomness. However, more repetitions increase processing time, so users can balance randomness and performance based on their project needs.</p>
+            <h2>Optimizations</h2>
+            <p>This approach avoided redundant rendering of the same assets multiple times, reducing the overall render time by reusing the same renders across combinations. It also allowed for fast fixes in case any of the assets needed that.</br>
+            After optimizing and simulating garments, I batch imported everything into Blender, ensuring materials and animations were correct. I used a Python script to automate individual asset rendering.
+            </p>
+        </div>
+
+        <div class="content-box">
+            <h2>Compositing Automation</h2>
+            <iframe autoplay loop muted src="Assets/Silicons-AE-Comp.mp4" alt="Video of the Compositing Process"></iframe>
         </div>
 
         <div class="content-box">
             <h2>Tools Used</h2>
-            <p><strong>- Blender</strong> (Geometry Nodes)</p>
+            <p>
+                <strong>- Blender: </strong> Used primarily for character animation and batch asset rendering with Python scripts.</br>
+                <strong>- Marvelous Designer: </strong> Simulated and designed realistic clothing for characters.</br>
+                <strong>- Houdini: </strong> Managed looping simulations for seamless animations, particularly with clothing and dynamics.</br>
+                <strong>- Python: </strong> Automated the rendering process, including asset imports, materials, and animation setups.</br>
+                <strong>- Adobe After Effects: </strong> Composited asset layers and created final NFT animations by managing combinations.</br>
+                <strong>- JavaScript/Adobe ExtendScript: </strong> Automated the compositing process in After Effects, ensuring efficient handling of multiple asset layers and variations.
+            </p>
         </div>
         
         <div class="content-box">

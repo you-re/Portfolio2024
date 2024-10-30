@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Texturing</title>
+    <title>Medusa</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     
     <!-- Link to Google Fonts -->
@@ -35,8 +35,8 @@
             max-width: 1000px;
             background-color: #fff;
             border: 1px solid #333;
-            border-bottom: 0;
             border-right: 0;
+            border-bottom: 0;
             margin: 0 auto;
             padding: 0; /* Remove padding */
             display: flex;
@@ -54,46 +54,59 @@
             padding: 10px; /* Reduced padding for a tighter fit */
             text-align: center; /* Center text */
         }
+        
+        .content-box img {
+            width: 100%;
+            height: 500px;
+            border: 20px;
+        }
 
         .content-box iframe {
             width: 100%;
             height: 500px;
             border: 20px;
         }
-        /* Additional style for top border */
-        .content-box.has-top-border {
-            border-top: 1px solid #333; /* Add top border */
+
+        .content-box iframe {
+            width: 100%; /* Full width */
+            height: 500px; /* Fixed height for desktop; adjust as needed */
+            border: none; /* Remove the default border */
+            /* Optional: To prevent black borders on mobile, consider adding these styles */
+            background: #000; /* Set background to black to match video */
+            display: block; /* Ensures there's no extra space */
         }
 
-        /* Additional style for grid items */
         .grid-item {
             background-color: #fff;
-            border-bottom: 1px solid #333;
             border-right: 1px solid #333; /* Default right border */
+            border-bottom: 1px solid #333; /* Default bottom border */
             margin: 0; /* Remove margin for touching containers */
             padding: 0; /* Remove padding for touching containers */
             width: calc(25%); /* 4 items per row */
             text-align: center;
             position: relative; /* For positioning of the description */
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+            transition: transform 0.5s ease; /* Smooth transition */
         }
 
         .grid-item a {
             display: block; /* Make anchor fill the grid item */
-            height: 0; /* Initialize height for square box */
-            padding-bottom: 100%; /* Maintain square aspect ratio */
             position: relative; /* For absolute positioning of the image */
             overflow: hidden; /* Prevent overflow when zooming */
         }
+        .grid-item video {
+            width: 100%; /* Image occupies 100% of the box */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
+            display: block; /* Remove any extra space below the image */
+            padding: 10px;
+        }
 
         .grid-item img {
-            position: absolute; /* Position the image absolutely within the anchor */
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            width: 90%; /* Image occupies 100% of the box */
+            width: 100%; /* Image occupies 100% of the box */
             height: auto; /* Maintain aspect ratio */
-            transform: translate(-50%, -50%); /* Center image */
-            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+            object-fit: cover; /* Cover the entire box while maintaining aspect ratio */
+            display: block; /* Remove any extra space below the image */
+            padding: 10px;
         }
 
         .description {
@@ -104,6 +117,22 @@
             background-color: #fff; /* Match background with the grid item */
             border-top: 1px solid #333; /* Border above description */
             text-align: center; /* Center text in the description box */
+        }
+
+        .video-container {
+            position: relative; /* Positioning context for the iframe */
+            padding-top: 56.25%; /* Aspect ratio for 16:9 (height/width) */
+            height: 0; /* Zero height, but padding-top creates height */
+            overflow: hidden; /* Hides overflow */
+        }
+
+        .video-container iframe {
+            position: absolute; /* Positioning within container */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            border: none; /* Remove any border */
         }
 
         /* Main header styling */
@@ -189,9 +218,20 @@
             transform: scale(1.15); /* Zoom in on hover */
         }
 
+        footer a {
+            text-decoration: none;
+            color: #333;
+        }
+
         @media (max-width: 5000px) {
             .grid-item {
-                width: calc(33.33%); /* 3 items per row */
+                width: calc(50%); /* 2 items per row */
+            }
+        }
+
+        @media (max-width: 800px) {
+            .grid-item {
+                width: calc(100%); /* 1 item per row */
             }
         }
     </style>
@@ -199,55 +239,97 @@
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>CFPS - Quick Texturing</h1>
+            <h1>Realistic Pendant Rendering</h1>
         </div>
 
         <div class="content-box">
-            <h2>Project Scope</h2>
-            <p>For the CFPS (Cyber First Person Shooter) project, I was tasked with developing a workflow to streamline the customization of 3D gun models using user-provided images. I created a Python script within Blender that reads an image from the user's drive, extracts colors with the extcolors library, and applies these colors to the gun's materials.</p>
+            <h2>Task Description</h2>
+            <p>The Realistic Pendant Rendering project involved creating a detailed 3D replica of a unique, handmade pendant that was housed in a museum. Due to the pendant's value and the inability to access the physical object, we relied on x-ray scans, material analysis, and extensive reference photography and videos. The primary goal was to produce a photorealistic representation of the pendant, including intricate textures and materials of the gemstones, while presenting the object in an engaging manner.</p>
         </div>
 
-        <div class="content-box">
-                <iframe allowfullscreen controls autoplay muted src="https://youtube.com/embed/cU6aypRRJs4?autoplay=1&mute=1&loop=1" allowfullscreen></iframe>
+        <div class="content-box">       
+            <h2>Thought Process</h2>
+                <p>Initially, we focused on gathering all available data about the pendant, including its construction methods and the arrangement of gemstones. The modeling was executed in Blender, followed by sculpting in ZBrush to accurately capture the intricate details from the references. After texturing the model in Substance Painter, we transferred it to Houdini for a digital cut, allowing us to visualize the internal structure and gemstone placement. The liquid filling simulation mirrored the craftsmanship involved in placing the gemstones within the gold pendant.</br>
+
+                The final step involved bringing the high-definition model back into Blender for realistic lighting and material creation. Special attention was given to the materials, ensuring they reflected the pendant’s unique characteristics.
+                </p>
         </div>
 
         <div class="grid-item">
-            <a>
-                <img src="Assets/Quick-Texturing/BAYC.png" alt="Image 1">
-            </a>
+            <video allowfullscreen controls autoplay muted src="Assets/Medusa-Opal-Mat.mp4" allowfullscreen></video>
             <div class="description">
-                Image 1
+                Opal shader
             </div>
         </div>
 
         <div class="grid-item">
-            <a>
-                <img src="Assets/Quick-Texturing/SMB.png" alt="Image 2">
-            </a>
+            <video allowfullscreen controls autoplay muted src="Assets/Medusa-Opals-Rot.mp4" allowfullscreen></video>
             <div class="description">
-                Image 2
+                Early version of the opal shader
             </div>
         </div>
         
-        <div class="grid-item">
-            <a>
-                <img src="Assets/Quick-Texturing/OkayBears.jpg" alt="Image 3">
-            </a>
-            <div class="description">
-                Image 3
-            </div>
+        
+        <div class="content-box">
+            <h2>Challenges</h2>
+                <p>One of the main challenges was creating realistic opal materials, which exhibited complex internal scattering properties. We employed a technique using volumes and procedural 3D textures to achieve a lifelike appearance. This required careful adjustments to simulate how light interacts with the opal, ensuring it looked authentic in the final render.</p>
         </div>
 
+        <div class="content-box">
+            <h2>Gallery</h2>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa-0405.jpg" alt="Image 1">
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa-1145.jpg" alt="Image 2">
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa-1301.jpg" alt="Image 3">
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa-2344.jpg" alt="Image 4">
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa-2700.jpg" alt="Image 5">
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa-2910.jpg" alt="Image 6">
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Medusa-3250.jpg" alt="Image 7">
+        </div>
+
+        <div class="grid-item">
+        </div>
+
+        <div class="content-box">
+            <h2>Final edit</h2>
+        </div>
+        <div class="content-box">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/4jvNPwH-dek?&mute=1" alt="Propagation Solver Render"></iframe>
+            </div>
+        </div>
+        
         <div class="content-box">
             <h2>Tools Used</h2>
-            <p>
-                <strong>- Blender: </strong> Developed the workflow for applying custom textures to 3D gun models.</br>
-                <strong>- Substance Painter: </strong> Enhanced texture creation and painting for 3D models.</br>
-                <strong>- Python: </strong> Scripted the automation of texture application and material adjustments.</br>
-                <strong>- extcolors Library: </strong> Extracted colors from user-provided images to customize gun materials.</br>
-            </p>
-        </div>
-        
+                <p>
+                    <strong>- Blender:</strong> Used for initial modeling, lighting, and final adjustments to the 3D pendant.</br>
+                    <strong>- ZBrush:</strong> Sculpted the model to achieve high levels of detail based on reference materials.</br>
+                    <strong>- Substance Painter:</strong> Textured the pendant, applying colors and high-frequency details to the gemstones.</br>
+                    <strong>- Houdini:</strong> Executed the digital cutting and liquid filling simulations to visualize gemstone placement.</br>
+                    <strong>- Blackmagic Fusion:</strong> Composited the final render for enhanced visual quality and presentation.</br>
+                </p>
+            </div>
+    
         <div class="content-box">
             <footer>
                 <div class="footer-content">
@@ -267,6 +349,7 @@
                 </div>
             </footer>
         </div>
+        
     </div>
 </body>
 </html>

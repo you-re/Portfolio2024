@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silicons Animations</title>
+    <title>Silicons Teaser</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     
     <!-- Link to Google Fonts -->
@@ -11,7 +11,7 @@
     
     <!-- Link to Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <style>
         /* Reset some default browser styles */
         * {
@@ -104,7 +104,7 @@
         .grid-item img {
             width: 100%; /* Image occupies 100% of the box */
             height: auto; /* Maintain aspect ratio */
-            object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
+            object-fit: cover; /* Cover the entire box while maintaining aspect ratio */
             display: block; /* Remove any extra space below the image */
             padding: 10px;
         }
@@ -218,11 +218,6 @@
             transform: scale(1.15); /* Zoom in on hover */
         }
 
-        footer a {
-            text-decoration: none;
-            color: #333;
-        }
-
         @media (max-width: 5000px) {
             .grid-item {
                 width: calc(50%); /* 2 items per row */
@@ -239,81 +234,93 @@
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>Silicons Animations</h1>
+            <h1>Silicons Teaser</h1>
         </div>
 
         <div class="content-box">
             <h2>Task Description</h2>
-            <p>The client required an efficient method to generate thousands of unique NFT animations from a set of over 100 assets. My role involved character animation, clothing simulations, automating the rendering process, and optimizing the workflow for rapid asset creation and processing.</p>
+            <p>The client wanted a teaser animation for their upcoming NFT collection, featuring a character model and various 3D clothing items. My goal was to create a digital photoshoot scene where the character would pose and showcase the high-quality 3D assets. Given the tight deadline, I opted for a fast and efficient workflow using Blender and kitbashing elements from 3D online asset stores to assemble the scene.</p>
         </div>
 
         <div class="content-box">
-            <h2>Final output</h2>
-            <iframe autoplay loop muted src="Assets/Silicons-Animations/Walk-Cycle.mp4" alt="Walk Cycle Animation"></iframe>
+            <h2>Final video</h2>
+        </div>
+        <div class="content-box">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/EPR-x39AGyI?autoplay=1&mute=1&loop=1" alt="Silicons Teaser Video"></iframe>
+            </div>
         </div>
 
-        <div class="content-box">
+        <div class="content-box">       
             <h2>Thought Process</h2>
-            <p>
-                Initially, I considered rendering every combination of assets individually, but this approach would have resulted in extremely long render times. Instead, I devised a more efficient solution by rendering each asset as a separate layer and later compositing them in Adobe After Effects. This approach not only avoided redundant rendering of repeated assets across different combinations but also allowed for quick fixes if individual assets needed adjustments, significantly speeding up the entire production pipeline.
-            </p>
+                <p>I began by rigging and animating the character in Blender, ensuring the poses highlighted the unique design of the character and its clothing. After setting up the animation, I exported it to Marvelous Designer, where I simulated the character’s clothing to achieve realistic draping and movement. Once the simulation was complete, I brought everything back into Blender to refine the scene.</br></br>
+
+                I added subtle imperfections to the clothing and materials, including cloth strands, surface displacement to enhance authenticity. Next, I set up lighting and began the rendering process, focusing on creating dynamic camera transitions. To simulate camera flashes, I used Blender's F-Curve modifiers, which allowed me to time the flashes and transitions efficiently.
+                </p>
         </div>
 
         <div class="content-box">
-            <h2>Houdini Workflow and Automation</h2>
-            <p>
-                A key challenge was ensuring the clothing simulations were seamlessly looped for the animations. Using Houdini, I created a setup that automatically blended the start and end of the clothing simulations, ensuring a smooth, continuous loop. The process started in Marvelous Designer, where I simulated the garments running through two full character animation loops. I then imported the simulations into Houdini, where I utilized the Blend Node to transition the animation seamlessly. By blending the beginning of the second loop with the end of the first, I was able to create a perfect loop.
-            </p>
+            <h2>Material developement</h2>
+                <p>Additionally, while working on the animation, I was also developing the look of the materials that would later be used for the collection. I aimed to incorporate as much detail and visual interest as possible into these materials to elevate the final aesthetic. Using Substance Painter, I carefully crafted textures that highlighted intricate surface details, such as realistic wear, fine fabric textures, and subtle color variations. This attention to material design helped ensure that each asset would stand out as a unique piece within the collection.</p>
+        </div>
+
+        <div class="content-box">
+            <h2>Gallery</h2>
         </div>
 
         <div class="grid-item">
-            <video allowfullscreen controls autoplay muted src="Assets/Silicons-Animations/Assets-Loop-Houdini.mp4" allowfullscreen></video>
+            <img src="Assets/Silicons-Mat-Dev-07.png" alt="Image 1"></img>
             <div class="description">
-                Original loop
+                Image 1
             </div>
         </div>
 
         <div class="grid-item">
-            <video allowfullscreen controls autoplay muted src="Assets/Silicons-Animations/Assets-Loop-Blend-Houdini.mp4" allowfullscreen></video>
+            <img src="Assets/Silicons-Mat-Dev-42.png" alt="Image 2"></img>
             <div class="description">
-                Loop blend
+                Image 2
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Silicons-Mat-Dev-10.png" alt="Image 3"></img>
+            <div class="description">
+                Image 3
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Silicons-Mat-Dev-13.png" alt="Image 4"></img>
+            <div class="description">
+                Image 4
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Silicons-Mat-Dev-20.png" alt="Image 5"></img>
+            <div class="description">
+                Image 5
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Silicons-Mat-Dev-18.png" alt="Image 6"></img>
+            <div class="description">
+                Image 6
             </div>
         </div>
 
         <div class="content-box">
-            <p>
-                To further streamline the workflow, I parameterized all the essential elements of the Houdini setup. This meant that for every new clothing simulation, I only needed to adjust a few parameters, such as the transition from the neutral pose to the simulation pose and the length of one simulation loop. The rest of the process—blending, looping, and exporting—was handled automatically by the system I built.</br></br>
-
-                In addition, I wrote custom Python scripts within Houdini to automate file handling. These scripts allowed me to recursively search user-defined folders for simulation files in Alembic (.abc) format, loop the animations, and export them with new, loop-ready filenames. This automation reduced what would have been a highly repetitive and time-consuming task into a process that could be completed with just a few clicks.
-            </p>
+            <h2>Challenges</h2>
+                <p>A major challenge was achieving a high level of detail within a tight deadline. The use of kitbashing and procedural tools in Blender helped speed up the process while maintaining visual quality. Simulating realistic clothing movements and integrating the camera flash effects presented additional complexity, but these were handled using Blender’s built-in tools and Marvelous Designer for accurate cloth behavior.</p>
         </div>
         
         <div class="content-box">
-            <h2>Assets</h2>
-            <iframe autoplay loop muted src="Assets/Silicons-Animations/Silicons-Assets.mp4" alt="3D assets video loop"></iframe>
-        </div>
-
-        <div class="content-box">
-            <h2>Optimizations</h2>
-            <p>This approach avoided redundant rendering of the same assets multiple times, reducing the overall render time by reusing the same renders across combinations. It also allowed for fast fixes in case any of the assets needed that.</br>
-            After optimizing and simulating garments, I batch imported everything into Blender, ensuring materials and animations were correct. I used a Python script to automate individual asset rendering.
-            </p>
-        </div>
-
-        <div class="content-box">
-            <h2>Compositing Automation</h2>
-            <iframe autoplay loop muted src="Assets/Silicons-Animations/Silicons-AE-Comp.mp4" alt="Video of the Compositing Process"></iframe>
-        </div>
-
-        <div class="content-box">
             <h2>Tools Used</h2>
             <p>
-                <strong>- Blender: </strong> Used primarily for character animation and batch asset rendering with Python scripts.</br>
-                <strong>- Marvelous Designer: </strong> Simulated and designed realistic clothing for characters.</br>
-                <strong>- Houdini: </strong> Managed looping simulations for seamless animations, particularly with clothing and dynamics.</br>
-                <strong>- Python: </strong> Automated the rendering process, including asset imports, materials, and animation setups.</br>
-                <strong>- Adobe After Effects: </strong> Composited asset layers and created final NFT animations by managing combinations.</br>
-                <strong>- JavaScript/Adobe ExtendScript: </strong> Automated the compositing process in After Effects, ensuring efficient handling of multiple asset layers and variations.
+                <strong>- Blender:</strong> Rigged, animated, and rendered the character, set up lighting, and handled the final compositing.</br>
+                <strong>- Marvelous Designer:</strong> Simulated realistic clothing behavior on the animated character.</br>
+                <strong>- 3D Asset Stores:</strong> Kitbashed environment elements for quick scene assembly.</br>
             </p>
         </div>
         
@@ -336,7 +343,6 @@
                 </div>
             </footer>
         </div>
-
     </div>
 </body>
 </html>
