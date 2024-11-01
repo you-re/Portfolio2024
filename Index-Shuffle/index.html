@@ -249,7 +249,7 @@
         
         <div class="grid-item">
             <a>
-                <video loop muted autoplay controls src="Assets/Shuffled-Points.mp4" alt="Shuffled Points Video"></video>
+                <video loop muted autoplay controls src="Assets/Shuffled-Points-v02.mp4" alt="Shuffled Points Video"></video>
             </a>
             <div class="description">
                 Shuffled Points
@@ -258,7 +258,7 @@
 
         <div class="grid-item">
             <a>
-                <video loop muted autoplay controls src="Assets/Unshuffled-Points.mp4" alt="Unshuffled Points Video"></video>
+                <video loop muted autoplay controls src="Assets/Unshuffled-Points-v02.mp4" alt="Unshuffled Points Video"></video>
             </a>
             <div class="description">
                 Unshuffled Points
@@ -267,7 +267,14 @@
 
         <div class="content-box">
             <h2>Customization and Performance</h2>
-            <p id="justify">The node allows users to specify the number of shuffle repetitions for greater randomness. However, more repetitions increase processing time, so users can balance randomness and performance based on their project needs.</p>
+            <p>
+                The node enables users to randomize indices on both point clouds and 3D meshes, applying not only to points but also to faces and edges on any 3D mesh. Unlike traditional noise functions, which can introduce overlapping values, the Index Shuffle Node preserves unique indices per point, ensuring that no two points share the same index and that the input range matches the output range. This feature opens up several creative and technical applications, such as:</br></br>
+                - Adding an exact number of new points per specified time frame (simulations)</br>
+                - Selecting an exact number of points for instancing objects (instancing)</br>
+                - Achieving non-repeating patterns on mesh surfaces for texturing (even distribution)</br>
+                - Placing particles or decals at randomized but evenly spread intervals across a surface (memory conservation)</br></br>
+
+                Additionally, by offering control over shuffle repetitions, the node allows users to fine-tune randomness, balancing between natural randomness and system performance as needed. These capabilities make the Index Shuffle Node a versatile tool in crafting organic, natural-looking layouts in procedural projects without sacrificing precision or efficiency.</p>
         </div>
 
         <div class="content-box">
