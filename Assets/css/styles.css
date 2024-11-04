@@ -161,6 +161,16 @@ p {
     text-align: left;
 }
 
+p a{
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+p a:hover{
+    color: #000;
+}
+
+
 /* Header box styling */
 header {
     color: #333;
