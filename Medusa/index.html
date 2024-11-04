@@ -132,53 +132,14 @@
         <!-- The Modal for Enlarged Image -->
         <div id="myModal" class="modal">
             <div class="modal-image-container">
-                    <span class="close">&times;</span>
-                    <img class="modal-content" id="modal-img">
-                    <div class="modal-caption" id="caption"></div>
+                <span class="close">&times;</span>
+                <img class="modal-content" id="modal-img">
+                <div class="modal-caption" id="caption"></div>
             </div>
         </div>
         
     </div>
 
-    <script>
-        // Wait for the DOM to load before running JavaScript
-        document.addEventListener("DOMContentLoaded", function() {
-            const modal = document.getElementById("myModal");
-            const modalImg = document.getElementById("modal-img");
-            const captionText = document.getElementById("caption");
-            const closeModal = document.querySelector(".close");
-
-            // Function to set modal image width based on container width
-            function setModalImageWidth() {
-                const containerWidth = document.querySelector('.container').offsetWidth;
-                modalImg.style.width = `${containerWidth}px`;
-            }
-
-            // Add click event to each gallery image to open modal
-            document.querySelectorAll('.gallery-img').forEach(img => {
-                img.addEventListener('click', function() {
-                    modal.style.display = "flex"; // Show modal
-                    modalImg.src = this.src; // Set image source
-                    captionText.innerHTML = this.alt; // Set caption text
-                    setModalImageWidth(); // Match modal image width with container
-                });
-            });
-
-            // Close modal when clicking the 'close' button
-            closeModal.onclick = function() {
-                modal.style.display = "none";
-            }
-
-            // Close modal when clicking outside the image
-            modal.onclick = function(event) {
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                }
-            }
-
-            // Update modal image width on window resize
-            window.addEventListener('resize', setModalImageWidth);
-        });
-    </script>
+    <script src="../Assets/js/scripts.js"></script>
 </body>
 </html>
