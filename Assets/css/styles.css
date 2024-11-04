@@ -175,10 +175,10 @@ p a:hover{
 header {
     color: #333;
     padding: 0;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    font-size: 1.5em;
-    margin: -1vw;
+    padding-bottom: 0.25vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    margin: -10px;
 }
 
 /* Header content styling */
@@ -198,6 +198,28 @@ header a {
 header a:hover {
     transform: scale(1.2);
     color: #000;
+}
+
+header .icon {
+    width: 1em;  /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    vertical-align: middle; /* Align vertically within the link */
+    margin: 0 5px; /* Optional: add spacing around the icons */
+}
+
+/* Rotates the icon 90 degrees to the left */
+.rotate-left {
+    transform: rotate(-90deg);
+}
+
+/* Rotates the icon 90 degrees to the right */
+.rotate-right {
+    transform: rotate(90deg);
+}
+
+/* Additional rotation example: 180 degrees */
+.rotate-180 {
+    transform: rotate(180deg);
 }
 
 /* Footer box styling */
