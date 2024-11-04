@@ -62,6 +62,14 @@ body {
     display: block; /* Ensures there's no extra space */
 }
 
+.content-box video {
+    width: 100%; /* Image occupies 100% of the box */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
+    display: block; /* Remove any extra space below the image */
+    padding: 10px;
+}
+
 .grid-item {
     background-color: #fff;
     border-right: 1px solid #333; /* Default right border */
