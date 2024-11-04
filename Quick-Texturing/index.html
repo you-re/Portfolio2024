@@ -23,7 +23,7 @@
         /* General body styling */
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #cecece;
+            background-color: #fff;
             color: #333;
             line-height: 1.6;
             padding: 20px;
@@ -35,8 +35,8 @@
             max-width: 1000px;
             background-color: #fff;
             border: 1px solid #333;
-            border-bottom: 0;
             border-right: 0;
+            border-bottom: 0;
             margin: 0 auto;
             padding: 0; /* Remove padding */
             display: flex;
@@ -54,46 +54,60 @@
             padding: 10px; /* Reduced padding for a tighter fit */
             text-align: center; /* Center text */
         }
+        
+        .content-box img {
+            width: 100%;
+            height: 500px;
+            border: 20px;
+        }
 
         .content-box iframe {
             width: 100%;
             height: 500px;
             border: 20px;
         }
-        /* Additional style for top border */
-        .content-box.has-top-border {
-            border-top: 1px solid #333; /* Add top border */
+
+        .content-box iframe {
+            width: 100%; /* Full width */
+            height: 500px; /* Fixed height for desktop; adjust as needed */
+            border: none; /* Remove the default border */
+            /* Optional: To prevent black borders on mobile, consider adding these styles */
+            background: #000; /* Set background to black to match video */
+            display: block; /* Ensures there's no extra space */
         }
 
-        /* Additional style for grid items */
         .grid-item {
             background-color: #fff;
-            border-bottom: 1px solid #333;
             border-right: 1px solid #333; /* Default right border */
+            border-bottom: 1px solid #333; /* Default bottom border */
             margin: 0; /* Remove margin for touching containers */
             padding: 0; /* Remove padding for touching containers */
             width: calc(25%); /* 4 items per row */
             text-align: center;
             position: relative; /* For positioning of the description */
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+            transition: transform 0.5s ease; /* Smooth transition */
         }
 
         .grid-item a {
             display: block; /* Make anchor fill the grid item */
-            height: 0; /* Initialize height for square box */
-            padding-bottom: 100%; /* Maintain square aspect ratio */
             position: relative; /* For absolute positioning of the image */
             overflow: hidden; /* Prevent overflow when zooming */
         }
+        .grid-item video {
+            width: 100%; /* Image occupies 100% of the box */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
+            display: block; /* Remove any extra space below the image */
+            padding: 10px;
+        }
 
         .grid-item img {
-            position: absolute; /* Position the image absolutely within the anchor */
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            width: 90%; /* Image occupies 100% of the box */
+            width: 100%; /* Image occupies 100% of the box */
             height: auto; /* Maintain aspect ratio */
-            transform: translate(-50%, -50%); /* Center image */
-            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+            object-fit: cover; /* Cover the entire box while maintaining aspect ratio */
+            display: block; /* Remove any extra space below the image */
+            padding: 10px;
+            cursor: pointer;
         }
 
         .description {
@@ -104,6 +118,22 @@
             background-color: #fff; /* Match background with the grid item */
             border-top: 1px solid #333; /* Border above description */
             text-align: center; /* Center text in the description box */
+        }
+
+        .video-container {
+            position: relative; /* Positioning context for the iframe */
+            padding-top: 56.25%; /* Aspect ratio for 16:9 (height/width) */
+            height: 0; /* Zero height, but padding-top creates height */
+            overflow: hidden; /* Hides overflow */
+        }
+
+        .video-container iframe {
+            position: absolute; /* Positioning within container */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            border: none; /* Remove any border */
         }
 
         /* Main header styling */
@@ -189,10 +219,124 @@
             transform: scale(1.15); /* Zoom in on hover */
         }
 
-        @media (max-width: 5000px) {
+        @media (max-width: 10000px) {
             .grid-item {
-                width: calc(33.33%); /* 3 items per row */
+                width: calc(50%); /* 2 items per row */
             }
+
+            .social-icons {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .grid-item {
+                width: calc(100%); /* 1 item per row */
+            }
+
+            .social-icons {
+                gap: 10px;
+            }
+
+            .social-link {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .social-icons {
+                gap: 5px;
+            }
+
+            .social-link {
+                font-size: 1em;
+            }
+        }
+
+
+        /* Modal styles for enlarged image */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fffc;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Container for the close button and image */
+        .modal-image-container {
+            background-color: #fff;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column; /* Stack close button above image */
+            align-items: center; /* Center align items horizontally */
+            max-width: 1000px; /* Limit maximum width */
+            height: auto;
+        }
+
+        /* Modal content (image) */
+        .modal-content {
+            height: 100%;
+            width: 100%; /* Full width within container */
+            object-fit: contain;
+        }
+
+        /* Close button */
+        .close {
+            font-size: 3vh;
+            font-weight: 100;
+            color: #333;
+            cursor: pointer;
+            align-self: flex-end; /* Align to the right within the container */
+            margin: -1vh; /* Space between close button and image */
+            margin-right: 1vh; /* Space between close button and image */
+        }
+
+        /* Caption text */
+        .modal-caption {
+            text-align: center;
+            color: #333;
+            font-weight: 300;
+            max-width: 80%;
+            padding: 10px 0;
+        }
+
+        /* grid for three images*/
+        .grid-small {
+            background-color: #fff;
+            border-bottom: 1px solid #333;
+            border-right: 1px solid #333; /* Default right border */
+            margin: 0; /* Remove margin for touching containers */
+            padding: 0; /* Remove padding for touching containers */
+            width: calc(100% / 3); /* 3 items per row */
+            text-align: center;
+            position: relative; /* For positioning of the description */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+        }
+
+        .grid-small a {
+            display: block; /* Make anchor fill the grid item */
+            height: 0; /* Initialize height for square box */
+            padding-bottom: 100%; /* Maintain square aspect ratio */
+            position: relative; /* For absolute positioning of the image */
+            overflow: hidden; /* Prevent overflow when zooming */
+        }
+
+        .grid-small img {
+            position: absolute; /* Position the image absolutely within the anchor */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            width: 90%; /* Image occupies 100% of the box */
+            height: auto; /* Maintain aspect ratio */
+            transform: translate(-50%, -50%); /* Center image */
+            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
         }
     </style>
 </head>
@@ -219,7 +363,7 @@
                 To create a cohesive look, the script applies the most prominent color (often the background) to the base material, allowing the user’s image to blend seamlessly onto the gun model. I also created flexible PBR textures in Substance Designer, making it easy to adjust colors directly within Blender.
         </div>
 
-        <div class="grid-item">
+        <div class="grid-small">
             <a>
                 <img src="Assets/BAYC.png" alt="Image 1">
             </a>
@@ -228,7 +372,7 @@
             </div>
         </div>
 
-        <div class="grid-item">
+        <div class="grid-small">
             <a>
                 <img src="Assets/SMB.png" alt="Image 2">
             </a>
@@ -237,7 +381,7 @@
             </div>
         </div>
         
-        <div class="grid-item">
+        <div class="grid-small">
             <a>
                 <img src="Assets/OkayBears.jpg" alt="Image 3">
             </a>

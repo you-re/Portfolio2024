@@ -23,7 +23,7 @@
         /* General body styling */
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #cecece;
+            background-color: #fff;
             color: #333;
             line-height: 1.6;
             padding: 20px;
@@ -35,7 +35,8 @@
             max-width: 1000px;
             background-color: #fff;
             border: 1px solid #333;
-            border-bottom: 0px;
+            border-right: 0;
+            border-bottom: 0;
             margin: 0 auto;
             padding: 0; /* Remove padding */
             display: flex;
@@ -47,6 +48,7 @@
         .content-box {
             background-color: #fff;
             border-bottom: 1px solid #333;
+            border-right: 1px solid #333;
             width: calc(100%); /* Full width minus padding */
             margin: 0; /* No margin */
             padding: 10px; /* Reduced padding for a tighter fit */
@@ -73,7 +75,7 @@
             background: #000; /* Set background to black to match video */
             display: block; /* Ensures there's no extra space */
         }
-        
+
         .grid-item {
             background-color: #fff;
             border-right: 1px solid #333; /* Default right border */
@@ -105,6 +107,7 @@
             object-fit: cover; /* Cover the entire box while maintaining aspect ratio */
             display: block; /* Remove any extra space below the image */
             padding: 10px;
+            cursor: pointer;
         }
 
         .description {
@@ -216,9 +219,13 @@
             transform: scale(1.15); /* Zoom in on hover */
         }
 
-        @media (max-width: 5000px) {
+        @media (max-width: 10000px) {
             .grid-item {
                 width: calc(50%); /* 2 items per row */
+            }
+
+            .social-icons {
+                gap: 15px;
             }
         }
 
@@ -226,6 +233,110 @@
             .grid-item {
                 width: calc(100%); /* 1 item per row */
             }
+
+            .social-icons {
+                gap: 10px;
+            }
+
+            .social-link {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .social-icons {
+                gap: 5px;
+            }
+
+            .social-link {
+                font-size: 1em;
+            }
+        }
+
+
+        /* Modal styles for enlarged image */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fffc;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Container for the close button and image */
+        .modal-image-container {
+            background-color: #fff;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column; /* Stack close button above image */
+            align-items: center; /* Center align items horizontally */
+            max-width: 1000px; /* Limit maximum width */
+            height: auto;
+        }
+
+        /* Modal content (image) */
+        .modal-content {
+            height: 100%;
+            width: 100%; /* Full width within container */
+            object-fit: contain;
+        }
+
+        /* Close button */
+        .close {
+            font-size: 3vh;
+            font-weight: 100;
+            color: #333;
+            cursor: pointer;
+            align-self: flex-end; /* Align to the right within the container */
+            margin: -1vh; /* Space between close button and image */
+            margin-right: 1vh; /* Space between close button and image */
+        }
+
+        /* Caption text */
+        .modal-caption {
+            text-align: center;
+            color: #333;
+            font-weight: 300;
+            max-width: 80%;
+            padding: 10px 0;
+        }
+
+        /* grid for three images*/
+        .grid-small {
+            background-color: #fff;
+            border-bottom: 1px solid #333;
+            border-right: 1px solid #333; /* Default right border */
+            margin: 0; /* Remove margin for touching containers */
+            padding: 0; /* Remove padding for touching containers */
+            width: calc(100% / 3); /* 3 items per row */
+            text-align: center;
+            position: relative; /* For positioning of the description */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+        }
+
+        .grid-small a {
+            display: block; /* Make anchor fill the grid item */
+            height: 0; /* Initialize height for square box */
+            padding-bottom: 100%; /* Maintain square aspect ratio */
+            position: relative; /* For absolute positioning of the image */
+            overflow: hidden; /* Prevent overflow when zooming */
+        }
+
+        .grid-small img {
+            position: absolute; /* Position the image absolutely within the anchor */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            width: 90%; /* Image occupies 100% of the box */
+            height: auto; /* Maintain aspect ratio */
+            transform: translate(-50%, -50%); /* Center image */
+            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
         }
     </style>
 </head>
@@ -302,6 +413,56 @@
             </footer>
         </div>
 
-    </div>
+        <!-- The Modal for Enlarged Image -->
+        <div id="myModal" class="modal">
+            <div class="modal-image-container">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="modal-img">
+                    <div class="modal-caption" id="caption"></div>
+            </div>
+        </div>
+
+        </div>
+
+    <script>
+        // Wait for the DOM to load before running JavaScript
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById("myModal");
+            const modalImg = document.getElementById("modal-img");
+            const captionText = document.getElementById("caption");
+            const closeModal = document.querySelector(".close");
+
+            // Function to set modal image width based on container width
+            function setModalImageWidth() {
+                const containerWidth = document.querySelector('.container').offsetWidth;
+                modalImg.style.width = `${containerWidth}px`;
+            }
+
+            // Add click event to each gallery image to open modal
+            document.querySelectorAll('.gallery-img').forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.style.display = "flex"; // Show modal
+                    modalImg.src = this.src; // Set image source
+                    captionText.innerHTML = this.alt; // Set caption text
+                    setModalImageWidth(); // Match modal image width with container
+                });
+            });
+
+            // Close modal when clicking the 'close' button
+            closeModal.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // Close modal when clicking outside the image
+            modal.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Update modal image width on window resize
+            window.addEventListener('resize', setModalImageWidth);
+        });
+    </script>
 </body>
 </html>

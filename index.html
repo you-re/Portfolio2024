@@ -23,7 +23,7 @@
         /* General body styling */
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #cecece;
+            background-color: #fff;
             color: #333;
             line-height: 1.6;
             padding: 20px;
@@ -96,8 +96,8 @@
 
         /* Zoom effect on hover */
         .grid-item a:hover img {
-        filter: blur(5px);
-        transform: translate(-50%, -50%) scale(1.2); /* Zoom in on hover */
+            filter: blur(5px);
+            transform: translate(-50%, -50%) scale(1.2); /* Zoom in on hover */
         }
 
         .grid-item a:hover .text-overlay {
@@ -129,7 +129,6 @@
             margin: 0; /* Remove margin */
             color: #333;
             padding: 2%; /* Padding for description */
-            background-color: #fff; /* Match background with the grid item */
             border-top: 1px solid #333; /* Border above description */
             text-align: center; /* Center text in the description box */
             font-size: 1em;
@@ -271,6 +270,14 @@
         <div class="content-box">
             <h2>About</h2>
             <p>Experienced 3D Generalist and Technical Artist specializing in asset creation, optimization, and scripting with Blender and Houdini. Strong background in freelance work and teaching.</p>
+        </div>
+
+        <div class="content-box">
+            <h2>Contact</h2>
+            <p>
+                e-mail: j.sulic@gmail.com</br>
+            
+            </p>
         </div>
 
         <div class="content-box">
@@ -416,11 +423,9 @@
                 </div>
             </footer>
         </div>
-        
     </div>
 
     <script>
-
         document.addEventListener("DOMContentLoaded", function() {
             const gridItems = document.querySelectorAll('.grid-item');
 
@@ -473,93 +478,66 @@
                 return widthPercent;
             }
 
-            // Initial check
-            updateGridBorders();
-
-            // Update on window resize
-            window.addEventListener('resize', function() {
-                updateGridBorders();
-            });
-        });
-
-        
-        /*
-        document.addEventListener("DOMContentLoaded", function() {
             const contentBoxes = document.querySelectorAll('.content-box');
-            const gridItems = document.querySelectorAll('.grid-item');
 
-            // Recursive function to check the next x elements
-            function checkNextElements(element, count, checked = 0) {
-                if (checked >= count) return true; // Return true if we have checked the specified number of elements
+            const firstBox = contentBoxes[0];
+            
+            function darkTheme(firstBox) {
 
-                const nextElement = element.nextElementSibling; // Get the next sibling
-                if (nextElement) {
-                    if (!nextElement.classList.contains('grid-item')) {
-                        console.log(`Next element is not a grid-item:`, nextElement);
-                        return false; // Return false if the next element is not a grid-item
-                    }
-                    // Recursive call to check the next sibling
-                    return checkNextElements(nextElement, count, checked + 1);
+                var all = document.getElementsByTagName("*");
+
+                for (var i=0, max=all.length; i < max; i++) {
+                    all[i].style.color = "#aaa";
+
+                    if ((all[i].style.borderRight !== 'none') && (all[i].className === 'grid-item')) {
+                        all[i].style.borderRight = '1px solid #f00';
+                    };
+
                 }
 
-                return true; // Return true if there are no more elements to check
-            }
-
-            // Function to check and set borders for grid items
-            function updateGridBorders() {
-                const container = document.querySelector('.container');
-                
-                gridItems.forEach((gridItem, index) => {
-                    // Reset borders
-                    gridItem.style.borderBottom = '1px solid #333';   // Default bottom border
-
-                    gridItem.style.borderRight = '1px solid #333'; // Default right border
-
-                    // Get the width percentage of the grid item
-                    const widthPercent = getGridItemWidthInPercent(gridItem);
-
-                    const itemsPerRow = Math.round(100 / widthPercent);
-
-                    const numBoxes = Math.round(gridItems.length / itemsPerRow) * itemsPerRow;
-
-                    const boxIndex = numBoxes - (index + 1);
-
-                    // Fix bottom borders
-                    if (widthPercent < 34) {
-                        if (boxIndex < 3) { // 3 items per row
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
-                        }
-                    } else if (widthPercent < 90) {
-                        if (boxIndex < 2) { // 2 items per row
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
-                        }
-                    } else {
-                        if (boxIndex < 1) { // 1 item per row
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
-                        }
+                boxes = [];
+                boxes.push(firstBox)
+                i = 0;
+                while (boxes.length > 0) {
+                    if (boxes[0].nextElementSibling) {
+                        boxes.push(boxes[0].nextElementSibling);
                     }
-                });
-            }
-            
-            // Function to get the width of a grid item in percentage
-            function getGridItemWidthInPercent(gridItem) {
-                const container = document.querySelector('.container');
-                const gridItemStyle = window.getComputedStyle(gridItem);
-                const gridItemWidth = parseFloat(gridItemStyle.width);
-                const containerWidth = container.clientWidth;
-                const widthPercent = (gridItemWidth / containerWidth) * 100;
-                return widthPercent;
+
+                    const currentItem = boxes[0];
+
+                    currentItem.style.backgroundColor = '#222';
+
+                    currentItem.style.color = 'f00';
+
+                    // console.log(currentItem);
+
+                    boxes.shift();
+                    i++;
+                }
+                
             }
 
             // Initial check
             updateGridBorders();
 
+            //darkTheme(firstBox);
+
             // Update on window resize
             window.addEventListener('resize', function() {
-                updateGridBorders();
-            });
+            updateGridBorders();
+
+            //darkTheme(firstBox);
+
+            //document.body.style.color = 'f00';
         });
-        */
+    });
+
+    /*
+    document.addEventListener("DOMContentLoaded", function() {
+    const contentBoxes = document.querySelectorAll('.content-box');
+    const gridItems = document.querySelectorAll('.grid-item');
+    */
+
     </script>
 </body>
 </html>
