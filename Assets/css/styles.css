@@ -132,6 +132,20 @@ body {
     opacity: 0.5;
 }
 
+/* Loader code */
+.content-box .loader {
+    position: absolute; /* Position the image absolutely within the anchor */
+    left: 45%; /* Center horizontally */
+    top: 40%; /* Center horizontally */
+    width: 10%; /* Image occupies 100% of the box */
+    height: auto; /* Maintain aspect ratio */
+
+    aspect-ratio: 1;
+    --_g: no-repeat radial-gradient(farthest-side,#000 90%,#fff0);
+    background: var(--_g), var(--_g), var(--_g);
+    background-size: 20% 20%;
+    animation: l17 2s infinite;
+}
 /* HTML: <div class="loader"></div> */
 .grid-item .loader {
     position: absolute; /* Position the image absolutely within the anchor */
@@ -143,10 +157,10 @@ body {
     aspect-ratio: 1;
     --_g: no-repeat radial-gradient(farthest-side,#000 90%,#fff0);
     background: var(--_g), var(--_g), var(--_g);
-    background-size: 25% 25%;
-    animation: l17 1s infinite;
-  }
-  @keyframes l17{ 
+    background-size: 20% 20%;
+    animation: l17 2s infinite;
+}
+@keyframes l17{ 
     0%     {background-position: 0% -100%,50% -100%,100% -100%}
     16.67% {background-position: 0%   50%,50% -100%,100% -100%}
     33.33% {background-position: 0%   50%,50%   50%,100% -100%}
@@ -154,7 +168,7 @@ body {
     66.67% {background-position: 0%  200%,50%   50%,100%   50%}
     83.33% {background-position: 0%  200%,50%  200%,100%   50%}
     100%   {background-position: 0%  200%,50%  200%,100%  200%}
-  }
+}
 
 .grid-item .description {
     position: relative;
