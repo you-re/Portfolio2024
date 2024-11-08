@@ -190,7 +190,8 @@ document.addEventListener("DOMContentLoaded", function() {
             rightArrowLink.href = linkAfter;
         }
     }
-
+    
+    /*
     // Select all videos and images
     const mediaElements = document.querySelectorAll('.gallery-vid, .gallery-img'); 
     
@@ -231,4 +232,5 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 3000); // Timeout after 3 seconds (adjust as needed)
         }
     });
+    */
 });
