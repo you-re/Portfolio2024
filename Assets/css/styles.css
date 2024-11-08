@@ -87,7 +87,9 @@ body {
     position: relative; /* For absolute positioning of the image */
     overflow: hidden; /* Prevent overflow when zooming */
 }
-.grid-item video {
+
+.grid-item .video-container {
+    display: block;
     width: 100%; /* Image occupies 100% of the box */
     height: auto; /* Maintain aspect ratio */
     object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
@@ -95,6 +97,21 @@ body {
     padding: 10px;
     cursor: pointer;
     transition: opacity 0.2s ease;
+}
+
+.grid-item video {
+    display: none; /* Hide the video initially */
+    width: 100%; /* Image occupies 100% of the box */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
+    display: block; /* Remove any extra space below the image */
+    padding: 10px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.grid-item video .loadeddata {
+    display: block; /* Display video when it’s ready */
 }
 
 .grid-item video:hover {
@@ -115,7 +132,42 @@ body {
     opacity: 0.5;
 }
 
-.description {
+/* HTML: <div class="loader"></div> */
+.grid-item .loader {
+    position: absolute; /* Position the image absolutely within the anchor */
+    left: 45%; /* Center horizontally */
+    top: 40%; /* Center horizontally */
+    width: 10%; /* Image occupies 100% of the box */
+    height: auto; /* Maintain aspect ratio */
+
+    aspect-ratio: 1;
+    --_g: no-repeat radial-gradient(farthest-side,#000 90%,#fff0);
+    background: var(--_g), var(--_g), var(--_g);
+    background-size: 25% 25%;
+    animation: l17 1s infinite;
+  }
+  @keyframes l17{ 
+    0%     {background-position: 0% -100%,50% -100%,100% -100%}
+    16.67% {background-position: 0%   50%,50% -100%,100% -100%}
+    33.33% {background-position: 0%   50%,50%   50%,100% -100%}
+    45%,55%{background-position: 0%   50%,50%   50%,100%   50%}
+    66.67% {background-position: 0%  200%,50%   50%,100%   50%}
+    83.33% {background-position: 0%  200%,50%  200%,100%   50%}
+    100%   {background-position: 0%  200%,50%  200%,100%  200%}
+  }
+
+  /* HTML: <div class="loader"></div> */
+.grid-item .dead {
+    display: none;
+    position: absolute; /* Position the image absolutely within the anchor */
+    left: 45%; /* Center horizontally */
+    top: 40%; /* Center horizontally */
+    width: 10%; /* Image occupies 100% of the box */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+.grid-item .description {
+    position: relative;
     font-weight: 300;
     margin: 0; /* Remove margin */
     color: #333;

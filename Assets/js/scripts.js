@@ -192,4 +192,29 @@ document.addEventListener("DOMContentLoaded", function() {
     // Usage: Call the function with the path to the external HTML file
     console.log(checkLinksInExternalFile("../Index.html"));
 
+    // Loader for videos
+    const videos = document.querySelectorAll(".gallery-vid");
+    const loaders = document.querySelectorAll(".loader");
+
+    videos.forEach((video, index) => {
+        // Check if there is a corresponding loader for each video
+        const loader = loaders[index];
+        if (loader) {
+            // Event listener for when the video is fully loaded
+            video.addEventListener("loadeddata", function () {
+                loader.style.display = "none"; // Hide the loader
+                video.classList.add("loaded"); // Show the video
+            });
+
+            // Optional fallback timeout to hide loader if event doesn’t fire
+            setTimeout(() => {
+                if (loader.style.display !== "none") {
+                    loader.style.display = "none";
+                    video.classList.add("loaded");
+                }
+            }, 3000);
+        }
+    });
+
+
 });
