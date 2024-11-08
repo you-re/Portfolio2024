@@ -156,16 +156,6 @@ body {
     100%   {background-position: 0%  200%,50%  200%,100%  200%}
   }
 
-  /* HTML: <div class="loader"></div> */
-.grid-item .dead {
-    display: none;
-    position: absolute; /* Position the image absolutely within the anchor */
-    left: 45%; /* Center horizontally */
-    top: 40%; /* Center horizontally */
-    width: 10%; /* Image occupies 100% of the box */
-    height: auto; /* Maintain aspect ratio */
-  }
-
 .grid-item .description {
     position: relative;
     font-weight: 300;

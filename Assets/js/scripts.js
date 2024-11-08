@@ -194,27 +194,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Loader for videos
     const videos = document.querySelectorAll(".gallery-vid");
+    const images = document.querySelectorAll(".gallery-img");
     const loaders = document.querySelectorAll(".loader");
 
-    videos.forEach((video, index) => {
+    const itemsToLoad = videos.concat(images);
+
+    itemsToLoad.forEach((item, index) => {
         // Check if there is a corresponding loader for each video
         const loader = loaders[index];
         if (loader) {
             // Event listener for when the video is fully loaded
-            video.addEventListener("loadeddata", function () {
+            item.addEventListener("canplaythrough", function () {
                 loader.style.display = "none"; // Hide the loader
-                video.classList.add("loaded"); // Show the video
+                item.classList.add("loaded"); // Show the video
             });
 
             // Optional fallback timeout to hide loader if event doesn’t fire
             setTimeout(() => {
                 if (loader.style.display !== "none") {
                     loader.style.display = "none";
-                    video.classList.add("loaded");
+                    item.classList.add("loaded");
                 }
             }, 3000);
         }
     });
-
-
 });
