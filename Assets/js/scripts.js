@@ -190,12 +190,11 @@ document.addEventListener("DOMContentLoaded", function() {
             rightArrowLink.href = linkAfter;
         }
     }
-    
-    /*
+
     // Select all videos and images
-    const mediaElements = document.querySelectorAll('.gallery-vid, .gallery-img'); 
+    const mediaElements = document.querySelectorAll('.gallery-vid, .gallery-img'); // Select all videos and images
     
-    // Loaders for all media
+    // Loaders for media
     mediaElements.forEach(media => {
         // Create a loader for each media item
         const loader = document.createElement('div');
@@ -205,32 +204,42 @@ document.addEventListener("DOMContentLoaded", function() {
         media.parentNode.insertBefore(loader, media.nextSibling);
         
         if (media.tagName === 'VIDEO') {
-            // Event listener for videos
-            media.addEventListener('canplaythrough', function() {
-                loader.style.display = 'none'; // Hide loader when video is ready
-                media.classList.add('loaded'); // Optional: Add loaded class to video
-            });
+            // Check if the video is already ready
+            if (media.readyState >= 3) { // Ready to play
+                loader.style.display = 'none'; // Hide loader if video is ready
+                media.classList.add('loaded');
+            } else {
+                // Event listener for when the video is fully loaded
+                media.addEventListener('canplaythrough', function() {
+                    loader.style.display = 'none'; // Hide loader when video is ready
+                    media.classList.add('loaded'); // Optional: Add loaded class to video
+                });
 
-            // Optional: Timeout in case canplaythrough doesn't trigger
-            setTimeout(() => {
-                if (loader.style.display !== 'none') {
-                    loader.style.display = 'none'; // Hide loader after a timeout
-                    media.classList.add('loaded'); // Optional: Add loaded class
-                }
-            }, 3000); // Timeout after 3 seconds (adjust as needed)
+                // Optional: Timeout in case canplaythrough doesn't trigger
+                setTimeout(() => {
+                    if (loader.style.display !== 'none') {
+                        loader.style.display = 'none'; // Hide loader after a timeout
+                        media.classList.add('loaded'); // Optional: Add loaded class
+                    }
+                }, 3000); // Timeout after 3 seconds (adjust as needed)
+            }
         } else if (media.tagName === 'IMG') {
-            // Event listener for images
-            media.addEventListener('load', function() {
-                loader.style.display = 'none'; // Hide loader when image is loaded
-            });
+            // Check if the image is already loaded
+            if (media.complete) {
+                loader.style.display = 'none'; // Hide loader if image is already loaded
+            } else {
+                // Event listener for images
+                media.addEventListener('load', function() {
+                    loader.style.display = 'none'; // Hide loader when image is loaded
+                });
 
-            // Optional: Timeout for images
-            setTimeout(() => {
-                if (loader.style.display !== 'none') {
-                    loader.style.display = 'none'; // Hide loader after a timeout
-                }
-            }, 3000); // Timeout after 3 seconds (adjust as needed)
+                // Optional: Timeout for images
+                setTimeout(() => {
+                    if (loader.style.display !== 'none') {
+                        loader.style.display = 'none'; // Hide loader after a timeout
+                    }
+                }, 3000); // Timeout after 3 seconds (adjust as needed)
+            }
         }
     });
-    */
 });
