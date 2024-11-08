@@ -189,31 +189,44 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Usage: Call the function with the path to the external HTML file
-    console.log(checkLinksInExternalFile("../Index.html"));
-
-    // Loader for videos
-    const videos = document.querySelectorAll(".gallery-vid");
-    const loaders = document.querySelectorAll(".loader");
-
-    videos.forEach((video, index) => {
-        // Check if there is a corresponding loader for each video
-        const loader = loaders[index];
-        if (loader) {
-            // Event listener for when the video is fully loaded
-            video.addEventListener("canplaythrough", function () {
-                loader.style.display = "none"; // Hide the loader
-                video.classList.add("loaded"); // Show the video
+    // Select all videos and images
+    const mediaElements = document.querySelectorAll('.gallery-vid, .gallery-img'); 
+    
+    // Loaders for all media
+    mediaElements.forEach(media => {
+        // Create a loader for each media item
+        const loader = document.createElement('div');
+        loader.classList.add('loader');
+        
+        // Insert the loader right after the media element
+        media.parentNode.insertBefore(loader, media.nextSibling);
+        
+        if (media.tagName === 'VIDEO') {
+            // Event listener for videos
+            media.addEventListener('canplaythrough', function() {
+                loader.style.display = 'none'; // Hide loader when video is ready
+                media.classList.add('loaded'); // Optional: Add loaded class to video
             });
 
-            // Optional fallback timeout to hide loader if event doesn’t fire
+            // Optional: Timeout in case canplaythrough doesn't trigger
             setTimeout(() => {
-                if (loader.style.display !== "none") {
-                    loader.style.display = "none";
-                    video.classList.add("loaded");
+                if (loader.style.display !== 'none') {
+                    loader.style.display = 'none'; // Hide loader after a timeout
+                    media.classList.add('loaded'); // Optional: Add loaded class
                 }
-            }, 3000);
+            }, 3000); // Timeout after 3 seconds (adjust as needed)
+        } else if (media.tagName === 'IMG') {
+            // Event listener for images
+            media.addEventListener('load', function() {
+                loader.style.display = 'none'; // Hide loader when image is loaded
+            });
+
+            // Optional: Timeout for images
+            setTimeout(() => {
+                if (loader.style.display !== 'none') {
+                    loader.style.display = 'none'; // Hide loader after a timeout
+                }
+            }, 3000); // Timeout after 3 seconds (adjust as needed)
         }
     });
-
 });
