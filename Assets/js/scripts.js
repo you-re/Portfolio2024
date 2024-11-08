@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         loader.style.display = 'none'; // Hide loader after a timeout
                         media.classList.add('loaded'); // Optional: Add loaded class
                     }
-                }, 3000); // Timeout after 3 seconds (adjust as needed)
+                }, 30000); // Timeout after 30 seconds (adjust as needed)
             }
         } else if (media.tagName === 'IMG') {
             // Check if the image is already loaded
