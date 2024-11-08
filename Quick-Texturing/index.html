@@ -44,7 +44,7 @@
         </div>
 
         <div class="content-box">
-                <video allowfullscreen controls autoplay muted loop src="Assets/QuickTexturing.mp4" alt="3D assets video loop"></video>
+                <video allowfullscreen controls autoplay muted loop src="Assets/QuickTexturing.mp4" title="3D assets video loop"></video>
         </div>
 
         <div class="content-box">
@@ -113,12 +113,21 @@
         </div>
     </div>
 
+    <!-- The Modal for Enlarged Video -->
+    <div id="vidModal" class="modal">
+        <div class="modal-image-container">
+            <span class="close">&times;</span>
+            <video allowfullscreen autoplay muted loop class="modal-content" id="modal-vid"></video>
+            <div class="modal-caption" id="captionVid"></div>
+        </div>
+    </div>
+
     <!-- The Modal for Enlarged Image -->
-    <div id="myModal" class="modal">
+    <div id="imgModal" class="modal">
         <div class="modal-image-container">
             <span class="close">&times;</span>
             <img class="modal-content" id="modal-img">
-            <div class="modal-caption" id="caption"></div>
+            <div class="modal-caption" id="captionImg"></div>
         </div>
     </div>
     

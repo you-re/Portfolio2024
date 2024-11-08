@@ -107,12 +107,13 @@
             /* Text overlay */
         .text-overlay {
             font-family: 'Montserrat', serif;
-            font-weight: 400;
+            font-weight: 300;
             font-size: 1em; /* Ensure it fits in one line */
             color: #333;
             background-color: #fff;
             padding: 0.5em 1em; /* Adjusted padding for single-line fit */
             text-transform: uppercase;
+            /* border: 1px solid #000; */
             
             position: absolute;
             bottom: 30%; /* Positioned off-screen initially */
@@ -233,13 +234,13 @@
             border-right: none;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1100px) {
             .grid-item {
                 flex-basis: 50%; /* 2 items per row */
             }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
             .grid-item {
                 flex-basis: 100%; /* 1 item per row */
             }
@@ -247,11 +248,11 @@
 
         /* Remove the right border for the last item in each row */
         .grid-item:nth-child(3n) {
-            border-right: none;
+            border-right: 1px solid #333;
         }
         @media (max-width: 900px) {
             .grid-item:nth-child(2n) {
-                border-right: none;
+                border-right: 1px solid #333;
             }
         }
         /* Ensure content wraps well on smaller screens */
@@ -284,11 +285,11 @@
 
         @media (max-width: 600px) {
             .social-icons {
-                gap: 5px;
+                gap: 8px;
             }
 
             .social-link {
-                font-size: 1em;
+                font-size: 1.3em;
             }
         }
     </style>
@@ -296,12 +297,13 @@
 <body>
     <div class="container">
         <div class="content-box">
-            <h1>Jure Sulič - Portfolio 2024</h1>
+            <h1>Jure Sulič</h1>
+            <h2>3D Generalist | Technical Artist</h2>
         </div>
 
         <div class="content-box">
             <h2>About</h2>
-            <p>Experienced 3D Generalist and Technical Artist specializing in asset creation, optimization, and scripting with Blender and Houdini. Strong background in freelance work and teaching.</p>
+            <p>Hello! :) I am Jure, a 3D Generalist and Technical Artist from Slovenia, specializing in procedural design, workflow optimization, and tool creation with Blender and Houdini. I love working on the intersection of math and art.</p>
         </div>
 
         <div class="content-box">
@@ -321,18 +323,6 @@
         </div>
 
         <div class="grid-item">
-            <a href="Propagation-Solver/">
-                <img src="Assets/Thumbnail-Propagation-Solver.png" alt="Propagation Solver">
-                <div class="text-overlay">
-                    View Project
-                </div>
-            </a>
-            <div class="description">
-                <a href="Propagation-Solver/">Propagation Solver</br><normal>Blender, Fusion</normal></a>
-            </div>
-        </div>
-
-        <div class="grid-item">
             <a href="Medusa/">
                 <img src="Assets/Thumbnail-Medusa.png" alt="Medusa">
                 <div class="text-overlay">
@@ -343,50 +333,7 @@
                 <a href="Medusa/">Medusa</br><normal>Blender, ZBrush, Houdini, Substance, Fusion</normal></a>
             </div>
         </div>
-        <div class="grid-item">
-            <a href="Index-Shuffle/">
-                <img src="Assets/Thumbnail-Index-Shuffle-Node.png" alt="Index Shuffle Node">
-                <div class="text-overlay">
-                    View Project
-                </div>
-            </a>
-            <div class="description">
-                <a href="Index-Shuffle/">Index Shuffle Node</br><normal>Blender (Geometry Nodes)</normal></a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <a href="Camera-Culler/">
-                <img src="Assets/Thumbnail-Camera-Culler.png" alt="Camera Culler Node">
-                <div class="text-overlay">
-                    View Project
-                </div>
-            </a>
-            <div class="description">
-                <a href="Camera-Culler/">Camera Culler Node</br><normal>Blender, Python</normal></a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <a href="Quick-Texturing/">
-                <img src="Assets/Thumbnail-Quick-Texturing.png" alt="Quick Texturing">
-                <div class="text-overlay">
-                    View Project
-                </div>
-            </a>
-            <div class="description">
-                <a href="Quick-Texturing/">Quick Texturing</br><normal>Blender, Python, Substance Painter</normal></a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <a href="Cryptostraps/">
-                <img src="Assets/Thumbnail-Cryptostraps.png" alt="Cryptostraps">
-                <div class="text-overlay">
-                    View Project
-                </div>
-            </a>
-            <div class="description">
-                <a href="Cryptostraps/">Cryptostraps</br><normal>Blender, Python, Substance Painter</normal></a>
-            </div>
-        </div>
+
         <div class="grid-item">
             <a href="Silicons-Teaser/">
                 <img src="Assets/Thumbnail-Silicons-Teaser.png" alt="Silicons Teaser">
@@ -398,6 +345,7 @@
                 <a href="Silicons-Teaser/">Silicons Teaser</br><normal>Blender, Fusion, Substance Painter</normal></a>
             </div>
         </div>
+
         <div class="grid-item">
             <a href="Silicons-Animations/">
                 <img src="Assets/Thumbnail-Silicons-Animations.png" alt="Silicons Animations">
@@ -407,6 +355,30 @@
             </a>
             <div class="description">
                 <a href="Silicons-Animations/">Silicons Animations</br><normal>Blender, Houdini, Python, After Effects, JavaScript, Substance Painter</normal></a>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <a href="MLC/">
+                <img src="Assets/Thumbnail-MLC.png" alt="Morning Line Club Ticket">
+                <div class="text-overlay">
+                    View Project
+                </div>
+            </a>
+            <div class="description">
+                <a href="MLC/">Morning Line Club</br><normal>Blender, Substance Painter, Houdini</normal></a>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <a href="Cryptostraps/">
+                <img src="Assets/Thumbnail-Cryptostraps.png" alt="Cryptostraps">
+                <div class="text-overlay">
+                    View Project
+                </div>
+            </a>
+            <div class="description">
+                <a href="Cryptostraps/">Cryptostraps</br><normal>Blender, Python, Substance Painter</normal></a>
             </div>
         </div>
 
@@ -422,10 +394,57 @@
             </div>
         </div>
 
+        <div class="content-box">
+            <h2>Tools</h2>
+        </div>
+
+
         <div class="grid-item">
+            <a href="Index-Shuffle/">
+                <img src="Assets/Thumbnail-Index-Shuffle-Node.png" alt="Index Shuffle Node">
+                <div class="text-overlay">
+                    View Tool
+                </div>
+            </a>
+            <div class="description">
+                <a href="Index-Shuffle/">Index Shuffle Node</br><normal>Blender (Geometry Nodes)</normal></a>
+            </div>
         </div>
 
         <div class="grid-item">
+            <a href="Propagation-Solver/">
+                <img src="Assets/Thumbnail-Propagation-Solver.png" alt="Propagation Solver">
+                <div class="text-overlay">
+                    View Tool
+                </div>
+            </a>
+            <div class="description">
+                <a href="Propagation-Solver/">Propagation Solver</br><normal>Blender, Fusion</normal></a>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <a href="Camera-Culler/">
+                <img src="Assets/Thumbnail-Camera-Culler.png" alt="Camera Culler Node">
+                <div class="text-overlay">
+                    View Tool
+                </div>
+            </a>
+            <div class="description">
+                <a href="Camera-Culler/">Camera Culler Node</br><normal>Blender, Python</normal></a>
+            </div>
+        </div>
+        
+        <div class="grid-item">
+            <a href="Quick-Texturing/">
+                <img src="Assets/Thumbnail-Quick-Texturing.png" alt="Quick Texturing">
+                <div class="text-overlay">
+                    View Tool
+                </div>
+            </a>
+            <div class="description">
+                <a href="Quick-Texturing/">Quick Texturing</br><normal>Blender, Python, Substance Painter</normal></a>
+            </div>
         </div>
 
         <div class="content-box">
@@ -451,44 +470,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const gridItems = document.querySelectorAll('.grid-item');
-
-            // Function to check and set borders for grid items
-            function updateGridBorders() {
-                
-                gridItems.forEach((gridItem, index) => {
-                    // Reset borders
-                    gridItem.style.borderBottom = '1px solid #333';   // Default bottom border
-
-                    gridItem.style.borderRight = '1px solid #333'; // Default right border
-
-                    // Get the width percentage of the grid item
-                    const widthPercent = getGridItemWidthInPercent(gridItem);
-
-                    const itemsPerRow = Math.round(100 / widthPercent);
-
-                    const numBoxes = Math.round(gridItems.length / itemsPerRow) * itemsPerRow;
-
-                    const boxIndex = numBoxes - (index + 1);
-
-                    const nextItem = gridItem.nextElementSibling.classList.contains('grid-item');
-
-                    // Fix bottom borders
-                    if (widthPercent < 34) { // 3 items per row
-                        if (boxIndex === 1) {
-                            gridItem.style.borderRight = 'none'; // Remove right border for odd previous items
-                        }
-                    } else if (widthPercent < 90) { // 2 items per row
-                        if (boxIndex < 2) {
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
-                        }
-                    } else { // 1 item per row
-                        if (boxIndex < 2) {
-                            gridItem.style.borderBottom = 'none'; // Remove right border for odd previous items
-                        }
-                    }
-                });
-            }
+            gridItems = document.querySelectorAll('.grid-item');
 
             const container = document.querySelector('.container');
             
@@ -502,65 +484,108 @@
                 return widthPercent;
             }
 
-            const contentBoxes = document.querySelectorAll('.content-box');
+            function getBoxes (firstBox) {
 
-            const firstBox = contentBoxes[0];
-            
-            function darkTheme(firstBox) {
+                const boxArray = [firstBox];
+                check = (boxArray[0].nextElementSibling) ? true : false;
 
-                var all = document.getElementsByTagName("*");
+                while (check) {
+                    arrayLen = boxArray.length - 1;
+                    const nextBox = boxArray[arrayLen].nextElementSibling;
+                    boxArray.push(nextBox);
 
-                for (var i=0, max=all.length; i < max; i++) {
-                    all[i].style.color = "#aaa";
-
-                    if ((all[i].style.borderRight !== 'none') && (all[i].className === 'grid-item')) {
-                        all[i].style.borderRight = '1px solid #f00';
-                    };
-
+                    check = (boxArray[arrayLen+1].nextElementSibling) ? true : false;
                 }
 
-                boxes = [];
-                boxes.push(firstBox)
-                i = 0;
-                while (boxes.length > 0) {
-                    if (boxes[0].nextElementSibling) {
-                        boxes.push(boxes[0].nextElementSibling);
-                    }
-
-                    const currentItem = boxes[0];
-
-                    currentItem.style.backgroundColor = '#222';
-
-                    currentItem.style.color = 'f00';
-
-                    // console.log(currentItem);
-
-                    boxes.shift();
-                    i++;
-                }
-                
+                return boxArray;
             }
 
-            // Initial check
-            updateGridBorders();
+            // Get first content box
+            const containerElement = document.querySelector('.container');
 
-            //darkTheme(firstBox);
+            const firstContentBox = containerElement.querySelectorAll('.content-box')[3];
+
+            // Add n grid-items
+            function addEmptyAfter(n, insertBeforeBox) {
+                for (let i = 0; i < n; i++) {
+                    const newDiv = document.createElement('div');
+                    newDiv.classList.add('grid-item');
+                    containerElement.appendChild(newDiv);
+
+                    const insertAfterBox = insertBeforeBox.nextElementSibling;
+
+                    containerElement.insertBefore(newDiv, insertAfterBox);
+                }
+            };
+
+            // Update grid with empty boxes
+            function updateGrid() {
+                
+                gridItems = document.querySelectorAll(".grid-item");
+                const widthPercent = getGridItemWidthInPercent(gridItems[0]);
+
+                gridItems.forEach((gridItem) => {
+                    // CHeck if the gridItem is empty and remove it
+                    if (!gridItem.contains(gridItem.querySelector('a'))) {
+                        gridItem.remove();
+                    }
+                });
+
+
+                const allBoxes = getBoxes(containerElement.firstElementChild);
+
+                index = 1;
+
+                allBoxes.forEach((box) => {
+
+                    if (box.className === "grid-item") {
+                        const isNextGrid = box.nextElementSibling.className === "grid-item";
+
+                        // Fix borders
+                        if (widthPercent < 34) { // 3 items per row
+                            if (!isNextGrid) {
+                                const boxesToAdd = (3 - (index % 3)) % 3;
+                                addEmptyAfter(boxesToAdd, box);
+                                index = 0;
+                            }
+                        } else if (widthPercent < 90) { // 2 items per row
+                            if (!isNextGrid) {
+                                const boxesToAdd = (2 - (index % 2)) % 2;
+                                addEmptyAfter(boxesToAdd, box);
+                                index = 0;
+                            }
+                            
+                        } else { // 1 item per row
+                            
+                        }
+                        index++;
+                    }
+                    else {}
+                });
+
+                gridItems = document.querySelectorAll(".grid-item");
+
+                if (widthPercent < 34) { // 3 items per row
+
+                    gridItems.forEach((gridItem, index) => {
+                        // CHeck f next item is grid-item
+                        const nextItem = gridItem.nextElementSibling.className === "grid-item";
+                        // Check if the gridItem is empty and remove it
+                        const isEmpty = !gridItem.contains(gridItem.querySelector('a'));
+                        if (isEmpty && nextItem) {
+                            gridItem.style.borderRight = "none";
+                        }
+                    });
+                }
+            }
+
+            updateGrid();
 
             // Update on window resize
             window.addEventListener('resize', function() {
-            updateGridBorders();
-
-            //darkTheme(firstBox);
-
-            //document.body.style.color = 'f00';
-        });
-    });
-
-    /*
-    document.addEventListener("DOMContentLoaded", function() {
-    const contentBoxes = document.querySelectorAll('.content-box');
-    const gridItems = document.querySelectorAll('.grid-item');
-    */
+                updateGrid();
+                });
+            });
 
     </script>
 </body>

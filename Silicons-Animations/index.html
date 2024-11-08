@@ -45,7 +45,7 @@
 
         <div class="content-box">
             <h2>Final output</h2>
-            <video allowfullscreen controls autoplay muted loop src="Assets/Walk-Cycle.mp4" alt="Walk Cycle Animation"></video>
+            <video allowfullscreen autoplay muted loop src="Assets/Walk-Cycle.mp4" title="Walk Cycle Animation" class="gallery-vid"></video>
         </div>
 
         <div class="content-box">
@@ -63,14 +63,14 @@
         </div>
 
         <div class="grid-item">
-            <video allowfullscreen controls autoplay muted src="Assets/Assets-Loop-Houdini.mp4" allowfullscreen></video>
+            <video allowfullscreen autoplay muted src="Assets/Assets-Loop-Houdini.mp4" title="Assets loop without blending" class="gallery-vid"></video>
             <div class="description">
                 Original loop
             </div>
         </div>
 
         <div class="grid-item">
-            <video allowfullscreen controls autoplay muted src="Assets/Assets-Loop-Blend-Houdini.mp4" allowfullscreen></video>
+            <video allowfullscreen autoplay muted src="Assets/Assets-Loop-Blend-Houdini.mp4" title="Assets loop with blending" class="gallery-vid"></video>
             <div class="description">
                 Loop blend
             </div>
@@ -86,7 +86,7 @@
         
         <div class="content-box">
             <h2>Assets</h2>
-            <video allowfullscreen controls autoplay muted loop src="Assets/Silicons-Assets.mp4" alt="3D assets video loop"></video>
+            <video allowfullscreen autoplay muted loop src="Assets/Silicons-Assets.mp4" title="3D assets video loop" class="gallery-vid"></video>
         </div>
 
         <div class="content-box">
@@ -98,7 +98,7 @@
 
         <div class="content-box">
             <h2>Compositing Automation</h2>
-            <video allowfullscreen controls autoplay muted loop src="Assets/Silicons-AE-Comp.mp4" alt="Video of the Compositing Process"></video>
+            <video allowfullscreen autoplay muted loop src="Assets/Silicons-AE-Comp.mp4" title="Video of the Compositing Process" class="gallery-vid"></video>
         </div>
 
         <div class="content-box">
@@ -133,12 +133,21 @@
             </footer>
         </div>
 
+        <!-- The Modal for Enlarged Video -->
+        <div id="vidModal" class="modal">
+            <div class="modal-image-container">
+                <span class="close">&times;</span>
+                <video allowfullscreen autoplay muted loop class="modal-content" id="modal-vid"></video>
+                <div class="modal-caption" id="captionVid"></div>
+            </div>
+        </div>
+
         <!-- The Modal for Enlarged Image -->
-        <div id="myModal" class="modal">
+        <div id="imgModal" class="modal">
             <div class="modal-image-container">
                 <span class="close">&times;</span>
                 <img class="modal-content" id="modal-img">
-                <div class="modal-caption" id="caption"></div>
+                <div class="modal-caption" id="captionImg"></div>
             </div>
         </div>
 

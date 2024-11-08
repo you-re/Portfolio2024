@@ -93,6 +93,12 @@ body {
     object-fit: fit; /* Cover the entire box while maintaining aspect ratio */
     display: block; /* Remove any extra space below the image */
     padding: 10px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.grid-item video:hover {
+    opacity: 0.5;
 }
 
 .grid-item img {
@@ -306,26 +312,28 @@ footer a:hover {
     .social-link {
         font-size: 1.5em;
     }
-    
-    header {
-        font-size: 1.2em;
-    }
 }
 
 @media (max-width: 600px) {
-
     .social-icons {
-        gap: 5px;
+        gap: 8px;
+    }
+
+    .social-link {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 400px) {
+    .social-icons {
+        gap: 7px;
     }
 
     .social-link {
         font-size: 1em;
     }
-}
-
-@media (max-width: 400px) {
     header {
-        font-size: 1em;
+        font-size: 1.3em;
     }
 }
 

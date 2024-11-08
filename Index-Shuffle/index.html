@@ -50,7 +50,7 @@
         
         <div class="grid-item">
             <a>
-                <video loop muted autoplay controls src="Assets/Shuffled-Points-v02.mp4" alt="Shuffled Points Video"></video>
+                <video loop muted autoplay src="Assets/Shuffled-Points-v02.mp4" title="Shuffled Points Video" class="gallery-vid"></video>
             </a>
             <div class="description">
                 Shuffled Points
@@ -59,7 +59,7 @@
 
         <div class="grid-item">
             <a>
-                <video loop muted autoplay controls src="Assets/Unshuffled-Points-v02.mp4" alt="Unshuffled Points Video"></video>
+                <video loop muted autoplay src="Assets/Unshuffled-Points-v02.mp4" title="Unshuffled Points Video" class="gallery-vid"></video>
             </a>
             <div class="description">
                 Unshuffled Points
@@ -103,12 +103,21 @@
             </footer>
         </div>
 
+        <!-- The Modal for Enlarged Video -->
+        <div id="vidModal" class="modal">
+            <div class="modal-image-container">
+                <span class="close">&times;</span>
+                <video allowfullscreen autoplay muted loop class="modal-content" id="modal-vid"></video>
+                <div class="modal-caption" id="captionVid"></div>
+            </div>
+        </div>
+
         <!-- The Modal for Enlarged Image -->
-        <div id="myModal" class="modal">
+        <div id="imgModal" class="modal">
             <div class="modal-image-container">
                 <span class="close">&times;</span>
                 <img class="modal-content" id="modal-img">
-                <div class="modal-caption" id="caption"></div>
+                <div class="modal-caption" id="captionImg"></div>
             </div>
         </div>
         

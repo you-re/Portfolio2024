@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morning Line Club</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../Assets/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div class="content-box">
+            <header>
+                <div class="header-content">
+                    <a href="../Propagation-Solver/">
+                        <img src="../Assets/arrow.svg" alt="Left Arrow" class="icon rotate-180">
+                    </a>
+                    <a href="../">
+                        <img src="../Assets/home.svg" alt="Home" class="icon">
+                    </a>
+                    <a href="../Index-Shuffle/">
+                        <img src="../Assets/arrow.svg" alt="Right Arrow" class="icon">
+                    </a>
+                </div>
+            </header>
+        </div>
+
+        <div class="content-box">
+            <h1>Morning Line Club (MLC) NFT Collection</h1>
+        </div>
+
+        <div class="content-box">
+            <h2>Task Description</h2>
+            <p> 
+                The Morning Line Club was a distinctive NFT collection that offered holders partial ownership in a horse racing track. The project involved creating visually captivating NFT passes designed as tiered tickets representing membership levels: Bronze, Silver, Gold, and the ultra-rare Diamond pass. My role was to design and render these NFT visuals, producing a series of animations and promotional teasers that would effectively communicate the concept’s appeal. Each pass required a unique, visible ID on the final 3D renders. To streamline production and avoid rendering thousands of unique IDs, I developed a system of masked ID placeholders, allowing quick, flexible ID updates in post-production.
+            </p>
+        </div>
+
+        <div class="content-box">
+            <h2>Gallery</h2>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen autoplay muted loop src="Assets/MLC-Bronze-Pass.mp4" title="MLC Bronze Pass" class="gallery-vid"></video>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen autoplay muted loop src="Assets/MLC-Silver-Pass.mp4" title="MLC Silver Pass" class="gallery-vid"></video>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen autoplay muted loop src="Assets/MLC-Gold-Pass.mp4" title="MLC Gold Pass" class="gallery-vid"></video>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen autoplay muted loop src="Assets/MLC-Diamond-Pass.mp4" title="MLC Diamond Pass" class="gallery-vid"></video>
+        </div>
+
+        <div class="content-box">       
+            <h2>Thought Process</h2>
+                <p> 
+                    The client’s concept used a ticket motif to symbolize access and exclusivity, which guided my design approach. I started by creating a detailed 3D ticket model in Blender, inspired by classic racing tickets but updated with refined, intricate touches suited to an NFT collection. Each tier was crafted to reflect its rarity, with distinct textures and finishes.</br></br>
+
+                    To efficiently generate unique IDs, I initially created versions of each ticket with placeholder numbers (e.g., 000/000, 111/111, 222/222) and additional textures with masked areas for the ID. This setup enabled dynamic ID updates in compositing, saving considerable rendering time.</br></br>
+                    
+                    For the ticket textures, I imported the model into Adobe Substance Painter, where I applied masks created in Adobe Illustrator to control texture placements. This process resulted in 11 variations: ten placeholders and one with a masking layer for streamlined ID compositing.</br></br>
+                </p>
+        </div>
+
+        <div class="content-box">       
+            <h2>Teaser video</h2>
+                <p> 
+                    The teaser aimed to present the tickets in a visually engaging, cinematic way. After discussions with the client, we developed a concept where each ticket would form mid-air, set against a stable-themed background to connect with the racing concept. Using Houdini, I designed a flowing, pseudo-liquid simulation that appeared to “coat” and form the ticket, giving it a luxurious, ethereal quality. VDB tools in Houdini allowed me to simulate a metallic flow without a full fluid simulation, creating a sense of forming gold that was both visually compelling and production-efficient. I exported this as an Alembic (.abc) sequence and imported it into Blender, where I refined the animation, lighting, and camera work. Reusing the background from the ticket loop animation established a cohesive aesthetic across all visuals.
+                </p>
+        </div>
+
+        <div class="content-box">
+            <h2>MLC Teaser Video</h2>
+            <video allowfullscreen autoplay muted loop src="Assets/MLC-Teaser.mp4" alt="MLC Teaser Video"></video>
+        </div>        
+        
+        <div class="content-box">
+            <h2>Challenges</h2>
+                <p>The main challenge was optimizing render time, as creating thousands of ticket variations individually wasn’t feasible. The masking technique allowed me to quickly customize IDs without compromising on the quality of each pass. Another challenge was crafting the fluid-like gold effect for the teaser; achieving the illusion of a flowing metal without a full fluid simulation required careful VDB adjustments in Houdini. This approach reduced production time and provided greater artistic control over the effect.</p>
+        </div>
+        
+        <div class="content-box">
+            <h2>Tools Used</h2>
+                <p>
+                    <strong>- Blender:</strong> Created the 3D ticket model, handled lighting, animation, and final rendering for the visuals.</br>
+                    <strong>- Blender (Compositing):</strong> Integrated masked ID layers to customize each ticket’s unique ID efficiently in post-production.</br>
+                    <strong>- Substance Painter:</strong>  Applied detailed textures to each ticket tier, enhancing the visual appeal and quality.</br>
+                    <strong>- Houdini:</strong> Designed the dynamic gold flow simulation, using VDB tools to create an elegant, cinematic formation effect for the teaser.</br>
+                    <strong>- Adobe Illustrator:</strong> Developed precise ID masks for each ticket, ensuring seamless and consistent compositing.</br>
+                </p>
+            </div>
+
+        <div class="content-box">
+            <footer>
+                <div class="footer-content">
+                    <a href="../">© 2024 Jure Sulič</a>
+                    <a href="mailto:j.sulic@gmail.com">j.sulic@gmail.com</a>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/juresulic" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/you-re" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/you_re_cgi" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+        <!-- The Modal for Enlarged Video -->
+        <div id="vidModal" class="modal">
+            <div class="modal-image-container">
+                <span class="close">&times;</span>
+                <video allowfullscreen autoplay muted loop class="modal-content" id="modal-vid"></video>
+                <div class="modal-caption" id="captionVid"></div>
+            </div>
+        </div>
+
+        <!-- The Modal for Enlarged Image -->
+        <div id="imgModal" class="modal">
+            <div class="modal-image-container">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="modal-img">
+                <div class="modal-caption" id="captionImg"></div>
+            </div>
+        </div>        
+        
+    </div>
+
+    <script src="../Assets/js/scripts.js"></script>
+</body>
+</html>
