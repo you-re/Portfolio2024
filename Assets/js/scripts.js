@@ -108,6 +108,88 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Update modal image width on window resize
-    window.addEventListener('resize', setModalWidth);
+    // Function to fetch and check links in an external HTML file
+    async function checkLinksInExternalFile(url) {
+        try {
+            // Fetch the external HTML file
+            const response = await fetch(url);
+
+            // Check if the fetch was successful
+            if (!response.ok) {
+                throw new Error(`Failed to fetch file: ${response.status} ${response.statusText}`);
+            }
+
+            // Get the HTML content as text
+            const htmlText = await response.text();
+
+            // Parse the HTML text into a document
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlText, 'text/html');
+
+            // Select all grid-item elements and collect <a> links from them
+            const gridItems = doc.querySelectorAll('.grid-item'); // Adjust selector as needed
+            let links = [];
+
+            // Collect all <a> tags from each grid-item
+            gridItems.forEach(gridItem => {
+                gridItem.querySelectorAll('a').forEach(link => links.push(link));
+            });
+
+            // Get the last part of the current page path
+            const currentPagePath = window.location.pathname.split('/')[1];
+
+            // Initialize variables to hold the index and adjacent links
+            let targetIndex = -1;
+            let linkBefore = null;
+            let linkAfter = null;
+
+            // Iterate over the links to check if any match the current page's relative path
+            links.forEach((link, index) => {
+                const linkPath = link.pathname.split('/')[2]; // Get the last segment of the link's path
+
+                if (linkPath === currentPagePath) {
+                    // console.log(`Found link to this page: ${link.href}`);
+                    targetIndex = index;
+                }
+            });
+
+            // Set adjacent links if the target link was found
+            if (targetIndex !== -1) {
+                indexBefore = ((targetIndex - 2) < 0) ? links.length - 1 : targetIndex - 2;
+                indexAfter = ((targetIndex + 1) === links.length) ? 0 : targetIndex + 1;
+                
+                linkBefore = "../" + links[indexBefore].pathname.split('/')[2] + "/";
+                linkAfter = "../" + links[indexAfter].pathname.split('/')[2] + "/";
+                // console.log(`Link before: ${linkBefore}`);
+                // console.log(`Link after: ${linkAfter}`);
+            } else {
+                // console.log("No link to this page found in the external file.");
+            }
+
+            // Update the header links dynamically
+            updateHeaderLinks(linkBefore, linkAfter);
+
+        } catch (error) {
+            console.error("Error checking links:", error);
+        }
+    }
+
+    // Function to update the left and right arrow links in the header
+    function updateHeaderLinks(linkBefore, linkAfter) {
+        const leftArrowLink = document.querySelector('.header-content a:nth-child(1)');
+        const rightArrowLink = document.querySelector('.header-content a:nth-child(3)');
+
+        // Update the href attributes of the left and right arrow links
+        if (linkBefore) {
+            leftArrowLink.href = linkBefore;
+        }
+
+        if (linkAfter) {
+            rightArrowLink.href = linkAfter;
+        }
+    }
+
+    // Usage: Call the function with the path to the external HTML file
+    console.log(checkLinksInExternalFile("../Index.html"));
+
 });
