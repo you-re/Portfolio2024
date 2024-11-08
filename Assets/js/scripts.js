@@ -173,6 +173,8 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Error checking links:", error);
         }
     }
+    
+    checkLinksInExternalFile("..")
 
     // Function to update the left and right arrow links in the header
     function updateHeaderLinks(linkBefore, linkAfter) {
