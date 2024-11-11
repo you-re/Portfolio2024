@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazy Sew</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../Assets/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div class="content-box">
+            <header>
+                <div class="header-content">
+                    <a href="../Cryptostraps-Guns/">
+                        <img src="../Assets/arrow.svg" alt="Left Arrow" class="icon rotate-180">
+                    </a>
+                    <a href="../">
+                        <img src="../Assets/home.svg" alt="Home" class="icon">
+                    </a>
+                    <a href="../Index-Shuffle/">
+                        <img src="../Assets/arrow.svg" alt="Right Arrow" class="icon">
+                    </a>
+                </div>
+            </header>
+        </div>
+
+        <div class="content-box">
+            <h1>Lazy Sew - Geometry Nodes Sewing Setup</h1>
+        </div>
+
+        <div class="content-box">
+            <h2>Task Description</h2>
+            <p>
+                This project involved building a Geometry Nodes setup in Blender to automate sewing balloon-like objects. Traditionally, sewing in Blender requires tedious manual edge stitching, especially with complex or dense geometry. My setup simplifies this by allowing users to mark edges as sharp for automated sewing, which then configures the stitches and prepares the object for simulation. After that, users can apply a cloth modifier with pressure and run the simulation, making the process fast and non-destructive.
+            </br></br>
+                In addition, I created a post-processing node setup that adds visible seams where the balloon edges were sewn. This setup also cleans up any artifacts from sewing, making the seams look neat with minimal input and adding to the model’s realism.</p>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Lazy-Sew-06.png" alt="Render 1" class="gallery-img"></img>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Lazy-Sew-01.jpg" alt="Render 2" class="gallery-img"></img>
+        </div>
+
+        <div class="content-box">       
+            <h2>Thought Process</h2>
+                <p>
+                    My goal was to create a quick, Blender-native sewing solution that would make sewing abstract objects intuitive and flexible. For the original project outline (first image), I used Marvelous Designer, the but import/export time and limited flexibility led me to focus on a fully integrated Blender workflow.
+                </p>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Lazy-Sew-03.jpg" alt="Render 3" class="gallery-img"></img>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Lazy-Sew-05.jpg" alt="Render 4" class="gallery-img"></img>
+        </div> 
+        
+        <div class="content-box">
+            <h2>Challenges</h2>
+                <p>The main challenge was figuring out how to align vectors for instancing the sewing edges. After testing different approaches, I solved this by storing the original location attribute, which keeps the sewing geometry aligned with the original point positions. Since the edges are instanced all at once, rather than each individually, the process is highly efficient and parallelized. I then resampled the edges to contain three or fewer points, optimizing the mesh for simulation.</p>
+        </div>
+
+        <div class="content-box">
+            <h2>Workflow Process</h2>
+            <video allowfullscreen autoplay controls src="Assets/Lazy-Sew-Workflow_01.mp4" title="Workflow Proccess" class="gallery-vid"></video>
+        </div>
+            
+        <div class="content-box">
+            <h2>Tools Used</h2>
+                <p>
+                    <strong>- Blender:</strong> Modeling, lighting, final adjustments, and compositing.</br>
+                    <strong>- Geometry Nodes:</strong> Designed the sewing setup to automate edge instancing based on marked attributes.</br>
+                </p>
+        </div>  
+
+        <div class="content-box">
+            <footer>
+                <div class="footer-content">
+                    <a href="../">© 2024 Jure Sulič</a>
+                    <a href="mailto:j.sulic@gmail.com">j.sulic@gmail.com</a>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/juresulic" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/you-re" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/you_re_cgi" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- The Modal for Enlarged Video -->
+        <div id="vidModal" class="modal">
+            <div class="modal-image-container">
+                <span class="close">&times;</span>
+                <video allowfullscreen autoplay muted loop class="modal-content" id="modal-vid"></video>
+                <div class="modal-caption" id="captionVid"></div>
+            </div>
+        </div>
+
+        <!-- The Modal for Enlarged Image -->
+        <div id="imgModal" class="modal">
+            <div class="modal-image-container">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="modal-img">
+                <div class="modal-caption" id="captionImg"></div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="../Assets/js/scripts.js"></script>
+</body>
+</html>

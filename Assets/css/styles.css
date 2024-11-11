@@ -137,29 +137,34 @@ body {
     position: absolute; /* Position the image absolutely within the anchor */
     left: 45%; /* Center horizontally */
     top: 40%; /* Center horizontally */
-    width: 10%; /* Image occupies 100% of the box */
+    width: 4vh; /* Image occupies 100% of the box */
     height: auto; /* Maintain aspect ratio */
-
+    /*
     aspect-ratio: 1;
     --_g: no-repeat radial-gradient(farthest-side,#000 90%,#fff0);
     background: var(--_g), var(--_g), var(--_g);
     background-size: 20% 20%;
     animation: l17 2s infinite;
+    */
+
+    aspect-ratio: 4;
+    background: radial-gradient(circle closest-side,#000 90%,#3330) 0/calc(100%/3) 100% no-repeat;
+    animation: l2 1.2s steps(3) infinite;
 }
 /* HTML: <div class="loader"></div> */
 .grid-item .loader {
     position: absolute; /* Position the image absolutely within the anchor */
     left: 45%; /* Center horizontally */
     top: 40%; /* Center horizontally */
-    width: 10%; /* Image occupies 100% of the box */
+    width: 4vh; /* Image occupies 100% of the box */
     height: auto; /* Maintain aspect ratio */
 
-    aspect-ratio: 1;
-    --_g: no-repeat radial-gradient(farthest-side,#000 90%,#fff0);
-    background: var(--_g), var(--_g), var(--_g);
-    background-size: 20% 20%;
-    animation: l17 2s infinite;
+    aspect-ratio: 4;
+    background: radial-gradient(circle closest-side,#000 90%,#3330) 0/calc(100%/3) 100% no-repeat;
+    animation: l2 1.2s steps(3) infinite;
 }
+@keyframes l2 {to{background-position: 150%}}
+/*
 @keyframes l17{ 
     0%     {background-position: 0% -100%,50% -100%,100% -100%}
     16.67% {background-position: 0%   50%,50% -100%,100% -100%}
@@ -169,7 +174,8 @@ body {
     83.33% {background-position: 0%  200%,50%  200%,100%   50%}
     100%   {background-position: 0%  200%,50%  200%,100%  200%}
 }
-
+*/
+  
 .grid-item .description {
     position: relative;
     font-weight: 300;
