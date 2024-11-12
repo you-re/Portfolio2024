@@ -21,13 +21,13 @@
         <div class="content-box">
             <header>
                 <div class="header-content">
-                    <a href="../Propagation-Solver/">
+                    <a href="../Cryptostraps-Guns/">
                         <img src="../Assets/arrow.svg" alt="Left Arrow" class="icon rotate-180">
                     </a>
                     <a href="../">
                         <img src="../Assets/home.svg" alt="Home" class="icon">
                     </a>
-                    <a href="../Index-Shuffle/">
+                    <a href="../Lazy-Sew/">
                         <img src="../Assets/arrow.svg" alt="Right Arrow" class="icon">
                     </a>
                 </div>
@@ -35,94 +35,40 @@
         </div>
 
         <div class="content-box">
-            <h1>Medusa</h1>
+            <h1>Building Generator WIP</h1>
         </div>
 
         <div class="content-box">
             <h2>Task Description</h2>
-            <p>The Realistic Pendant Rendering project involved creating a detailed 3D replica of a unique, handmade pendant that was housed in a museum. Due to the pendant's value and the inability to access the physical object, we relied on x-ray scans, material analysis, and extensive reference photography and videos. The primary goal was to produce a photorealistic representation of the pendant, including intricate textures and materials of the gemstones, while presenting the object in an engaging manner.</p>
+            <p>This project is a procedural building generator that uses modular components within Unreal Engine. I set up a point-based instancing system in Houdini to position building pieces, created high- and low-poly models in Blender, and textured them in Substance Painter. The setup, saved as a Houdini digital asset (.hda), imports into Unreal Engine, allowing quick toggling between high-quality and internally generated geometry as needed.</p>
+        </div>
+
+        <div class="content-box">
+            <video allowfullscreen autoplay muted loop src="Assets/Building-Generator-Timelapse_01.mp4" title="Building Generator WIP Timelapse" class="gallery-vid"></video>
         </div>
 
         <div class="content-box">       
-            <h2>Thought Process</h2>
-                <p>Initially, we focused on gathering all available data about the pendant, including its construction methods and the arrangement of gemstones. The modeling was executed in Blender, followed by sculpting in ZBrush to accurately capture the intricate details from the references. After texturing the model in Substance Painter, we transferred it to Houdini for a digital cut, allowing us to visualize the internal structure and gemstone placement. The liquid filling simulation mirrored the craftsmanship involved in placing the gemstones within the gold pendant.</br>
-
-                The final step involved bringing the high-definition model back into Blender for realistic lighting and material creation. Special attention was given to the materials, ensuring they reflected the pendant’s unique characteristics.
+            <h2>Process Overview</h2>
+                <p>In Houdini, I created a procedural system to place modular building parts accurately. High- and low-poly models were designed in Blender, then textured in Substance Painter. The .hda asset allows for easy building assembly and control in Unreal, with options for varying detail levels based on project requirements.
                 </p>
-        </div>
-
-        <div class="grid-item">
-            <video allowfullscreen controls autoplay muted loop src="Assets/Medusa-Opal-Mat.mp4" allowfullscreen></video>
-            <div class="description">
-                Opal shader
-            </div>
-        </div>
-
-        <div class="grid-item">
-            <video allowfullscreen controls autoplay muted loop src="Assets/Medusa-Opals-Rot.mp4" allowfullscreen></video>
-            <div class="description">
-                Early version of the opal shader
-            </div>
-        </div>
-        
+        </div>        
         
         <div class="content-box">
             <h2>Challenges</h2>
-                <p>One of the main challenges was creating realistic opal materials, which exhibited complex internal scattering properties. We employed a technique using volumes and procedural 3D textures to achieve a lifelike appearance. This required careful adjustments to simulate how light interacts with the opal, ensuring it looked authentic in the final render.</p>
+                <p>The main challenge was ensuring that assets, materials, and textures connected smoothly across Houdini and Unreal Engine, as each software handles relative references differently.</p>
         </div>
 
         <div class="content-box">
-            <h2>Gallery</h2>
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa-0405.jpg" alt="Image 1" class="gallery-img">
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa-1145.jpg" alt="Image 2" class="gallery-img">
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa-1301.jpg" alt="Image 3" class="gallery-img">
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa-2344.jpg" alt="Image 4" class="gallery-img">
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa-2700.jpg" alt="Image 5" class="gallery-img">
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa-2910.jpg" alt="Image 6" class="gallery-img">
-        </div>
-
-        <div class="grid-item">
-            <img src="Assets/Medusa-3250.jpg" alt="Image 7" class="gallery-img">
-        </div>
-
-        <div class="grid-item">
-        </div>
-
-        <div class="content-box">
-            <h2>Final edit</h2>
-        </div>
-        <div class="content-box">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/4jvNPwH-dek?&mute=1" alt="Propagation Solver Render"></iframe>
-            </div>
+            <video allowfullscreen autoplay muted loop src="Assets/Stairs-Timelapse.mp4" title="Procedural Stairs Timelapse" class="gallery-vid"></video>
         </div>
         
         <div class="content-box">
             <h2>Tools Used</h2>
                 <p>
-                    <strong>- Blender:</strong> Used for initial modeling, lighting, and final adjustments to the 3D pendant.</br>
-                    <strong>- ZBrush:</strong> Sculpted the model to achieve high levels of detail based on reference materials.</br>
-                    <strong>- Substance Painter:</strong> Textured the pendant, applying colors and high-frequency details to the gemstones.</br>
-                    <strong>- Houdini:</strong> Executed the digital cutting and liquid filling simulations to visualize gemstone placement.</br>
-                    <strong>- Blackmagic Fusion:</strong> Composited the final render for enhanced visual quality and presentation.</br>
+                    <strong>- Houdini:</strong> Generated procedural layout and exported as .hda for Unreal.</br>
+                    <strong>- Blender:</strong> Modeled modular building pieces in high- and low-poly.</br>
+                    <strong>- Substance Painter:</strong> Procedurally textured each component and baked HP to LP.</br>
+                    <strong>- Unreal Engine:</strong> Imported the .hda asset, enabling flexible geometry quality control.
                 </p>
             </div>
 
