@@ -257,9 +257,21 @@ header {
 }
 
 header a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 1em;
     text-decoration: none;
     color: #333;
     transition: color 0.3s ease, transform 0.3s ease;
+    padding: 5px;
+}
+
+header b {
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 0.5em;
+    vertical-align: middle;
 }
 
 /* Hover effect with unique colors for each social icon */
@@ -374,6 +386,10 @@ footer a:hover {
     .social-link {
         font-size: 1.5em;
     }
+
+    header b  {
+        font-size: 0.45em;
+    }
 }
 
 @media (max-width: 600px) {
@@ -383,6 +399,10 @@ footer a:hover {
 
     .social-link {
         font-size: 1.3em;
+    }
+
+    header b  {
+        font-size: 0.35em;
     }
 }
 
