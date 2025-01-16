@@ -207,6 +207,7 @@ footer {
     font-size: 0.8em;
     color: #333;
     padding: 10px;
+    align-items: center;
 }
 
 footer a {
@@ -242,6 +243,10 @@ footer a:hover {
     transform: scale(1.2);
 }
 
+.social-link[href*="mailto:"]:hover {
+    color: #009925;
+}
+
 .social-link[href*="linkedin.com"]:hover {
     color: #0077b5;
 }
@@ -252,6 +257,18 @@ footer a:hover {
 
 .social-link[href*="instagram.com"]:hover {
     color: #E1306C;
+}
+
+.social-link[href*="artstation.com"]:hover {
+    color: #31ace3;
+}
+
+.social-link[href*="youtube.com"]:hover {
+    color: #f90000;
+}
+
+.social-link[href*="you-re.github.io"]:hover {
+    color: #00aef9;
 }
 
 /* Typography */
