@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Texturing</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../Assets/css/styles.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="content-box">
+            <header>
+                <div class="header-content">
+                    <a href="../Quick-Texturing/">
+                        <img src="../Assets/arrow.svg" alt="Left Arrow" class="icon rotate-180">
+                        <b>Previous Project</b>
+                    </a>
+                    <a href="../">
+                        <img src="../Assets/home.svg" alt="Home" class="icon">
+                        <b>Home</b>
+                    </a>
+                    <a href="../Lufta/">
+                        <b>Next Project</b>
+                        <img src="../Assets/arrow.svg" alt="Right Arrow" class="icon">
+                    </a>
+                </div>
+            </header>
+        </div>
+
+        <div class="content-box">
+            <h1>Swarovski Box Animation</h1>
+        </div>
+
+        <div class="content-box">
+            <video allowfullscreen controls autoplay muted loop src="Assets/Swarovski-Box-Animation.mp4" title="3D assets video loop" class="gallery-vid"></video>
+        </div>
+
+        <div class="content-box">
+            <video allowfullscreen controls autoplay muted loop src="Assets/Ring-Animation.mp4" title="3D assets video loop" class="gallery-vid"></video>
+        </div>
+
+        <div class="content-box">
+            <h2>Tools Used</h2>
+            <p>
+                <strong>- Blender: </strong> Modeling, Lighting, Animation, Rendering</br>
+                <strong>- Substance Painter: </strong> Texturing</br>
+                <strong>- DaVinci Fusion: </strong> Compositing, Color Grading</br>
+            </p>
+        </div>
+        
+        <div class="content-box">
+            <footer>
+                <div class="footer-content">
+                    <a href="../">© 2024 Jure Sulič</a>
+                    <a href="mailto:j.sulic@gmail.com">j.sulic@gmail.com</a>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/juresulic" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/you-re" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/you_re_cgi" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- The Modal for Enlarged Video -->
+    <div id="vidModal" class="modal">
+        <div class="modal-image-container">
+            <span class="close">&times;</span>
+            <video allowfullscreen autoplay muted loop class="modal-content" id="modal-vid"></video>
+            <div class="modal-caption" id="captionVid"></div>
+        </div>
+    </div>
+
+    <!-- The Modal for Enlarged Image -->
+    <div id="imgModal" class="modal">
+        <div class="modal-image-container">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modal-img">
+            <div class="modal-caption" id="captionImg"></div>
+        </div>
+    </div>
+    
+    <script src="../Assets/js/scripts.js"></script>
+</body>
+</html>
