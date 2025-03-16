@@ -57,23 +57,15 @@
         </div>
 
         <div class="content-box">
-            <h2>Gallery</h2>
-        </div>
-
-        <div class="grid-item">
-            <video allowfullscreen autoplay muted loop src="Assets/MLC-Bronze-Pass.mp4" title="MLC Bronze Pass" class="gallery-vid"></video>
-        </div>
-
-        <div class="grid-item">
-            <video allowfullscreen autoplay muted loop src="Assets/MLC-Silver-Pass.mp4" title="MLC Silver Pass" class="gallery-vid"></video>
-        </div>
-
-        <div class="grid-item">
-            <video allowfullscreen autoplay muted loop src="Assets/MLC-Gold-Pass.mp4" title="MLC Gold Pass" class="gallery-vid"></video>
-        </div>
-
-        <div class="grid-item">
-            <video allowfullscreen autoplay muted loop src="Assets/MLC-Diamond-Pass.mp4" title="MLC Diamond Pass" class="gallery-vid"></video>
+            <h2>MLC Teaser Video</h2>
+            <video allowfullscreen autoplay muted controls loop src="Assets/MLC-Teaser.webm" alt="MLC Teaser Video"></video>
+        </div>        
+        
+        <div class="content-box">       
+            <h2>Teaser video</h2>
+                <p> 
+                    The teaser aimed to present the tickets in a visually engaging, cinematic way. After discussions with the client, we developed a concept where each ticket would form mid-air, set against a stable-themed background to connect with the racing concept. Using Houdini, I designed a flowing, pseudo-liquid simulation that appeared to “coat” and form the ticket, giving it a luxurious, ethereal quality. VDB tools in Houdini allowed me to simulate a metallic flow without a full fluid simulation, creating a sense of forming gold that was both visually compelling and production-efficient. I exported this as an Alembic (.abc) sequence and imported it into Blender, where I refined the animation, lighting, and camera work. Reusing the background from the ticket loop animation established a cohesive aesthetic across all visuals.
+                </p>
         </div>
 
         <div class="content-box">       
@@ -87,18 +79,26 @@
                 </p>
         </div>
 
-        <div class="content-box">       
-            <h2>Teaser video</h2>
-                <p> 
-                    The teaser aimed to present the tickets in a visually engaging, cinematic way. After discussions with the client, we developed a concept where each ticket would form mid-air, set against a stable-themed background to connect with the racing concept. Using Houdini, I designed a flowing, pseudo-liquid simulation that appeared to “coat” and form the ticket, giving it a luxurious, ethereal quality. VDB tools in Houdini allowed me to simulate a metallic flow without a full fluid simulation, creating a sense of forming gold that was both visually compelling and production-efficient. I exported this as an Alembic (.abc) sequence and imported it into Blender, where I refined the animation, lighting, and camera work. Reusing the background from the ticket loop animation established a cohesive aesthetic across all visuals.
-                </p>
+        <div class="content-box">
+            <h2>Gallery</h2>
         </div>
 
-        <div class="content-box">
-            <h2>MLC Teaser Video</h2>
-            <video allowfullscreen autoplay muted loop src="Assets/MLC-Teaser.mp4" alt="MLC Teaser Video"></video>
-        </div>        
-        
+        <div class="grid-item">
+            <video allowfullscreen autoplay muted controls loop src="Assets/MLC-Bronze-Pass.webm" title="MLC Bronze Pass" class="gallery-vid"></video>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen autoplay muted controls loop src="Assets/MLC-Silver-Pass.webm" title="MLC Silver Pass" class="gallery-vid"></video>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen autoplay muted controls loop src="Assets/MLC-Gold-Pass.webm" title="MLC Gold Pass" class="gallery-vid"></video>
+        </div>
+
+        <div class="grid-item">
+            <video allowfullscreen autoplay muted controls loop src="Assets/MLC-Diamond-Pass.webm" title="MLC Diamond Pass" class="gallery-vid"></video>
+        </div>
+
         <div class="content-box">
             <h2>Challenges</h2>
                 <p>The main challenge was optimizing render time, as creating thousands of ticket variations individually wasn’t feasible. The masking technique allowed me to quickly customize IDs without compromising on the quality of each pass. Another challenge was crafting the fluid-like gold effect for the teaser; achieving the illusion of a flowing metal without a full fluid simulation required careful VDB adjustments in Houdini. This approach reduced production time and provided greater artistic control over the effect.</p>
