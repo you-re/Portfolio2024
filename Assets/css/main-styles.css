@@ -123,21 +123,20 @@ body {
 }
 
 .grid-item img {
-    position: absolute; /* Position the image absolutely within the anchor */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    width: 100%; /* Image occupies 100% of the box */
-    height: auto; /* Maintain aspect ratio */
-    transform: translate(-50%, -50%); /* Center image */
-    transition: 0.3s ease; /* Smooth transition for zoom effect */
+    position: absolute;
+    height: 100%;
+    width: auto;
+    transition: 0.3s ease;
     filter: blur(0);
+    left: calc(-1 * var(--x) * 100%); /* Correct use of var(--x) */
+    transform-origin: calc((var(--x) + 0.5) / 15 * 100%) 50%; /* Correct use of var(--x) */
 }
 
-/* Zoom effect on hover */
 .grid-item a:hover img {
     filter: blur(5px);
-    transform: translate(-50%, -50%) scale(1.2); /* Zoom in on hover */
+    transform: scale(1.2);
 }
+
 
 .grid-item a:hover .text-overlay {
     opacity: 1;
@@ -219,8 +218,8 @@ p {
     font-weight: 100;
     font-size: 1em;
     color: #333;
-    padding-inline: 10%;
-    text-align: center;
+    padding-inline: 5%;
+    text-align: justify;
 }
 
 /* Footer box styling */
