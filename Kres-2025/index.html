@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kres 2.0</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+
+    <!--META PROPERTIES-->
+    <meta property="og:title" content="Jure Sulič | 3D Portfolio">
+    <meta property="og:description" content="Hello! :) I am Jure, a 3D Generalist and Technical Artist from Helsinki!">
+    <meta property="og:image" content="https://you-re.github.io/Portfolio2024/Assets/thumbnail.jpg">
+    <meta property="og:url" content="juresulic.com">
+    <meta property="og:type" content="website">
+
+
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../Assets/css/styles.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="content-box">
+            <header>
+                <div class="header-content">
+                    <a href="../Quick-Texturing/">
+                        <img src="../Assets/arrow.svg" alt="Left Arrow" class="icon rotate-180">
+                        <b>Previous Project</b>
+                    </a>
+                    <a href="../" style="margin-right: 2.5%;">
+                        <img src="../Assets/home.svg" alt="Home" class="icon">
+                        <b>Home</b>
+                    </a>
+                    <a href="../Swarovski-Ring/">
+                        <b>Next Project</b>
+                        <img src="../Assets/arrow.svg" alt="Right Arrow" class="icon">
+                    </a>
+                </div>
+            </header>
+        </div>
+
+        <div class="content-box">
+            <h1>Kres 2.0</h1>
+        </div>
+
+        <div class="content-box">
+            <h2>Description</h2>
+            <p>During the last weeks of April 2025 me and my partner <a href="https://celestesanja.com/">Celeste Sanja Smareglia</a> created an interactive <a href="https://threejs.org/">Three.js</a> scene that was exhibited on the <a href="https://kres.digital/">2025 Kres 2.0</a>: Žareč duh digitalne kolektivnosti / The fiery spirit  of digital unity exibition in <a href="https://www.osmoza.si/dogodek">OSMO/ZA</a>, Ljubljana, Slovenia. <br><br>
+            <strong><b>Links:</b></strong><br>
+                <a href="https://you-re.github.io/kres-o-vision/">Final Website</a><br>
+                <a href="https://you-re.github.io/kres-o-vision/debug/">Shader Sandbox</a><br>
+            </p>
+        </div>
+        
+        <div class="content-box">
+            <h2>Screenshots</h2>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Screenshot_01.jpg" alt="Website screenshot" class="gallery-img">
+            <div class="description">
+                Website screenshot
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="Assets/Screenshot_02.jpg" alt="Postprocessing effects screenshot" class="gallery-img">
+            <div class="description">
+                Postprocessing effects screenshot
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h2>Task Description</h2>
+            <p>Celeste was in charge of the art direction and 3D, and my role was developing the interactive website in Three.js and helping with the 3D art. During the course of the project I got familiar with working in Three.js and used my existing knowledge in developing the postprocessing shaders and optimizing objects to perform well on low-end devices. The lighting was baked to make the rendering less resource-intensive. The simulations were created in Houdini and looped with a custom node setup. Everything was exported in glTF format as it is the most widely suported.
+            </p>
+        </div>
+
+        <div class="content-box">
+            <h2>Challenges</h2>
+            <p>For the postprocessing I used the Three.js's built-in EffectComposer, which allows for multiple passes of postprocessing effects. I decided not to use the already implemented shaders as they were not suitable for the project. I ended up implementing 6 different effects of which only three were used in the final version of the prject. The effects were: <br>
+                <strong><b>- ACES shader</b></strong> - converts the working color space into the ACES color space → fixes overexposure and oversaturation<br>
+                <strong><b>- Grain shader </b></strong>  - random noise used to simulate digital grain<br>
+                <strong><b>- Chromatic Aberration shader </b></strong> - used to simulate the light distortion in a happening in a lens<br>
+                <strong><b>- Edge Detect shader </b></strong> - used to create object outlines (not used)<br>
+                <strong><b>- Toon shader </b></strong> - used to reduce the color pallete to create color banding (not used)<br>
+                <strong><b>- Gaussian Blur shader </b></strong> - used in conjunction with the toon shader to get better results in simulating a cartoon look (not used)<br>
+            </p>
+        </div>
+
+        <div class="content-box">
+            <h2>Tools Used</h2>
+            <p>
+                <strong><b>- Three.js: </b></strong> GLSL, Scene Setup, Compositing<br>
+                <strong><b>- Substance Painter: </b></strong> Texturing<br>
+                <strong><b>- Blender: </b></strong> Modeling, Lighting, Animation, Baking<br>
+                <strong><b>- Houdini: </b></strong> Simulation<br>
+            </p>
+        </div>
+        
+        <div class="content-box">
+            <footer>
+                <div class="footer-content">
+                    <a href="../">© 2024 Jure Sulič</a>
+                    <a href="mailto:j.sulic@gmail.com">j.sulic@gmail.com</a>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/juresulic" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/you-re" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/you_re_cgi" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- The Modal for Enlarged Video -->
+    <div id="vidModal" class="modal">
+        <div class="modal-image-container">
+            <span class="close">&times;</span>
+            <video allowfullscreen autoplay muted loop class="modal-content" id="modal-vid"></video>
+            <div class="modal-caption" id="captionVid"></div>
+        </div>
+    </div>
+
+    <!-- The Modal for Enlarged Image -->
+    <div id="imgModal" class="modal">
+        <div class="modal-image-container">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modal-img">
+            <div class="modal-caption" id="captionImg"></div>
+        </div>
+    </div>
+    
+    <script src="../Assets/js/scripts.js"></script>
+</body>
+</html>

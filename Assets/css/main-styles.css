@@ -124,12 +124,13 @@ body {
 
 .grid-item img {
     position: absolute;
-    height: 100%;
+    height: calc(var(--vertical_elements) * 100%); /* Maintain aspect ratio based on vertical elements */
     width: auto;
     transition: 0.3s ease;
     filter: blur(0);
     left: calc(-1 * var(--x) * 100%); /* Correct use of var(--x) */
-    transform-origin: calc((var(--x) + 0.5) / 15 * 100%) 50%; /* Correct use of var(--x) */
+    top: calc(-1 * var(--y) * 100%); /* Transform the image vertically */
+    transform-origin: calc((var(--x) + 0.5) / var(--horizontal_elements) * 100%) calc((var(--y) + 0.5) / var(--vertical_elements) * 100%); /* Get the center for the image trasform -> x, y; add 0.5 to center the transform to image center*/
 }
 
 .grid-item a:hover img {
